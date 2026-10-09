@@ -246,6 +246,13 @@ A primeira dobra deve introduzir o tema com uma pergunta forte:
 
 O hero deve conter uma área de vídeo ou conteúdo audiovisual cinematográfico e uma chamada para a lista de espera.
 
+#### Comportamento de reprodução e navegação
+
+- Ao abrir a página, o vídeo deve iniciar automaticamente.
+- A rolagem para o restante da página fica bloqueada até o vídeo terminar ou o visitante clicar no botão **“ir para a pagina”**.
+- Quando o vídeo terminar ou o visitante clicar no botão, a navegação pela página é liberada.
+- Após a liberação, o vídeo permanece no hero, no topo do documento, em pausa.
+
 ### 8.3 O mundo digital
 
 Seção destinada a mostrar que diversas conversas acontecem simultaneamente e que o ambiente digital dos filhos é amplo, dinâmico e difícil de acompanhar por completo.
