@@ -331,7 +331,8 @@ O footer deverá encerrar a página com as informações institucionais definida
 
 A experiência deve priorizar:
 
-- Animações suaves;
+- Uma navegação bastante fluida, com efeitos e animações ao longo da página;
+- Animações e transições acionadas durante a rolagem, conduzindo a passagem entre as seções;
 - Microinterações;
 - Transições cinematográficas;
 - Ritmo visual progressivo entre as seções;
