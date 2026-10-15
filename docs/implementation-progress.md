@@ -1,0 +1,264 @@
+# ChatGuard — Registro de avanço da landing page
+
+**Status:** v0.2 em Next.js 16.4.0; infográfico vetorial em loop implementado para revisão local; build aprovado em cópia temporária local; build via UNC com limitação de filesystem; sem commit  
+**Especificação-alvo:** [`landing-page.md`](landing-page.md)
+
+Este documento registra os incrementos feitos para chegar à landing page descrita na especificação. Não substitui nem altera silenciosamente a especificação-alvo.
+
+## Contexto verificado
+
+- O repositório não tinha código de frontend; continha os documentos do produto e um `README.md` vazio.
+- A branch de trabalho escolhida para esta etapa é `fix-feat`.
+
+## Decisões para o incremento v0.1
+
+- Usar HTML, CSS e JavaScript sem framework.
+- Construir uma landing page responsiva, com direção visual premium/cinematográfica e transições e animações durante a rolagem.
+- Reservar no hero o espaço para o vídeo, sem carregar um vídeo nesta versão.
+- Manter a rolagem livre enquanto não houver vídeo real.
+- Exibir botões e CTAs sem ações funcionais nesta versão.
+- Usar conteúdo fictício nas demonstrações; não sugerir que IA, monitoramento ou integrações já funcionam.
+- Preservar acessibilidade, legibilidade e desempenho; respeitar preferência por movimento reduzido.
+
+## Fluxo de implementação e testes
+
+1. Implementar na branch `fix-feat`.
+2. Executar e verificar a versão em localhost antes do próximo commit.
+3. Fazer commit somente depois do teste local aprovado.
+4. Antes do merge, testar a revisão numa stack de teste da aplicação na VPS, confirmando que não é produção.
+5. Com autorização do usuário e teste aprovado, fazer merge direto em `main`, sem PR; verificar o push.
+
+## Acompanhamento
+
+- [x] Ler a especificação-alvo e o conceito da plataforma.
+- [x] Registrar o escopo v0.1 na especificação da landing page.
+- [x] Implementar a landing page.
+- [x] Testar em localhost e registrar resultado.
+- [x] Implementar a simulação de abertura de 10 s no espaço do vídeo.
+- [x] Testar a simulação em localhost e registrar resultado.
+- [ ] Fazer commit após o teste local.
+- [ ] Testar em stack de teste na VPS antes do merge.
+- [ ] Fazer merge direto em `main` e verificar o remoto, mediante pedido do usuário.
+
+### Verificação local realizada
+
+- Arquivos da implementação: `index.html`, `styles.css` e `script.js`.
+- Servidor de verificação: `python -m http.server 8765 --bind 127.0.0.1 --directory C:/Users/Hermes/Documents/Walleson/Projetos/ChatGuard/chatguard-app`; `http://127.0.0.1:8765/` retornou HTTP 200.
+- `node --check script.js` e parsing de `index.html` passaram.
+- No navegador, desktop (1366 px) e celular (390 px) sem overflow horizontal.
+- Verificados: espaço reservado sem elemento de vídeo; rolagem livre; CTAs desativados; destinos dos links internos existem; sem formulário nem referências a requisições externas nos arquivos da página.
+- Rolagem progressiva revelou todos os 14 elementos animados. Com `prefers-reduced-motion: reduce`, nenhum conteúdo ficou oculto e o `scroll-behavior` foi `auto`.
+- A porta 8000 reportada pelo especialista respondeu com conexão vazia; para o teste reproduzível foi usado o servidor acima na porta 8765.
+
+### Verificação da simulação de abertura
+
+Alteração implementada em `index.html`, `styles.css` e `script.js`: o espaço reservado no hero simula a reprodução com contador de 10 s e barra de progresso, sem arquivo de vídeo e sem requisições externas.
+
+Resultados verificados no navegador:
+
+- Ao abrir a página, a simulação inicia e a rolagem fica bloqueada (`overflow: hidden` na raiz, `is-scroll-locked`).
+- Rolagem bloqueada confirmada: `ArrowDown` e `Space` foram cancelados e a posição não mudou; a tentativa de rolar não avançou.
+- O botão **“ir para a pagina”** fica visível durante a contagem, recebe foco, tem contorno visível e libera a navegação ao ser acionado (mouse e teclado).
+- Sem interação, a contagem libera sozinha aos 10 s.
+- Depois da liberação, a simulação fica pausada no hero e a rolagem funciona normalmente.
+- Abrir a página com âncora na URL não bloqueia a navegação.
+- Clicar num link de navegação para fora do hero durante a contagem libera a página.
+- Levar o foco do teclado para fora do hero libera a página, sem prender o foco.
+- Sem overflow horizontal em desktop (1280 px) e celular (390 px).
+- Com `prefers-reduced-motion: reduce`, a contagem avança em degraus de 1 s e nenhum conteúdo fica oculto.
+
+Observações levantadas na verificação:
+
+- Em viewports muito baixas, a página rola alguns pixels ao abrir para manter o contador e o botão visíveis; em desktop de altura normal a abertura fica no topo.
+- O estado da simulação é gravado como `data-intro-sim` no elemento raiz, o mesmo nome usado como atributo do componente no HTML. Não causa erro hoje, mas convém renomear o estado para evitar ambiguidade em manutenção futura.
+
+## Incremento v0.2 — migração para Next.js (registro)
+
+Migração da landing page de HTML/CSS/JavaScript para Next.js com React, App Router e TypeScript, conforme a decisão registrada em `landing-page.md` (seção 3). Página estática primeiro: build com `output: 'export'` pré-renderiza `/` como conteúdo estático. Nenhum backend, API, rota dinâmica ou integração foi adicionado. Os arquivos estáticos anteriores (`index.html`, `script.js`, `styles.css`) foram preservados sem alteração; todo o conteúdo, copy e direção visual foram migrados sem reescrita.
+
+Arquivos entregues (novos, sem commit):
+
+- `package.json`, `tsconfig.json`, `next.config.mjs`, `.gitignore` — projeto Next.js 15.5.4, React 19.1.0, TypeScript.
+- `app/layout.tsx` — metadata, `lang="pt-BR"`, importação dos estilos.
+- `app/page.tsx` — todas as seções da página migradas do `index.html`.
+- `app/globals.css` — cópia integral de `styles.css`.
+- `app/intro.css` — estilos novos da camada de abertura e do botão "assistir novamente".
+- `components/OpeningVideo.tsx` — componente de cliente da experiência de abertura.
+- `components/PageEffects.tsx` — componente de cliente da barra de progresso e da revelação por rolagem.
+
+Experiência de abertura implementada (simulação claramente identificada; não existe arquivo de vídeo — nada foi inventado, baixado ou substituído; nenhum teste de reprodução real de vídeo foi realizado ou alegado):
+
+- Ao abrir a página, o espaço reservado fica em primeiro plano numa camada fixa (`intro-overlay`); a landing page fica visível atrás, escurecida e translúcida (fundo `rgba(3,7,13,0.72)` com `backdrop-filter: blur(9px)`), e a rolagem fica bloqueada (`is-scroll-locked`), sem prender foco ou leitores de tela.
+- O botão `ir para a pagina` (texto preservado) encerra a abertura antecipadamente; a contagem encerra sozinha aos 10 s.
+- Na página liberada, o espaço reservado fica no topo do hero, imediatamente antes do título, em pausa, com o botão `assistir novamente`.
+- `assistir novamente` recomeça a abertura: camada em primeiro plano, página escurecida ao fundo, contagem reiniciada; ao final, a página é revelada novamente.
+- Etiqueta `Simulação · sem vídeo` visível na camada durante a contagem.
+- O componente está pronto para receber um ativo de vídeo local depois: a camada e os estados já separam reprodução de revelação.
+
+### Verificação local da v0.2 (resultados reais de ferramentas)
+
+Build: `npm run build` (Next.js 15.5.4) — `✓ Compiled successfully`, `✓ Generating static pages (4/4)`, `✓ Exporting (2/2)`; rota `/` marcada `○ (Static) prerendered as static content`. Verificado em servidor estático sobre `out/` (`http.server`), HTTP 200.
+
+Resultados verificados no navegador (build de produção exportada):
+
+- Estado de abertura: camada presente, `is-scroll-locked` ativo, foco inicial no botão `ir para a pagina`, contador `00:10`, página ao fundo escurecida e translúcida (fundo e blur confirmados via `getComputedStyle`).
+- Fim automático aos 10 s: camada removida, rolagem liberada, espaço reservado em pausa (`Simulação pausada`, `00:10`) antes do título do hero, com `assistir novamente` presente e focado.
+- `assistir novamente`: camada volta em primeiro plano, contagem reinicia em `00:10` com barra avançando, rolagem bloqueada novamente; revelação após o fim.
+- Pular por mouse (clique) e por teclado (Enter no botão focado): ambos liberam a página, deixam o espaço reservado pausado com `assistir novamente` e movem o foco para o botão de replay.
+- `ArrowDown` durante a abertura é cancelado e a posição não muda; após a liberação a rolagem funciona (posição muda com `scrollTo`).
+- Espaço reservado antes do título: confirmado na ordem do DOM (`hero-screen` antes de `hero-copy`) e na geometria (`top` do espaço menor que o `top` do `h1`).
+- Sem overflow horizontal em desktop (1366 px: `scrollWidth` 1351 ≤ `innerWidth` 1366) e celular (390 px: 390 ≤ 390).
+- `prefers-reduced-motion: reduce` (emulado via CDP): contador avança em degraus de 1 s (`00:09`/`scaleX(0.1)` → `00:07`/`scaleX(0.3)`), sem animação contínua; após a liberação, todo o conteúdo fica acessível e as 14 seções `data-reveal` ficam visíveis ao percorrer a página.
+- Abrir com âncora na URL (`/#visao`): página liberada de imediato, sem camada e sem bloqueio, espaço reservado pausado com `assistir novamente`.
+- Barra de progresso de leitura ativa após a liberação (`scaleX` ≈ 0,96 perto do fim da página).
+
+Correções feitas durante a verificação:
+
+- Foco do botão `ir para a pagina` no replay e do `assistir novamente` após a revelação passou a esperar a montagem do React (os disparos imediatos ocorriam antes de o ref existir).
+- `components/PageEffects.tsx`: o retorno antecipado do observador de revelação impedia a barra de progresso de ser registrada; os dois efeitos agora são independentes.
+
+Observações:
+
+- A camada de abertura usa `position: fixed`; o deslocamento de tela que a versão anterior fazia (`keepScreenInView`) deixou de ser necessário e foi removido.
+- Estado da simulação não é mais gravado em `data-intro-sim` na raiz (a ambiguidade apontada na v0.1 foi eliminada; o atributo agora marca apenas o componente no hero).
+
+## Atualização para Next.js 16.4.0 (registro)
+
+Atualização da dependência `next` de 15.5.4 para a versão exata 16.4.0, solicitada pelo usuário. React e React DOM permanecem em 19.1.0 (aceitos pelo peer range `^19.0.0` do Next 16.4.0); nenhuma outra dependência foi atualizada. `output: 'export'`, App Router, TypeScript, conteúdo, layout e interações permanecem inalterados — nenhum recurso novo foi adicionado.
+
+Arquivos alterados (sem commit):
+
+- `package.json` — `"next": "15.5.4"` → `"next": "16.4.0"`.
+- `package-lock.json` — regenerado de forma coerente (`next@16.4.0`, `react@19.1.0`, `lockfileVersion` 3).
+- `tsconfig.json` — reescrito automaticamente pelo `next build` do Next 16: `jsx` mudou para `react-jsx` (React automatic runtime, mudança obrigatória do Next 16) e o `include` passou a incluir `.next/dev/types/**/*.ts`. Nenhuma outra alteração de configuração foi necessária.
+
+Resultados reais de ferramentas:
+
+- Ambiente: Node v26.7.0 (requisito do registro para `next@16.4.0`: `>=20.9.0`), npm 11.19.0.
+- `npm install` concluiu sem erro; `npm ls` mostrou `next@16.4.0` com `react`/`react-dom@19.1.0` deduped.
+- `npm ci` concluiu sem erro (exit 0), reinstalando a árvore a partir do lockfile.
+- `npm run build` (Next.js 16.4.0, Turbopack) — `✓ Compiled successfully in 23.5s`, TypeScript concluído, `✓ Generating static pages using 3 workers (3/3)`; rotas `/` e `/_not-found` marcadas `○ (Static) prerendered as static content`.
+- `out/index.html` presente em `out/`; servidor estático (`python -m http.server 8799 --bind 127.0.0.1 --directory out`) respondeu HTTP 200 em `http://127.0.0.1:8799/`.
+
+Verificação no navegador (build de produção exportada, aba visível):
+
+- Estado de abertura: camada presente, `is-scroll-locked` ativo, foco inicial em `ir para a pagina`, contagem `00:10`.
+- Contagem decresce em tempo real (`00:10` → `00:01`) com a barra de progresso avançando continuamente (`scaleX` 0,02 → 0,97); liberação automática aos ~10 s (contador em `00:00` com desbloqueio; camada removida ~1 s depois, após o fade).
+- Pular por clique (mouse) e por teclado (Enter real via CDP no botão focado): ambos liberam a página, deixam o espaço reservado pausado com `assistir novamente` e movem o foco para o botão de replay.
+- `assistir novamente`: camada volta em primeiro plano com a etiqueta `Simulação · sem vídeo`, contagem reinicia (`00:10` → `00:09` → `00:08`), rolagem bloqueada; acionado também por Enter com o botão em foco.
+- `ArrowDown` durante a abertura é cancelado (`defaultPrevented: true`) e a posição permanece 0.
+- Espaço reservado antes do título: confirmado na ordem do DOM e na geometria (`hero-screen` em y=170 antes de `h1` em y=655).
+- Depois da liberação: rolagem funciona (posição 7002 no fim da página via `scrollTo instant`), barra de progresso de leitura em `scaleX(1)` no fim da página.
+- Viewport móvel (390 px emulado via CDP): `scrollWidth` 390 ≤ `innerWidth` 390, sem overflow horizontal durante a abertura e depois da liberação.
+- `prefers-reduced-motion: reduce` (emulado via CDP): contagem avança em degraus de 1 s (`00:10`/`scaleX(0)` → `00:08`/`0.2` → `00:07`/`0.3` → `00:06`/`0.4` → `00:04`/`0.6`), `scroll-behavior` computado `auto` e as 14 seções `data-reveal` ficam visíveis ao chegar ao fim da página.
+- Abrir com âncora na URL (`/#visao`): página liberada de imediato, sem camada e sem bloqueio, espaço reservado pausado com `assistir novamente`; a navegação para a seção ocorre normalmente.
+
+Observação de método (não é defeito do código):
+
+- Nas primeiras tentativas a contagem aparecia travada em `00:10` e a barra em `scaleX(0)`. A causa era o ambiente de teste, não a migração: a aba do navegador estava oculta (`document.hidden: true`), e o Chrome suspende `requestAnimationFrame` em abas ocultas (um rAF puro de sonda também não disparava). Com `Page.bringToFront` via CDP a aba fica visível e a contagem/barra funcionam como descrito acima. O fim automático aos 10 s, baseado em `setTimeout`, funcionava mesmo com a aba oculta.
+
+## Proposta visual — imagem para a seção de presença
+
+- Capivarte recomendou uma única imagem editorial fotorrealista de diálogo familiar para substituir a silhueta isolada. O usuário gostou da imagem e aprovou-a; ela foi incorporada à seção de presença no preview.
+- Após autorização do usuário para gerar imagem estática via OpenRouter, Capivarte criou `assets/design-review/presenca-dialogo-familiar-01.png`.
+- Verificação local: PNG válido, 1536 × 1024 px, 2.561.292 bytes. A imagem mostra personagens fictícios (adulto e adolescente) em ambiente doméstico, com o adolescente segurando um celular e a adulta ouvindo. Inspeção visual confirmou ausência de texto, logotipo ou interface legível.
+- A imagem original permanece em `assets/design-review/`; uma cópia byte-idêntica foi colocada em `public/presenca-dialogo-familiar-01.png` para uso no Next.js. Não foi gerado vídeo.
+
+## Direção visual — atualização aprovada pelo usuário
+
+- A página não deve transmitir um clima sombrio ou de cybersegurança; a sensação desejada é família e proteção.
+- A paleta deve ser mais aconchegante. O preview usa off-white/creme e areia, com acentos discretos verde-sálvia/teal. Os tons exatos continuam hipótese visual, sujeita a revisão do usuário.
+- Manter cores GREEN/YELLOW/RED apenas para os níveis de classificação.
+- A imagem aprovada está aplicada à seção de presença para comunicar diálogo familiar.
+
+## Revisão visual acolhedora — preview local
+
+- Arquivos visuais da aplicação: `app/warm-theme.css` (novo), `app/page.tsx`, `app/layout.tsx`, `app/intro.css`; o original `app/globals.css` foi preservado.
+- Removidos do hero os anéis que pareciam radar/alvo; ocultados a linha de varredura e os pontos pulsantes; reduzidos efeitos neon. Cores GREEN/YELLOW/RED seguem reservadas às classificações.
+- Build executado localmente: `npm run build` com Next.js 16.4.0 compilou com sucesso e pré-renderizou `/` e `/_not-found` como páginas estáticas.
+- Prévia servida de `out/` em `http://127.0.0.1:8811/`, HTTP 200.
+- No navegador: desktop 1280×900 e mobile 390×844 sem overflow horizontal; imagem carregou em ambos (1536×1024) com texto alternativo descritivo.
+- Comportamento mantido e verificado: não há `<video>`; simulação abre em `00:10` e bloqueia rolagem; pular libera; sem interação libera após 10 s; simulação fica pausada e permite replay.
+- Antes da iteração tipográfica, em desktop 1280×900 o título terminava em y=910 e o CTA em y=1060. A revisão subsequente compactou o hero: o título passou a y=508–716 e o CTA termina em y=875, dentro da primeira dobra.
+- Nenhum commit, push, merge ou deploy; testes na stack da VPS continuam pendentes.
+
+## Iteração tipográfica e de componentes — preview
+
+- Tipografia proposta para avaliação: Fraunces nos títulos narrativos e DM Sans na interface/corpo, via `next/font/google` do Next. O build gerou 8 arquivos WOFF2 locais (236.048 bytes); verificado que o HTML não aponta para `fonts.googleapis.com` nem `fonts.gstatic.com`.
+- Hierarquia: corpo 17–18px, textos da demonstração 16px e avisos ≥14px; headings com quebra balanceada e tracking menos comprimido.
+- Componentes: cartões mais claros e arredondados; badges GREEN/YELLOW/RED com texto e fundo tonal; métricas decorativas reduzidas; setas de recursos estáticos e menu de conversa removidos; CTAs sem ação preservados como `disabled`, sem setas de link.
+- Build reexecutado localmente pelo Sócio: `npm run build` com Next.js 16.4.0 concluiu com sucesso e rotas estáticas.
+- Prévia atual: `http://127.0.0.1:8811/` (HTTP 200).
+- Navegador desktop 1280×900: fontes carregadas, player pausado 880×320, título y=508–716 e CTA termina em y=875; sem overflow horizontal.
+- Navegador mobile 390×844: sem overflow horizontal; CTA cabe na primeira dobra; cards de classificação em coluna e avisos legíveis.
+- CTAs conferidos no DOM: 3 desabilitados, nenhum contém `↗`; `aria-describedby` hero/fechamento preservado. Não há elemento `<video>`.
+- Simulação de 10 s e abertura/skip/replay mantidos; o build estático e a prévia seguem sem commit.
+
+### Ajuste final de composição — notas do painel
+
+- `app/globals.css`: notas “Contexto antes” e “Menos ruído” reposicionadas para não cobrir o painel nem o chip “Exemplo ilustrativo”; textos e DOM preservados.
+- Build reexecutado localmente com Next.js 16.4.0: sucesso.
+- Navegador em desktop 1280×900 e mobile 390×844: sem colisões entre notas, painel e chip; sem overflow horizontal.
+- A prévia local continua em `http://127.0.0.1:8811/`; nenhum commit/push/merge feito.
+
+### Integração da foto com fade nas bordas
+
+- `app/warm-theme.css`: máscara CSS em dois eixos (`mask-image` e `-webkit-mask-image`) na imagem da seção de presença, com transparência suave nos quatro lados em direção ao fundo quente. Não foi usada vinheta escura; o elemento e a imagem existentes foram preservados.
+- `npm run build` (Next.js 16.4.0) compilou com sucesso após parar o servidor que mantinha `out/` bloqueado.
+- Preview `http://127.0.0.1:8811/` respondeu HTTP 200.
+- Navegador em 1280×900 e 390×844: a imagem carregou, o fade está ativo, sem overflow horizontal.
+- Nenhum arquivo de vídeo, commit, push, merge ou deploy.
+
+## Propostas de arte — “Um mundo em movimento”
+
+- **V1, supersedida:** `assets/design-review/mundo-em-movimento-infografico-01.png`, PNG 1448 × 1086 px, 2.025.026 bytes. A primeira tentativa enfatizou pessoas; o usuário esclareceu que esperava visualizar a movimentação do mundo no campo digital.
+- **V2, base preferida:** `assets/design-review/mundo-em-movimento-infografico-02.png`, PNG 1448 × 1086 px, 1.341.557 bytes. Quatro agrupamentos de atividades digitais com balões, waveform e objetos de mídia/hobby.
+- **V3, supersedida:** `assets/design-review/mundo-em-movimento-infografico-03.png`, PNG 1600 × 1200 px, 1.628.970 bytes. Foi gerada a partir de texto com o modelo `openai/gpt-image-2.5-sunburst`, não editada sobre V2; por isso alterou desenhos existentes.
+- **V4, edição image-to-image da V2:** `assets/design-review/mundo-em-movimento-infografico-04.png`, PNG 1448 × 1086 px, 1.379.864 bytes. Usou `openai/gpt-image-2.5-sunburst` via OpenRouter e preservou os clusters, adicionando conexões, textos e carinhas; o logo central ficou pequeno e permaneceu uma marca duplicada no canto.
+- **V5, aprovada pelo usuário:** `assets/design-review/mundo-em-movimento-infografico-05.png`, PNG 1448 × 1086 px, 1.384.998 bytes. Edição determinística da V4: o símbolo oficial SVG foi ampliado para 220 px no centro, com wordmark `ChatGuard` abaixo; a marca duplicada inferior direita foi removida. Inspecionada visualmente pelo Sócio.
+- Na V5, quatro clusters, balões, seis mensagens em português, oito avatares e curvas de ligação foram preservados. A arte mantém creme/areia, sage/teal e acentos terrosos; não contém pessoas como foco, vigilância ou marcas de apps.
+- V1–V5 permanecem em `assets/design-review/`; a V5 aprovada está integrada à seção `vida-digital`, com cópia byte-idêntica em `public/`. Proporção 4:3 preservada, sem crop. Nenhum commit feito.
+- Custos informados pelo Capivarte: V3 US$ 0,022435; V4 US$ 0,059601. V5 foi composição determinística, sem nova geração de imagem. Nenhum vídeo foi gerado.
+
+## Integração da V5 na seção “Um mundo em movimento”
+
+- `app/page.tsx`: ilustração orbital antiga substituída pela arte V5; os textos aprovados, rodapé e `data-reveal` permanecem.
+- `public/mundo-em-movimento-infografico-05.png` é cópia byte-idêntica do original `assets/design-review/mundo-em-movimento-infografico-05.png` (1.384.998 bytes).
+- A imagem usa proporção 4:3, `object-fit: contain` e não é cortada.
+- Build Next.js 16.4.0 verificado com sucesso; preview `http://127.0.0.1:8811/` e asset responderam HTTP 200.
+- DOM no browser: arte carregada em 1448×1086, renderizada 561×421 no desktop 1280×900 e 344×258 no mobile 390×844; sem overflow horizontal nem vestígios da antiga cena orbital.
+- Nenhum vídeo, commit, push, merge ou deploy. Stack de teste da VPS ainda não usada.
+
+## Correção da prévia no Safari — 2026-10-14
+
+- Ao abrir a prévia pelo host `127.0.0.1`, o servidor de desenvolvimento Next.js bloqueava solicitações cross-origin para recursos e endpoints de desenvolvimento, incluindo o HMR.
+- `next.config.mjs`: adicionado `allowedDevOrigins: ['127.0.0.1']` para permitir o host local usado pela prévia. O servidor reiniciou com a configuração atualizada.
+- Verificação local: `http://localhost:3000/` respondeu HTTP 200; a resposta inicial continha a contagem de 10 segundos e o botão para pular a abertura.
+- O usuário confirmou que, após atualizar a página no Safari, a simulação de abertura funcionou. Continua sendo uma simulação visual, sem arquivo de vídeo real.
+
+## Ajuste das cores do wordmark — 2026-10-14
+
+- `app/warm-theme.css`: token `--brand: #276c63` separado de `--accent`; regra reutilizável `.brand-wordmark` criada.
+- `app/page.tsx`: o token de marca foi aplicado às cinco ocorrências visíveis do nome (header, footer, título conceitual, mockup e menção inline), sem alterar a copy ou outros elementos.
+- Build Next.js 16.4.0 reexecutado localmente pelo Sócio: sucesso; rotas estáticas geradas.
+- Browser em 1280×900 e 390×844: 5/5 wordmarks em `rgb(39, 108, 99)`; sem overflow. Contraste calculado entre 5,23:1 e 6,06:1, acima do mínimo WCAG AA para texto normal.
+- `--accent`, cores de navegação, botão primário e níveis GREEN/YELLOW/RED permaneceram inalterados.
+- A prévia temporária foi encerrada após os testes. Nenhum commit, push, merge ou deploy.
+
+## Infográfico vetorial e loop motion — integração — 2026-10-15
+
+- O usuário aceitou a aproximação vetorial da V5 e autorizou a animação em loop, com elementos revelados em sequência e logo ChatGuard por último. A V5 PNG original continua preservada como referência/backup.
+- Capivarte entregou um mestre SVG puro (`assets/design-review/mundo-em-movimento-vetor-master-01.svg`, 4:3, viewBox 1448×1086) com 138 grupos e 151 IDs únicos. `public/mundo-em-movimento-vetor-master-01.svg` é a fonte usada pelo app e pelo gerador; XML válido, sem raster embutido. A pasta `assets/design-review/` permanece ignorada pelo `.gitignore`.
+- `components/MundoEmMovimento.tsx` contém o SVG inline, com 138 grupos e IDs animáveis; descrição acessível curta, sem metadata de revisão no DOM. `scripts/generate-mundo-em-movimento.mjs` lê o mestre público e regenera componente/CSS sem alterar os hashes dos dois arquivos de saída.
+- `app/page.tsx` substituiu apenas o `<img>` da seção `vida-digital` pelo componente SVG; textos, footnote e animações de revelação da seção foram mantidos. Nenhuma PNG/JPG é carregada pela seção do infográfico; a foto PNG da seção de presença permanece inalterada.
+- `app/mundo-em-movimento.css`: loop CSS de 12,8 s, grupos revelados em sequência, quatro conectores desenhados, logo/wordmark em `#276C63` por último, pausa narrativa e reinício; movimento reduzido mostra a composição estática completa, e o loop pausa fora da viewport. Sem vídeo ou créditos de geração de imagem.
+- Browser QA na saída estática: ciclo observado até logo final e reinício; offscreen pausa; `prefers-reduced-motion` resultou em zero animações e todos os grupos visíveis. Em desktop (1280×900) e mobile (390×844), proporção 4:3 sem overflow; `#vida-digital` sem elementos `<img>` nem solicitação da PNG V5; wordmark `rgb(39,108,99)`.
+- Build do código numa cópia local temporária: `npm ci` concluiu; `npm run build` (Next.js 16.4.0/Turbopack) compilou em 8,4 s, TypeScript em 8,2 s e gerou 3/3 páginas estáticas. No caminho original UNC (`W:`), o Turbopack falhou ao enumerar `node_modules` com “Assinatura inválida”; PowerShell e Node leem os arquivos, mas o build padrão em UNC continua com essa limitação ambiental. Tentativa alternativa `--webpack` no UNC excedeu o limite de tempo.
+- A cópia local de QA e o servidor da porta 4173 foram removidos/encerrados após os testes. Sem commit, push, merge ou deploy.
+- Limitação visual aceita: o SVG é uma reconstrução vetorial próxima, mas não pixel-idêntica à V5; textura, sombras, microcontornos e fonte diferem (Segoe UI/Arial local no SVG).
+## Pendências
+
+- Revisar com o usuário o ritmo, a legibilidade dos balões e a sensação do loop na prévia local; ajustar se necessário.
+- Revisar com o usuário as fontes Fraunces/DM Sans e os tokens provisórios no preview.
+- Definir o procedimento/acesso à stack de teste da VPS antes de utilizá-la.
+- Fazer commit somente mediante pedido explícito do usuário, após a revisão local (ainda sem commit).

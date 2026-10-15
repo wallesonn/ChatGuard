@@ -101,7 +101,7 @@ O CTA deve aparecer em pontos estratégicos da página, especialmente no hero e 
 - Apresentação conceitual do ChatGuard;
 - Demonstrações visuais e simulações da futura experiência do produto;
 - Elementos visuais de classificação `GREEN`, `YELLOW` e `RED`;
-- CTA para cadastro ou lista de espera, conforme a implementação disponível;
+- CTAs e botões apresentados visualmente, sem ações funcionais nesta versão;
 - Footer institucional.
 
 ### Fora do escopo
@@ -121,6 +121,19 @@ A primeira versão não deverá implementar:
 - Análise real por inteligência artificial.
 
 Qualquer dashboard, conversa, alerta, contato, classificação ou análise exibida deverá ser tratada como demonstração visual ou simulação, sem sugerir que existe processamento real por trás da interface.
+
+### Decisão tecnológica aprovada
+
+- **Framework:** Next.js, com React, App Router e TypeScript.
+- **Diretriz de renderização:** abordagem estática primeiro, pré-renderizando a landing page sempre que possível. Não adicionar backend, API ou renderização dinâmica no servidor sem uma necessidade aprovada; o modo exato de build/saída e a hospedagem serão definidos quando a infraestrutura de publicação estiver confirmada.
+- **Experiência do vídeo:** concentrar o estado interativo da abertura/reprodução em um componente de cliente; manter o conteúdo textual e visual da página estático por padrão.
+- **Racional:** Next.js oferece uma base integrada de React, roteamento e build, tem ecossistema consolidado e permite servir páginas pré-renderizadas. O custo é uma estrutura e complexidade maiores que HTML/CSS/JavaScript simples ou uma solução estática mais leve; a escolha prioriza a evolução e o ecossistema solicitado.
+
+**Fontes consultadas em 2026-10-12:**
+
+- [Documentação oficial do Next.js](https://nextjs.org/docs) — descreve Next.js como framework React e documenta o App Router.
+- [Exportação estática no Next.js](https://nextjs.org/docs/app/guides/static-exports) — descreve a geração de arquivos estáticos para hospedagem em servidor web estático.
+- [State of React 2025 — Libraries](https://2025.stateofreact.com/he-HE/libraries) — lista Next.js com 80% de uso entre os respondentes daquela pesquisa específica; esse resultado não deve ser generalizado para todo o mercado.
 
 ## 4. Conceito da experiência
 
@@ -202,33 +215,34 @@ Preferir:
 
 ### Direção artística
 
-O visual deve ser premium, tecnológico e cinematográfico, com referências conceituais em:
+**Decisão aprovada:** a direção visual deve transmitir família, proteção, confiança, presença e diálogo. Não deve parecer sombria nem remeter a cybersegurança, vigilância ou investigação.
 
-- Serviços de streaming premium;
-- Filmes de suspense leve;
-- Interfaces futuristas;
-- Cybersecurity;
-- Apresentações de produtos no estilo Apple;
-- Produtos SaaS premium;
-- Documentários tecnológicos.
+O visual continua premium e cinematográfico, mas a cinematografia deve vir da composição, da luz e da narrativa humana — não de suspense, escuridão ou efeitos de monitoramento.
+
+Referências conceituais:
+
+- Fotografia editorial/documental de relações familiares acolhedoras e respeitosas;
+- Luz natural e ambientes cotidianos;
+- Apresentação premium de produto com tecnologia discreta;
+- Gráficos simples e organizados para explicar contexto, sem metáforas de radar ou central de vigilância.
 
 ### Paleta de cores
 
-A paleta predominante deve utilizar:
+**Direção aprovada:** usar cores mais aconchegantes e uma base visual clara/humana. Evitar preto, grafite e azul muito escuro como cores dominantes, assim como ciano neon e brilhos frios.
 
-- Preto;
-- Grafite;
-- Azul muito escuro;
-- Branco;
-- Tons azulados e ciano.
+**Hipótese de paleta para a próxima iteração (a validar visualmente):** off-white/creme e areia como base; tons quentes suaves e detalhes de madeira; verde-sálvia, teal suave ou azul dessaturado apenas como acentos tecnológicos. Manter contraste acessível em textos e controles. Esta hipótese não fixa tokens ou códigos hexadecimais.
 
-As cores associadas às classificações `GREEN`, `YELLOW` e `RED` devem ser reservadas para elementos relacionados à classificação das conversas e dos contatos.
+As cores associadas às classificações `GREEN`, `YELLOW` e `RED` continuam reservadas para elementos relacionados à classificação das conversas e dos contatos.
 
 ### Atributos da marca
 
 A identidade visual deve transmitir:
 
-**Proteção + Tecnologia + Inteligência + Confiança**
+**Família + Proteção + Presença + Diálogo + Confiança**, com tecnologia e inteligência apresentadas de forma discreta.
+
+### Wordmark e cor da marca
+
+**Decisão aprovada:** todas as ocorrências visuais do wordmark `ChatGuard` devem corresponder à cor da logo aprovada. O teal de marca identificado na V5 é `#276C63`; mantê-lo num token próprio (`--brand`), separado do acento genérico da interface (`--accent`), mesmo enquanto os valores forem iguais. Aplicar ao header, footer, títulos de marca, mockups conceituais e menções inline estilizadas como marca. Não recolorir o restante do tema nem os níveis GREEN/YELLOW/RED.
 
 ## 8. Estrutura da página
 
@@ -246,12 +260,28 @@ A primeira dobra deve introduzir o tema com uma pergunta forte:
 
 O hero deve conter uma área de vídeo ou conteúdo audiovisual cinematográfico e uma chamada para a lista de espera.
 
-#### Comportamento de reprodução e navegação
+**Comportamento na v0.1 (simulação):** não haverá arquivo de vídeo. O espaço reservado simulará a reprodução com um contador de 10 segundos e um indicador de progresso. Ao abrir a página, a simulação inicia automaticamente e a rolagem fica bloqueada. A navegação é liberada quando o contador chega a zero ou quando o visitante clica em **“ir para a pagina”**. Depois da liberação, a área permanece no topo do documento com a simulação pausada, e o visitante pode rolar a página.
 
-- Ao abrir a página, o vídeo deve iniciar automaticamente.
-- A rolagem para o restante da página fica bloqueada até o vídeo terminar ou o visitante clicar no botão **“ir para a pagina”**.
-- Quando o vídeo terminar ou o visitante clicar no botão, a navegação pela página é liberada.
-- Após a liberação, o vídeo permanece no hero, no topo do documento, em pausa.
+Requisitos da simulação:
+
+- O botão **“ir para a pagina”** deve ficar visível junto à área durante a contagem, para permitir pular a espera;
+- O contador deve ser apenas visual, sem alegar que existe processamento ou análise real;
+- A rolagem bloqueada não deve prender o foco do teclado nem impedir o acesso ao conteúdo por leitores de tela;
+- O botão deve ser acionável por teclado.
+
+#### Comportamento aprovado para a versão com vídeo real
+
+**Estado atual:** ainda não existe arquivo de vídeo; há somente o espaço reservado. Até a mídia ser fornecida, o comportamento de abertura deve ser desenvolvido e testado com uma simulação claramente identificada, sem alegar reprodução real.
+
+- Ao abrir a página, o vídeo inicia automaticamente em primeiro plano, como uma camada de abertura.
+- A landing page fica visível atrás do vídeo, escurecida e translúcida; durante a abertura, o vídeo é o foco visual.
+- O visitante pode usar o botão **“ir para a pagina”** para encerrar a abertura antecipadamente.
+- Quando o vídeo terminar naturalmente — ou quando o visitante escolher ir para a página — a camada de abertura sai de primeiro plano e a landing page passa para primeiro plano.
+- Na página liberada, o vídeo permanece no topo, imediatamente antes do título do hero, em pausa.
+- Deve haver um botão **“assistir novamente”** junto ao vídeo pausado. Ao acioná-lo, o vídeo recomeça em primeiro plano e a página volta a ficar escurecida ao fundo; ao terminar, a página é revelada novamente.
+- A transição entre a camada de abertura e a página deve ser suave e não pode deixar o conteúdo inacessível por teclado ou leitor de tela.
+
+Este comportamento descreve a versão com vídeo real; a simulação v0.1 continua sem arquivo de vídeo e está documentada separadamente acima.
 
 ### 8.3 O mundo digital
 
@@ -338,6 +368,14 @@ A experiência deve priorizar:
 - Ritmo visual progressivo entre as seções;
 - Destaque controlado para o CTA;
 - Boa experiência em dispositivos móveis e desktop.
+
+### Motion graphics da seção “Um mundo em movimento”
+
+**Decisão aprovada:** substituir a imagem raster exibida na seção por uma composição vetorial SVG em camadas, após revisão do asset, e animar seus elementos em um loop suave. A sequência deve revelar os elementos um a um, conectar os grupos digitais e apresentar o logo/wordmark ChatGuard por último, nas cores originais da marca (`#276C63`). Depois de uma breve pausa, o ciclo reinicia sem corte brusco.
+
+Requisitos: manter proporção 4:3 e composição da V5 aprovada; preservar textos legíveis; não usar PNG/JPG embutido na arte final nem vídeo; pausar a animação fora da viewport; com `prefers-reduced-motion: reduce`, mostrar a composição completa em estado estático. Evitar radar, flash, pulsos de alerta ou movimento frenético.
+
+**Primeira implementação para revisão:** loop de 12,8 s, com revelação sequencial dos grupos, conexões desenhadas, logo por último, pausa e reinício suave. O ritmo é um primeiro ajuste técnico e pode ser calibrado após o usuário revisar a prévia.
 
 As animações devem apoiar o storytelling e não prejudicar legibilidade, desempenho ou acessibilidade.
 

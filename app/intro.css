@@ -1,0 +1,116 @@
+/*
+ * Camada de abertura (docs/landing-page.md, 8.2 — comportamento aprovado).
+ * O espaço reservado fica em primeiro plano numa camada fixa; a landing page
+ * continua visível atrás, escurecida e translúcida. Nenhum vídeo real existe:
+ * tudo aqui é simulação claramente identificada.
+ */
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px var(--gutter);
+  background: rgba(46, 38, 28, 0.66);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  animation: intro-fade-in 0.45s ease both;
+}
+
+.intro-overlay.is-leaving {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.intro-foreground {
+  max-width: 1060px;
+  box-shadow: 0 45px 140px rgba(46, 38, 28, 0.45);
+}
+
+.intro-tag {
+  position: absolute;
+  z-index: 4;
+  top: 18px;
+  left: 30px;
+  margin: 0;
+  color: #7a6d59;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sim-replay {
+  position: absolute;
+  z-index: 4;
+  top: 18px;
+  right: 20px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(47, 125, 114, 0.55);
+  border-radius: 2px;
+  background: rgba(253, 250, 243, 0.9);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.sim-replay:hover {
+  border-color: var(--accent);
+  background: rgba(47, 125, 114, 0.12);
+  color: var(--ink);
+}
+
+.sim-replay:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  background: rgba(47, 125, 114, 0.18);
+}
+
+/* Espaço reservado agora vem antes do título do hero. */
+.hero .hero-screen {
+  margin-bottom: 52px;
+}
+
+@media (max-width: 650px) {
+  .hero .hero-screen {
+    margin-bottom: 35px;
+  }
+
+  .intro-tag {
+    top: 46px;
+    left: 16px;
+  }
+
+  .sim-replay {
+    top: 46px;
+    right: 12px;
+    padding: 0 14px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay {
+    animation: none;
+  }
+
+  .intro-overlay.is-leaving {
+    transition: none;
+  }
+}
+
+@keyframes intro-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

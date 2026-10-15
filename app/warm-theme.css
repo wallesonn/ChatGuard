@@ -1,0 +1,1142 @@
+/*
+ * Camada de direção visual quente (revisão de acolhimento/família).
+ * Sobrescreve app/globals.css sem alterá-lo: a paleta abaixo é HIPÓTESE
+ * visual a validar (docs/landing-page.md, seção 7) — base clara
+ * off-white/creme/areia, acentos verde-sálvia/teal discretos.
+ * GREEN/YELLOW/RED continuam reservados à classificação de conversas.
+ * Para reverter a direção anterior, basta remover a importação em app/layout.tsx.
+ */
+
+:root {
+  color-scheme: light;
+  --ink: #33291c;
+  --muted: #5c5344; /* 7.0:1 sobre #FAF6EE (contraste mínimo 4.5:1) */
+  --subtle: #6a6152; /* ≥4.9:1 sobre todas as bases da paleta */
+  --bg: #faf6ee;
+  --panel: #fffdf8;
+  --card: #fffdf8;
+  --sand: #efe6d3;
+  --accent: #276c63; /* verde-sálvia/teal suave: único acento tecnológico */
+  --brand-chat: #006bc1;
+  --brand-guard: #006d99;
+  --accent-soft: #e7efeb;
+  --border: #d9d0c2;
+  --line: rgba(101, 84, 60, 0.16);
+  /* Escala de espaçamento e raios (parecer Capivarte) */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --radius-card: 20px;
+  --radius-inner: 12px;
+  /* Ajustes de classificação para contraste sobre fundo claro */
+  --green: #3e8e5a;
+  --yellow: #c99312;
+  --red: #c05248;
+}
+
+/* ---------- Base ---------- */
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body:before {
+  background:
+    radial-gradient(ellipse at 52% 0%, rgba(196, 166, 120, 0.12), transparent 46%),
+    var(--bg);
+}
+
+::selection {
+  color: #fdfaf3;
+  background: var(--accent);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.reading-progress span {
+  background: linear-gradient(90deg, #4f8578, var(--accent));
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  border-bottom: 1px solid rgba(101, 84, 60, 0.12);
+  background: rgba(250, 246, 238, 0.82);
+}
+
+/* ---------- Wordmark da marca ---------- */
+.brand-wordmark,
+.brand-wordmark .brand-chat,
+.brand .brand-wordmark .brand-chat {
+  color: var(--brand-chat);
+}
+
+.brand-wordmark .brand-guard,
+.brand .brand-wordmark .brand-guard {
+  color: var(--brand-guard);
+}
+
+.brand-mark {
+  stroke: var(--accent);
+}
+
+.brand-mark circle {
+  fill: var(--accent);
+  stroke: none;
+}
+
+.primary-nav a,
+.header-cta {
+  color: #4b4234;
+}
+
+.primary-nav a:hover,
+.header-cta:hover:not(:disabled),
+.back-top:hover {
+  color: var(--accent);
+}
+
+.header-cta {
+  border: 1px solid rgba(101, 84, 60, 0.28);
+}
+
+.header-cta span {
+  color: var(--accent);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(ellipse at 50% 72%, rgba(196, 166, 120, 0.18), transparent 45%),
+    linear-gradient(180deg, #f7f0e2 0%, var(--bg) 92%);
+}
+
+.hero-glow {
+  background: radial-gradient(ellipse, rgba(196, 166, 120, 0.2), transparent 68%);
+}
+
+/* Anéis concêntricos removidos do DOM em page.tsx (metáfora de radar/alvo). */
+
+.eyebrow {
+  color: #7a6d59;
+}
+
+.eyebrow-dot,
+.demo-badge i {
+  background: var(--accent);
+  box-shadow: none;
+}
+
+h1 em,
+h2 em {
+  color: var(--accent);
+}
+
+.hero-intro {
+  color: var(--muted);
+}
+
+.button-primary {
+  color: #fdfaf3;
+  background: linear-gradient(110deg, #4f8578, #3c6e62);
+  box-shadow: 0 10px 30px rgba(47, 125, 114, 0.22);
+}
+
+.button-note {
+  color: #877b68;
+}
+
+/* Espaço reservado do vídeo: painel de papel quente, sem brilho cibernético */
+.hero-screen {
+  border: 1px solid rgba(101, 84, 60, 0.18);
+  background:
+    radial-gradient(ellipse at 50% 44%, rgba(255, 252, 244, 0.75), transparent 38%),
+    linear-gradient(160deg, #f8f2e4, var(--sand) 65%);
+  box-shadow: 0 24px 70px rgba(101, 84, 60, 0.18);
+}
+
+.hero-screen:before {
+  border: 1px solid rgba(101, 84, 60, 0.08);
+}
+
+.hero-screen:after {
+  display: none; /* linha de varredura: recurso de monitoramento */
+}
+
+.screen-vignette {
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(101, 84, 60, 0.14) 100%);
+}
+
+.screen-signal {
+  display: none; /* pontos pulsantes remetem a sinal/radar */
+}
+
+.screen-placeholder {
+  color: var(--muted);
+}
+
+.placeholder-icon {
+  border: 1px solid rgba(47, 125, 114, 0.5);
+  color: var(--accent);
+}
+
+.screen-caption,
+.caption-line,
+.scroll-line {
+  color: var(--muted);
+}
+
+.caption-line,
+.scroll-line {
+  background: var(--accent);
+}
+
+.screen-index,
+.scroll-cue {
+  color: #7a6d59;
+}
+
+.scroll-cue > span:last-child {
+  color: var(--accent);
+}
+
+/* ---------- Seção 01: o mundo digital ---------- */
+.digital {
+  background: linear-gradient(180deg, var(--bg) 0%, #f3ecdd 100%);
+}
+
+/* Ilustração V5 aprovada (4:3, 1448×1086): sem crop, sem máscara — a arte
+   já contém logo, conexões, grupos e rótulos. */
+.digital-art {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  display: block;
+}
+
+.section-footnote {
+  color: #7a6d59;
+}
+
+/* ---------- Seção 02: statement ---------- */
+.statement-section {
+  background: linear-gradient(180deg, #f3ecdd, #efe6d3 55%, #f3ecdd);
+}
+
+.statement-wash {
+  background: radial-gradient(ellipse at 51% 50%, rgba(196, 166, 120, 0.18), transparent 51%);
+}
+
+.statement-inner h2 span {
+  color: #8a5a36;
+}
+
+.section-number {
+  color: rgba(90, 75, 55, 0.35);
+}
+
+/* ---------- Seção 03: presença (imagem aprovada) ---------- */
+.presence-section {
+  background: #f6efe1;
+}
+
+.presence-image {
+  background: var(--sand);
+}
+
+.presence-image:before,
+.window-light,
+.presence-silhouette,
+.presence-grain {
+  display: none; /* silhueta substituída pela imagem aprovada em page.tsx */
+}
+
+/* Integração da foto ao fundo quente: máscara CSS desvanece as quatro
+   bordas para o fundo da seção (#f6efe1), mantendo o centro (rostos)
+   nítido — sem vinheta escura e sem imagem adicional. */
+.presence-image {
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 16%, #000 84%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, #000 16%, #000 84%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.presence-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.principle {
+  color: #5f5747;
+}
+
+.principle strong {
+  color: var(--ink);
+}
+
+.principle-mark {
+  border: 1px solid rgba(47, 125, 114, 0.4);
+  color: var(--accent);
+}
+
+/* ---------- Seção 04: conceito ---------- */
+.concept-section {
+  background:
+    radial-gradient(ellipse at 50% 73%, rgba(196, 166, 120, 0.14), transparent 48%),
+    #f3ecdd;
+}
+
+.concept-halo {
+  background: rgba(143, 124, 90, 0.16);
+}
+
+.concept-card {
+  border: 1px solid rgba(101, 84, 60, 0.18);
+  background: linear-gradient(145deg, #fdfaf2, #f4eee1);
+  box-shadow: 0 30px 90px rgba(101, 84, 60, 0.2), inset 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.mock-shield {
+  border: 1px solid rgba(47, 125, 114, 0.55);
+  color: var(--accent);
+}
+
+.mock-status {
+  color: #877b68;
+}
+
+.mock-status i {
+  background: var(--accent);
+  box-shadow: none;
+}
+
+.mock-kicker,
+.mock-date,
+.summary-block > span,
+.summary-block small,
+.mock-message-copy strong span,
+.mock-message-copy small,
+.mock-disclaimer {
+  color: #877b68;
+}
+
+.summary-block {
+  border: 1px solid rgba(101, 84, 60, 0.12);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.summary-focus {
+  border-color: rgba(201, 147, 18, 0.35);
+}
+
+.summary-focus strong {
+  color: #a0761f; /* amarelo de classificação, legível em fundo claro */
+}
+
+.mock-message {
+  border-bottom: 1px solid rgba(101, 84, 60, 0.12);
+}
+
+.mock-avatar,
+.demo-avatar {
+  border: 1px solid rgba(47, 125, 114, 0.24);
+  background: rgba(47, 125, 114, 0.08);
+  color: var(--accent);
+}
+
+.avatar-alt {
+  border-color: rgba(176, 113, 79, 0.3);
+  background: rgba(176, 113, 79, 0.1);
+  color: #8a5a36;
+}
+
+.mock-message-copy p {
+  color: #3a3226;
+}
+
+.floating-note {
+  border: 1px solid rgba(101, 84, 60, 0.18);
+  background: #fdfaf2;
+  box-shadow: 0 12px 40px rgba(101, 84, 60, 0.16);
+}
+
+.note-icon,
+.quiet-wave {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.floating-note small {
+  color: #877b68;
+}
+
+/* ---------- Seção 05: sinais (classificação) ---------- */
+.signals-section {
+  background: var(--bg);
+}
+
+.signal-card {
+  border: 1px solid rgba(101, 84, 60, 0.14);
+  background: linear-gradient(145deg, #fdfaf2, #f6efe0);
+}
+
+.signal-card:hover {
+  border-color: rgba(101, 84, 60, 0.3);
+  background: #fdfaf2;
+}
+
+.signal-label {
+  color: #5f5747;
+}
+
+.green,
+.yellow,
+.red {
+  box-shadow: none; /* brilho remetia a neon; cor fica só no ponto */
+}
+
+.signal-card p {
+  color: var(--muted);
+}
+
+.signal-foot {
+  color: #877b68;
+}
+
+.signals-note {
+  color: var(--muted);
+}
+
+.signals-note span {
+  color: var(--accent);
+}
+
+/* ---------- Seção 06: pilares ---------- */
+.pillars-section {
+  background: linear-gradient(180deg, #f3ecdd, #f7f1e4 48%, #f3ecdd);
+}
+
+.pillar > span {
+  color: #877b68;
+}
+
+.pillar h3 {
+  color: var(--ink);
+}
+
+.pillar p {
+  color: var(--muted);
+}
+
+.pillar > b {
+  color: #9a8d78;
+}
+
+.pillars-disclaimer {
+  color: #877b68;
+}
+
+/* ---------- Seção 07: demonstração ---------- */
+.demo-section {
+  background:
+    radial-gradient(ellipse at 80% 50%, rgba(196, 166, 120, 0.12), transparent 48%),
+    var(--bg);
+}
+
+.demo-badge {
+  border: 1px solid rgba(101, 84, 60, 0.2);
+  color: #5f5747;
+}
+
+.chat-demo {
+  border: 1px solid rgba(101, 84, 60, 0.18);
+  background: linear-gradient(145deg, #fdfaf2, #f4eee1);
+  box-shadow: 0 30px 80px rgba(101, 84, 60, 0.18);
+}
+
+.chat-head strong span,
+.chat-head small,
+.chat-date,
+.chat-footer,
+.demo-menu {
+  color: #877b68;
+}
+
+/* Banner de sinal: YELLOW reservado à classificação, tom legível em fundo claro */
+.context-banner {
+  background: rgba(201, 147, 18, 0.08);
+  border: 1px solid rgba(201, 147, 18, 0.3);
+}
+
+.context-symbol {
+  border: 1px solid rgba(160, 118, 31, 0.5);
+  color: #a0761f;
+}
+
+.context-banner strong {
+  color: #7a5a14;
+}
+
+.context-banner small {
+  color: #877b68;
+}
+
+.context-tag {
+  color: #a0761f;
+}
+
+.chat-bubble {
+  border: 1px solid rgba(101, 84, 60, 0.14);
+  background: #f3ecdd;
+  color: #3a3226;
+}
+
+.chat-bubble time {
+  color: #877b68;
+}
+
+.bubble-out {
+  border-color: rgba(47, 125, 114, 0.24);
+  background: rgba(47, 125, 114, 0.1);
+}
+
+.chat-context-note {
+  color: #5f5747;
+}
+
+.chat-context-note span {
+  color: var(--accent);
+}
+
+/* ---------- Mensagem final e footer ---------- */
+.closing-section {
+  background: linear-gradient(180deg, #f7f0e2, #f3ecdd);
+}
+
+.closing-glow {
+  background: radial-gradient(ellipse at 50% 55%, rgba(196, 166, 120, 0.24), transparent 52%);
+}
+
+.closing-orbit {
+  border: 1px solid rgba(143, 124, 90, 0.14);
+}
+
+.closing-content > p:not(.eyebrow) {
+  color: var(--muted);
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: #f3ecdd;
+}
+
+.site-footer > p {
+  color: var(--muted);
+}
+
+.footer-note {
+  color: #877b68;
+}
+
+.back-top {
+  color: #5f5747;
+}
+
+.back-top span {
+  color: var(--accent);
+}
+
+/* ---------- Simulação da abertura (mesmas classes de globals.css/intro.css) ---------- */
+.sim-timer {
+  color: #7a6d59;
+}
+
+.sim-state:before {
+  background: var(--accent);
+  box-shadow: none;
+}
+
+.is-sim-paused .sim-state:before {
+  border: 1px solid #9a8d78;
+}
+
+.sim-progress {
+  background: rgba(101, 84, 60, 0.14);
+}
+
+.sim-progress span {
+  background: linear-gradient(90deg, #4f8578, var(--accent));
+}
+
+.is-sim-paused .sim-progress span {
+  background: #9a8d78;
+}
+
+.sim-skip {
+  border: 1px solid rgba(47, 125, 114, 0.55);
+  background: rgba(253, 250, 243, 0.9);
+  color: var(--ink);
+}
+
+.sim-skip:hover {
+  border-color: var(--accent);
+  background: rgba(47, 125, 114, 0.12);
+  color: var(--ink);
+}
+
+.sim-skip:focus-visible {
+  outline: 3px solid var(--accent);
+  background: rgba(47, 125, 114, 0.18);
+}
+
+/* ---------- Mobile: fundo da imagem de presença ---------- */
+@media (max-width: 650px) {
+  .presence-image {
+    min-height: 340px;
+    background: var(--sand);
+  }
+}
+
+/*
+ * ============================================================
+ * Iteração 2 — parecer Capivarte (fontes, componentes, ritmo)
+ * Tipografia moderna (Fraunces + DM Sans via next/font), texto
+ * corpo 17–18px, avisos ≥14px, cartões claros radius 20px,
+ * CTAs desabilitados legíveis, painel conceitual menos
+ * "dashboard", hero compacto com player pausado menor.
+ * ============================================================
+ */
+
+/* ---------- Tipografia base ---------- */
+body {
+  font-family: var(--font-body), "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+.mock-welcome h3 {
+  font-family: var(--font-display), "Fraunces", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  max-width: 22ch;
+  margin: 0 auto var(--space-3);
+  font-size: clamp(38px, 4.8vw, 62px);
+  line-height: 1.14;
+}
+
+h2 {
+  line-height: 1.2;
+}
+
+/* Marca e tracking: remover espaçamento negativo excessivo */
+.brand {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.signal-card h3,
+.pillar h3 {
+  letter-spacing: 0;
+}
+
+/* ---------- Header: 15–16px, alvos de 44px ---------- */
+.primary-nav a,
+.header-cta {
+  font-size: 15px;
+}
+
+.primary-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-1);
+}
+
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--subtle); /* parece desabilitado e mantém contraste ≥4.9:1 */
+}
+
+.header-cta span {
+  color: var(--subtle);
+}
+
+/* ---------- CTAs desabilitados, legíveis ---------- */
+.button {
+  gap: var(--space-2);
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.button-primary {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(39, 108, 99, 0.35);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.button-primary:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* CTAs desabilitados: sem reação de hover que sugira controle ativo */
+.button-primary:disabled:hover,
+.button-primary:disabled:focus {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.button-note {
+  color: var(--subtle);
+  font-size: 14px; /* aviso ≥14px */
+}
+
+/* ---------- Hero: compacto, player pausado menor ---------- */
+.hero {
+  padding: 112px var(--gutter) 64px;
+  min-height: auto;
+}
+
+.hero .hero-screen {
+  width: min(880px, 100%);
+  height: clamp(220px, 26vw, 320px);
+  max-height: 340px;
+  min-height: 220px;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: 0 18px 48px rgba(101, 84, 60, 0.14);
+}
+
+.hero-copy {
+  margin-bottom: var(--space-5);
+}
+
+.hero-copy .eyebrow {
+  margin-bottom: var(--space-3);
+}
+
+.hero-intro {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 52ch;
+  margin: 0 auto var(--space-5);
+}
+
+/* ---------- Eyebrows e avisos: legibilidade ---------- */
+.eyebrow {
+  color: var(--subtle);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+}
+
+.mock-disclaimer,
+.signals-note,
+.pillars-disclaimer,
+.chat-footer {
+  color: var(--subtle);
+  font-size: 14px; /* avisos ≥14px */
+}
+
+.footer-note {
+  color: var(--subtle);
+  font-size: 14px;
+}
+
+.demo-badge {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: var(--space-1) var(--space-3);
+  color: var(--subtle);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.mock-kicker {
+  color: var(--subtle);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.mock-date {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: var(--space-1) var(--space-2);
+  color: var(--subtle);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Cartões claros e acolhedores ---------- */
+.concept-card,
+.chat-demo,
+.signal-card,
+.floating-note {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--card);
+  box-shadow: 0 14px 40px rgba(101, 84, 60, 0.1);
+}
+
+.concept-card {
+  padding: var(--space-4);
+}
+
+.chat-demo {
+  padding: var(--space-4);
+}
+
+.signal-card {
+  padding: var(--space-4);
+  min-height: 230px;
+}
+
+/* Sem hover que pareça opção clicável em cartão não interativo */
+.signal-card:hover {
+  transform: none;
+  border-color: var(--border);
+  background: var(--card);
+}
+
+.floating-note {
+  padding: var(--space-2) var(--space-3);
+}
+
+.summary-block {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-inner);
+  background: var(--panel);
+  padding: var(--space-2) var(--space-3);
+}
+
+/* Métrica decorativa com peso visual menor */
+.summary-block strong {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.summary-block > span {
+  color: var(--subtle);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.summary-block small {
+  color: var(--subtle);
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.summary-focus strong {
+  color: #a0761f; /* amarelo de classificação, legível em fundo claro */
+}
+
+/* Painel conceitual: menos cara de dashboard */
+.mock-top {
+  padding-bottom: var(--space-3);
+}
+
+.mock-brand {
+  font-size: 13px;
+}
+
+.mock-status {
+  color: var(--subtle);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.mock-welcome {
+  padding: var(--space-4) 0 var(--space-3);
+}
+
+.mock-welcome h3 {
+  font-size: clamp(22px, 2.4vw, 28px);
+}
+
+.mock-message {
+  padding: var(--space-3) 0;
+}
+
+.mock-message-copy strong {
+  font-size: 15px;
+}
+
+.mock-message-copy strong span {
+  color: var(--subtle);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.mock-message-copy p {
+  color: #3a3226;
+  font-size: 16px;
+}
+
+.mock-message-copy small {
+  color: var(--subtle);
+  font-size: 14px;
+}
+
+.mock-avatar,
+.demo-avatar {
+  border: 1px solid rgba(39, 108, 99, 0.24);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.floating-note b {
+  font-size: 14px;
+}
+
+.floating-note small {
+  color: var(--subtle);
+  font-size: 13px;
+}
+
+/* Glows discretos: sem grandes brilhos */
+.concept-halo {
+  background: rgba(143, 124, 90, 0.1);
+}
+
+.closing-glow {
+  background: radial-gradient(ellipse at 50% 55%, rgba(196, 166, 120, 0.16), transparent 52%);
+}
+
+/* ---------- Badges de classificação: suaves, legíveis por texto ---------- */
+.signal-label {
+  width: max-content;
+  gap: var(--space-1);
+  padding: 5px var(--space-3);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.signal-label:has(.green) {
+  background: #e3eee4;
+  color: #2f6b3f; /* 5.2:1 sobre o verde suave */
+}
+
+.signal-label:has(.yellow) {
+  background: #f5e9cd;
+  color: #7a5a14; /* 5.2:1 sobre o amarelo suave */
+}
+
+.signal-label:has(.red) {
+  background: #f5e1dc;
+  color: #9c3f36; /* 5.1:1 sobre o vermelho suave */
+}
+
+.signal-card h3 {
+  font-size: 20px;
+}
+
+.signal-card p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.signal-foot {
+  color: var(--subtle);
+  font-size: 14px;
+}
+
+.signals-note span {
+  color: var(--accent);
+}
+
+/* ---------- Seções: corpo legível ---------- */
+.section-copy > p:last-child,
+.concept-heading > p:last-child,
+.signals-heading > p:last-child,
+.pillars-intro > p:last-child,
+.demo-copy > p:not(.eyebrow),
+.statement-inner > p:last-child,
+.closing-content > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.pillar h3 {
+  font-size: 17px;
+}
+
+.pillar p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.pillar > span {
+  color: var(--subtle);
+  font-size: 13px;
+}
+
+.pillars-list {
+  border-top: 1px solid var(--border);
+}
+
+.pillar {
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Conversa: mensagens 16px, horário 12–13px ---------- */
+.chat-head strong {
+  font-size: 15px;
+}
+
+.chat-head strong span {
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.chat-head small,
+.chat-date {
+  color: var(--subtle);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.chat-bubble {
+  border: 1px solid var(--border);
+  border-radius: 16px 16px 16px 4px;
+  background: var(--sand);
+  color: #3a3226;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: var(--space-2) var(--space-3) var(--space-4);
+}
+
+.chat-bubble time {
+  right: var(--space-2);
+  bottom: 5px;
+  color: var(--subtle);
+  font-size: 13px;
+}
+
+.bubble-out {
+  border-color: rgba(39, 108, 99, 0.24);
+  background: var(--accent-soft);
+}
+
+.context-banner {
+  border: 1px solid rgba(201, 147, 18, 0.3);
+  border-radius: var(--radius-inner);
+  background: rgba(201, 147, 18, 0.08);
+  padding: var(--space-2) var(--space-3);
+}
+
+.context-banner strong {
+  color: #7a5a14;
+  font-size: 14px;
+}
+
+.context-banner small {
+  color: var(--subtle);
+  font-size: 14px;
+}
+
+.context-tag {
+  border: 1px solid rgba(160, 118, 31, 0.4);
+  border-radius: 999px;
+  padding: 3px var(--space-2);
+  color: #7a5a14;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.chat-context-note {
+  color: var(--subtle);
+  font-size: 14px;
+}
+
+/* ---------- Rodapé ---------- */
+.site-footer > p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.back-top {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--subtle);
+  font-size: 14px;
+}
+
+/* ---------- Móvel ---------- */
+@media (max-width: 650px) {
+  .hero {
+    padding-top: 118px;
+    padding-bottom: 56px;
+  }
+
+  .hero .hero-screen {
+    height: clamp(220px, 52vw, 300px);
+  }
+
+  .hero-copy .eyebrow {
+    font-size: 12px;
+  }
+
+  .hero-intro {
+    font-size: 17px;
+  }
+
+  .chat-bubble {
+    font-size: 16px;
+  }
+
+  .chat-bubble time {
+    font-size: 12px;
+  }
+
+  .header-cta {
+    padding: 0 var(--space-3);
+    font-size: 14px;
+  }
+}
