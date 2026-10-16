@@ -296,6 +296,22 @@ Mensagem sugerida:
 > **Você não precisa olhar tudo.**  
 > **Precisa saber onde olhar.**
 
+#### Interlúdio editorial — caso noticiado (proposta)
+
+**Posição:** após a seção 8.4 e antes da 8.5. O bloco deve dar contexto sem abrir a página pelo medo nem funcionar como argumento de venda baseado em ameaça.
+
+**Caso-base aprovado pelo usuário:** reportagens de 13–14 de outubro de 2026 sobre uma adolescente brasileira que viajou sozinha a Portugal para encontrar uma pessoa que conheceu online. O Globo relata que os responsáveis já sabiam do contato online desde agosto, mas não da viagem; o UOL informa que ela foi localizada em segurança e que a investigação seguia em Portugal. “Rapto” deve aparecer apenas como alegação atribuída à família, não como conclusão criminal. A jovem não viajou acompanhada pela pessoa que conheceu online.
+
+**Copy proposta:**
+
+> **Uma notícia, com contexto.**
+>
+> Reportagens de outubro de 2026 relataram que uma adolescente brasileira viajou sozinha a Portugal para encontrar uma pessoa que conheceu online. Segundo O Globo, a família já sabia do contato, mas não da viagem. Ela foi localizada em segurança; a investigação prosseguia, e “rapto” era uma alegação atribuída à família. Este caso não representa todas as relações digitais nem demonstra o que o ChatGuard teria prevenido.
+
+Fontes para atribuição editorial: [UOL](https://noticias.uol.com.br/cotidiano/ultimas-noticias/2026/10/14/filha-de-prefeito-do-rn-e-achada-em-portugal-apos-suspeita-de-rapto-virtual.ghtm), de 14 de outubro de 2026, e [O Globo — snapshot arquivado de 13 de outubro de 2026](https://archive.ph/20261013192705/https://oglobo.globo.com/brasil/noticia/2026/10/13/filha-de-prefeito-de-cidade-do-rn-de-14-anos-e-encontrada-em-portugal-caso-e-tratado-como-rapto.ghtml). Os links de origem podem revelar mais dados pessoais do que o resumo da landing page.
+
+Não usar nome, rosto, idade exata, cidade de origem, escola, identificação dos responsáveis, perfis, capturas de conversas, detalhes de abuso ou reconstituição do caso. Identificar o bloco como resumo editorial e manter veículo/data e link de fonte visíveis, usando rótulo neutro para os links. Não sugerir que o ChatGuard detectaria, impediria ou teria evitado o ocorrido. A fonte externa pode revelar dados de identificação; esse risco deve ser considerado na revisão final antes da publicação.
+
 ### 8.5 A virada
 
 Reposicionar o problema como uma oportunidade de acompanhamento parental transparente e diálogo, sem sugerir monitoramento oculto.
@@ -310,6 +326,18 @@ Mensagem sugerida:
 Introduzir o produto como uma nova forma de acompanhar a vida digital dos filhos.
 
 A seção pode utilizar um dashboard animado ou uma representação visual do produto. Essa representação deverá ser explicitamente conceitual nesta fase.
+
+#### Privacidade e proteção de dados (proposta)
+
+**Posição:** após a apresentação conceitual do ChatGuard e antes da seção 8.7. O bloco responde à preocupação com privacidade no momento em que o visitante conhece a proposta, sem parecer uma funcionalidade operacional.
+
+**Copy proposta:**
+
+> **Privacidade é um princípio do projeto.**
+>
+> A forma de proteção dos dados — incluindo se e como as mensagens serão criptografadas — será definida junto com a arquitetura da plataforma. Esta demonstração não processa conversas e não implementa criptografia.
+
+Não afirmar que “todas as mensagens” já são ou serão criptografadas, nem que a criptografia “evitará vazamentos”. Escopo, arquitetura, gestão de chaves, dados abrangidos e controles de acesso ainda não estão definidos. Qualquer alegação futura deverá ser validada tecnicamente antes da publicação.
 
 ### 8.7 Inteligência artificial e classificações
 
@@ -379,6 +407,12 @@ Requisitos: manter proporção 4:3 e composição da V5 aprovada; preservar text
 
 As animações devem apoiar o storytelling e não prejudicar legibilidade, desempenho ou acessibilidade.
 
+### Motion Graphics — interlúdio editorial e privacidade
+
+- **Caso noticiado:** composição editorial curta, com entrada única e estado final estável; sem loop contínuo, rota em mapa, flashes, trilha de suspense, personagens ou mensagens reconstituídas. Fonte, data e ressalva devem permanecer legíveis fora da área animada.
+- **Privacidade:** peça conceitual pequena com cartões abstratos e movimento discreto. Não usar cadeado, selo “protegido”, texto virando código ou fluxo que simule criptografia em operação. Manter junto à arte o aviso “conceito — recurso não implementado”.
+- Em ambas as peças, não bloquear rolagem; manter o conteúdo essencial disponível sem animação; respeitar `prefers-reduced-motion`; organizar o conteúdo verticalmente em telas móveis e evitar redução do tamanho do texto.
+
 ## 10. Requisitos de conteúdo e confiança
 
 - Usar linguagem clara e acolhedora;
@@ -401,6 +435,9 @@ A primeira versão será considerada alinhada à especificação quando:
 - Exibir o CTA **QUERO PROTEGER MEUS FILHOS**;
 - Permitir que o visitante entenda que a página é uma apresentação inicial/lista de espera;
 - Não sugerir que login, dashboard, integrações, monitoramento ou análise de mensagens já estão funcionais;
+- Atribuir qualquer caso noticiado com fonte e contexto; não identificar a adolescente nem insinuar que o ChatGuard teria evitado o caso;
+- Distinguir princípios de privacidade de medidas técnicas implementadas; não prometer criptografia ou prevenção de vazamentos antes de validação;
+- Garantir alternativa sem movimento e leitura acessível para os Motion Graphics novos;
 - Utilizar apenas dados fictícios nas demonstrações;
 - Funcionar adequadamente em desktop e dispositivos móveis;
 - Manter coerência entre textos, identidade visual e proposta de proteção responsável.

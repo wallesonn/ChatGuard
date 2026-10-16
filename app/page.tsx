@@ -1,17 +1,20 @@
 import OpeningVideo from "@/components/OpeningVideo";
 import MundoEmMovimento from "@/components/MundoEmMovimento";
 import PageEffects from "@/components/PageEffects";
+import InterludioEditorial from "@/components/InterludioEditorial";
+import NotaPrivacidade from "@/components/NotaPrivacidade";
+import { WaitlistButton, WaitlistProvider } from "@/components/Waitlist";
 
 export default function Home() {
   return (
-    <>
+    <WaitlistProvider>
       <a className="skip-link" href="#main">Pular para o conteúdo</a>
       <div className="reading-progress" aria-hidden="true"><span></span></div>
       <PageEffects />
 
       <header className="site-header">
         <a className="brand" href="#inicio" aria-label="ChatGuard — início">
-          <svg className="brand-mark" viewBox="0 0 44 48" aria-hidden="true"><path d="M22 2 41 9v13c0 11-7.8 19.2-19 24C10.8 41.2 3 33 3 22V9L22 2Z"/><path d="M12.5 19.5a9.5 9.5 0 0 1 19 0c0 5.3-4.2 9.5-9.5 9.5-1.4 0-2.8-.3-4-.9l-5.5 2 .9-5.1a9.2 9.2 0 0 1-.9-5.5Z"/><circle cx="18.5" cy="19.5" r="1"/><circle cx="22" cy="19.5" r="1"/><circle cx="25.5" cy="19.5" r="1"/></svg>
+          <img className="brand-mark" src="/chatguard-sologo.png" alt="" aria-hidden="true" width={784} height={738} />
           <span className="brand-wordmark"><span className="brand-chat">Chat</span><span className="brand-guard">Guard</span></span>
         </a>
         <nav className="primary-nav" aria-label="Navegação principal">
@@ -19,7 +22,7 @@ export default function Home() {
           <a href="#conceito">Como pensamos</a>
           <a href="#demonstracao">Demonstração</a>
         </nav>
-        <button className="header-cta" type="button" disabled title="Ação visual, sem navegação nesta versão">Conheça a proposta</button>
+        <WaitlistButton className="header-cta">Conheça a proposta</WaitlistButton>
       </header>
 
       <main id="main">
@@ -31,8 +34,8 @@ export default function Home() {
             <p className="eyebrow"><span className="eyebrow-dot"></span> Presença também é proteção</p>
             <h1 id="hero-title">Você sabe com quem seu filho <em>conversa todos os dias?</em></h1>
             <p className="hero-intro">A vida digital cresce depressa. Acompanhar com cuidado começa com contexto, confiança e diálogo.</p>
-            <button className="button button-primary" type="button" disabled aria-describedby="waitlist-note-hero">Quero proteger meus filhos</button>
-            <p className="button-note" id="waitlist-note-hero">Lista de espera ainda não disponível nesta versão.</p>
+            <WaitlistButton className="button button-primary" describedBy="waitlist-note-hero">Quero proteger meus filhos</WaitlistButton>
+            <p className="button-note" id="waitlist-note-hero">Cadastro de teste — nenhum dado é enviado ou armazenado.</p>
           </div>
           <a className="scroll-cue" href="#vida-digital"><span className="scroll-line" aria-hidden="true"></span><span>Continue a história</span><span aria-hidden="true">↓</span></a>
         </section>
@@ -61,6 +64,29 @@ export default function Home() {
             <p>Uma proposta para ajudar responsáveis a encontrar clareza no meio de tantas interações — sem transformar cuidado em vigilância constante.</p>
           </div>
           <span className="section-number" aria-hidden="true">02</span>
+        </section>
+
+        <section className="editorial-section" aria-labelledby="editorial-title">
+          <div className="section-shell">
+            <div className="concept-heading" data-reveal>
+              <p className="eyebrow">Resumo editorial</p>
+              <h2 id="editorial-title">Uma notícia, <em>com contexto.</em></h2>
+              <p>
+                Reportagens de outubro de 2026 relataram que uma adolescente brasileira viajou sozinha
+                a Portugal para encontrar uma pessoa que conheceu online. Segundo O Globo, a família
+                já sabia do contato, mas não da viagem. Ela foi localizada em segurança; a investigação
+                prosseguia, e “rapto” era uma alegação atribuída à família. Um caso individual não
+                representa todas as relações digitais nem demonstra o que o ChatGuard teria prevenido.
+              </p>
+            </div>
+            <InterludioEditorial />
+            <p className="editorial-sources" data-reveal>
+              Fontes:{" "}
+              <a href="https://noticias.uol.com.br/cotidiano/ultimas-noticias/2026/10/14/filha-de-prefeito-do-rn-e-achada-em-portugal-apos-suspeita-de-rapto-virtual.ghtm" target="_blank" rel="noopener noreferrer">UOL</a> (14 de outubro de 2026) e{" "}
+              <a href="https://archive.ph/20261013192705/https://oglobo.globo.com/brasil/noticia/2026/10/13/filha-de-prefeito-de-cidade-do-rn-de-14-anos-e-encontrada-em-portugal-caso-e-tratado-como-rapto.ghtml" target="_blank" rel="noopener noreferrer">O Globo</a> (snapshot arquivado de 13 de outubro de 2026).
+              Os links de origem podem revelar mais dados pessoais do que este resumo.
+            </p>
+          </div>
         </section>
 
         <section className="presence-section" aria-labelledby="presence-title">
@@ -96,6 +122,21 @@ export default function Home() {
               <div className="floating-note note-context"><span className="note-icon">✳</span><span><b>Contexto antes</b><small>de qualquer conclusão</small></span></div>
               <div className="floating-note note-quiet"><span className="quiet-wave" aria-hidden="true">≈</span><span><b>Menos ruído</b><small>mais clareza</small></span></div>
             </div>
+          </div>
+        </section>
+
+        <section className="privacy-section" aria-labelledby="privacy-title">
+          <div className="section-shell">
+            <div className="concept-heading" data-reveal>
+              <p className="eyebrow">Privacidade</p>
+              <h2 id="privacy-title">Privacidade é um <em>princípio do projeto.</em></h2>
+              <p>
+                A forma de proteção dos dados — incluindo se e como as mensagens serão criptografadas —
+                será definida junto com a arquitetura da plataforma. Esta demonstração não processa
+                conversas e não implementa criptografia.
+              </p>
+            </div>
+            <NotaPrivacidade />
           </div>
         </section>
 
@@ -146,17 +187,17 @@ export default function Home() {
 
         <section className="closing-section" id="mensagem-final" aria-labelledby="closing-title">
           <div className="closing-glow" aria-hidden="true"></div>
-          <div className="closing-content" data-reveal><p className="eyebrow">Menos ruído. Mais contexto.</p><h2 id="closing-title">Proteção também<br/><em>é presença.</em></h2><p>Uma proposta para acompanhar com responsabilidade, ouvir com atenção e permanecer por perto.</p><button className="button button-primary" type="button" disabled aria-describedby="waitlist-note-final">Quero proteger meus filhos</button><p className="button-note" id="waitlist-note-final">Lista de espera ainda não disponível nesta versão.</p></div>
+          <div className="closing-content" data-reveal><p className="eyebrow">Menos ruído. Mais contexto.</p><h2 id="closing-title">Proteção também<br/><em>é presença.</em></h2><p>Uma proposta para acompanhar com responsabilidade, ouvir com atenção e permanecer por perto.</p><WaitlistButton className="button button-primary" describedBy="waitlist-note-final">Quero proteger meus filhos</WaitlistButton><p className="button-note" id="waitlist-note-final">Cadastro de teste — nenhum dado é enviado ou armazenado.</p></div>
           <div className="closing-orbit" aria-hidden="true"></div>
         </section>
       </main>
 
       <footer className="site-footer">
-        <a className="brand footer-brand" href="#inicio" aria-label="ChatGuard — voltar ao início"><svg className="brand-mark" viewBox="0 0 44 48" aria-hidden="true"><path d="M22 2 41 9v13c0 11-7.8 19.2-19 24C10.8 41.2 3 33 3 22V9L22 2Z"/><path d="M12.5 19.5a9.5 9.5 0 0 1 19 0c0 5.3-4.2 9.5-9.5 9.5-1.4 0-2.8-.3-4-.9l-5.5 2 .9-5.1a9.2 9.2 0 0 1-.9-5.5Z"/><circle cx="18.5" cy="19.5" r="1"/><circle cx="22" cy="19.5" r="1"/><circle cx="25.5" cy="19.5" r="1"/></svg><span className="brand-wordmark"><span className="brand-chat">Chat</span><span className="brand-guard">Guard</span></span></a>
+        <a className="brand footer-brand" href="#inicio" aria-label="ChatGuard — voltar ao início"><img className="brand-mark" src="/chatguard-sologo.png" alt="" aria-hidden="true" width={784} height={738} /><span className="brand-wordmark"><span className="brand-chat">Chat</span><span className="brand-guard">Guard</span></span></a>
         <p>Menos ruído. Mais contexto.</p>
         <span className="footer-note">Apresentação conceitual · v0.2 · sem funcionalidades operacionais</span>
         <a className="back-top" href="#inicio">Voltar ao início <span aria-hidden="true">↑</span></a>
       </footer>
-    </>
+    </WaitlistProvider>
   );
 }

@@ -253,12 +253,13 @@ Observação de método (não é defeito do código):
 - `app/page.tsx` substituiu apenas o `<img>` da seção `vida-digital` pelo componente SVG; textos, footnote e animações de revelação da seção foram mantidos. Nenhuma PNG/JPG é carregada pela seção do infográfico; a foto PNG da seção de presença permanece inalterada.
 - `app/mundo-em-movimento.css`: loop CSS de 12,8 s, grupos revelados em sequência, quatro conectores desenhados, logo/wordmark em `#276C63` por último, pausa narrativa e reinício; movimento reduzido mostra a composição estática completa, e o loop pausa fora da viewport. Sem vídeo ou créditos de geração de imagem.
 - Browser QA na saída estática: ciclo observado até logo final e reinício; offscreen pausa; `prefers-reduced-motion` resultou em zero animações e todos os grupos visíveis. Em desktop (1280×900) e mobile (390×844), proporção 4:3 sem overflow; `#vida-digital` sem elementos `<img>` nem solicitação da PNG V5; wordmark `rgb(39,108,99)`.
+- O usuário confirmou que a animação funcionou na página; nenhum ajuste visual adicional foi solicitado.
 - Build do código numa cópia local temporária: `npm ci` concluiu; `npm run build` (Next.js 16.4.0/Turbopack) compilou em 8,4 s, TypeScript em 8,2 s e gerou 3/3 páginas estáticas. No caminho original UNC (`W:`), o Turbopack falhou ao enumerar `node_modules` com “Assinatura inválida”; PowerShell e Node leem os arquivos, mas o build padrão em UNC continua com essa limitação ambiental. Tentativa alternativa `--webpack` no UNC excedeu o limite de tempo.
 - A cópia local de QA e o servidor da porta 4173 foram removidos/encerrados após os testes. Sem commit, push, merge ou deploy.
 - Limitação visual aceita: o SVG é uma reconstrução vetorial próxima, mas não pixel-idêntica à V5; textura, sombras, microcontornos e fonte diferem (Segoe UI/Arial local no SVG).
 ## Pendências
 
-- Revisar com o usuário o ritmo, a legibilidade dos balões e a sensação do loop na prévia local; ajustar se necessário.
+- Ajustes finos de ritmo ou legibilidade somente se forem solicitados pelo usuário.
 - Revisar com o usuário as fontes Fraunces/DM Sans e os tokens provisórios no preview.
 - Definir o procedimento/acesso à stack de teste da VPS antes de utilizá-la.
 - Fazer commit somente mediante pedido explícito do usuário, após a revisão local (ainda sem commit).

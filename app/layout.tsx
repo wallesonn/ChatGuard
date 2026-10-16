@@ -4,6 +4,8 @@ import "./globals.css";
 import "./intro.css";
 import "./warm-theme.css";
 import "./mundo-em-movimento.css";
+import "./editorial-motion.css";
+import "./waitlist.css";
 
 // Fontes auto-hospedadas pelo build (next/font): nenhuma chamada a fontes
 // acontece no browser. Fraunces = títulos narrativos; DM Sans = interface/corpo.

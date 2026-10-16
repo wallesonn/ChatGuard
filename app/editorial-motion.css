@@ -1,0 +1,209 @@
+/* ============================================================
+ * Motion Graphics dos dois blocos novos (docs/landing-page.md, 8.4 e 8.6):
+ *  - .editorial-motion  → interlúdio editorial (caso noticiado);
+ *  - .privacy-motion    → bloco conceitual de privacidade.
+ * Entrada ÚNICA, sem loop: cada animação roda uma vez e o estado
+ * permanece estável. O estado-base do CSS é o estado FINAL — sem JS,
+ * fora da viewport ou com prefers-reduced-motion: reduce, o conteúdo
+ * aparece completo e estático (nada fica escondido).
+ * Rola livremente: nada aqui trava scroll ou foco.
+ * ============================================================ */
+
+.editorial-motion,
+.privacy-motion {
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+.editorial-motion-svg,
+.privacy-motion-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Interlúdio editorial ---------- */
+
+.editorial-card {
+  fill: var(--panel, #fffdf8);
+  stroke: var(--line, rgba(101, 84, 60, 0.16));
+  stroke-width: 1.5;
+}
+
+.editorial-link {
+  stroke: var(--line, rgba(101, 84, 60, 0.16));
+  stroke-width: 1.5;
+  stroke-dasharray: 4 6;
+  stroke-linecap: round;
+}
+
+/* A lista textual aparece sempre (legível sem animação, também no mobile).
+ * 15px: confortavelmente legível, sem redução para caber no artwork. */
+.editorial-steps-list {
+  display: grid;
+  gap: 6px;
+  margin: 10px auto 0;
+  max-width: 560px;
+  padding: 0;
+  list-style: none;
+  color: var(--muted, #5c5344);
+  font-size: 15px; /* antes 13px — não reduzir tipografia */
+  line-height: 1.6;
+  text-align: center;
+}
+
+@keyframes editorial-step-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes editorial-link-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Entrada única: um cartão por vez, depois os conectores. Sem loop. */
+.editorial-motion[data-motion="play"][data-inview="true"] .editorial-step[data-step="1"] {
+  animation: editorial-step-in 0.7s ease-out 0.1s 1 both;
+}
+
+.editorial-motion[data-motion="play"][data-inview="true"] .editorial-step[data-step="2"] {
+  animation: editorial-step-in 0.7s ease-out 0.55s 1 both;
+}
+
+.editorial-motion[data-motion="play"][data-inview="true"] .editorial-step[data-step="3"] {
+  animation: editorial-step-in 0.7s ease-out 1s 1 both;
+}
+
+.editorial-motion[data-motion="play"][data-inview="true"] .editorial-link {
+  animation: editorial-link-in 0.5s ease-out 1.5s 1 both;
+}
+
+/* ---------- Privacidade ---------- */
+
+.privacy-card {
+  fill: var(--panel, #fffdf8);
+  stroke: var(--line, rgba(101, 84, 60, 0.16));
+  stroke-width: 1.5;
+}
+
+.privacy-link {
+  stroke: var(--line, rgba(101, 84, 60, 0.16));
+  stroke-width: 1.5;
+  stroke-dasharray: 4 6;
+  stroke-linecap: round;
+}
+
+.privacy-motion-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--line, rgba(101, 84, 60, 0.16));
+  border-radius: 999px;
+  background: var(--accent-soft, #e7efeb);
+  color: var(--accent, #276c63);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+@keyframes privacy-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.privacy-motion[data-motion="play"][data-inview="true"] .privacy-card[data-card="1"] {
+  animation: privacy-card-in 0.7s ease-out 0.1s 1 both;
+}
+
+.privacy-motion[data-motion="play"][data-inview="true"] .privacy-card[data-card="2"] {
+  animation: privacy-card-in 0.7s ease-out 0.5s 1 both;
+}
+
+.privacy-motion[data-motion="play"][data-inview="true"] .privacy-card[data-card="3"] {
+  animation: privacy-card-in 0.7s ease-out 0.9s 1 both;
+}
+
+.privacy-motion[data-motion="play"][data-inview="true"] .privacy-link {
+  animation: editorial-link-in 0.5s ease-out 1.3s 1 both;
+}
+
+/* ---------- Layout das seções que hospedam as peças ---------- */
+
+.editorial-section,
+.privacy-section {
+  padding: 110px var(--gutter);
+  background: var(--bg, #faf6ee);
+}
+
+.privacy-section {
+  padding-top: 0;
+}
+
+.editorial-sources {
+  max-width: 680px;
+  margin: 26px auto 0;
+  color: var(--subtle, #6a6152);
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.editorial-sources a {
+  color: var(--accent, #276c63);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.editorial-sources a:focus-visible {
+  outline: 3px solid var(--accent, #276c63);
+  outline-offset: 3px;
+}
+
+.privacy-section .privacy-motion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 650px) {
+  .editorial-motion,
+  .privacy-motion {
+    max-width: 100%;
+  }
+
+  /* Vertical no mobile: a lista textual já é vertical; o SVG escala
+     proporcionalmente e mantém a tipografia sem redução. */
+  .editorial-steps-list {
+    font-size: 15px; /* sem redução de tipografia */
+    text-align: left;
+  }
+}
+
+/* prefers-reduced-motion: nenhum keyframe é aplicado (os seletores acima
+ * exigem data-motion="play", que o componente nunca define neste modo),
+ * então o estado estático completo já é o padrão. Guarda explícita: */
+@media (prefers-reduced-motion: reduce) {
+  .editorial-motion *,
+  .privacy-motion * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

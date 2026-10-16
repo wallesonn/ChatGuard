@@ -1,0 +1,218 @@
+/*
+ * Modal de cadastro da lista de espera (CTAs do header, hero e mensagem
+ * final). Mesmo padrão da abertura: a landing page fica ao fundo,
+ * escurecida e desfocada, e o diálogo vem para o primeiro plano.
+ * Versão de teste — nenhum dado é enviado; ver components/Waitlist.tsx.
+ */
+
+html.is-waitlist-open,
+html.is-waitlist-open body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.waitlist-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px var(--gutter);
+  background: rgba(46, 38, 28, 0.66);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  animation: waitlist-fade-in 0.25s ease both;
+}
+
+.waitlist-card {
+  position: relative;
+  width: min(430px, 100%);
+  max-height: calc(100vh - 48px);
+  max-height: calc(100svh - 48px);
+  overflow: auto;
+  padding: 30px 28px 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--panel);
+  box-shadow: 0 30px 90px rgba(51, 41, 28, 0.35);
+  animation: waitlist-pop 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.waitlist-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--subtle);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.waitlist-close:hover {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.waitlist-close:focus-visible,
+.waitlist-submit:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.waitlist-logo {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin: 0 auto 18px;
+}
+
+.waitlist-card h3 {
+  margin: 0 0 12px;
+  font-family: var(--font-display), "Fraunces", Georgia, serif;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.waitlist-intro {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.waitlist-field {
+  margin: 0 0 16px;
+}
+
+.waitlist-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.waitlist-field input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-inner);
+  background: #ffffff;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.waitlist-field input::placeholder {
+  color: #b3a78f;
+}
+
+.waitlist-field input:focus-visible {
+  border-color: var(--accent);
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.waitlist-error {
+  margin: 0 0 14px;
+  color: #a83b2a; /* terroso, distinto do RED reservado à classificação */
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.waitlist-submit {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 4px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-inner);
+  background: linear-gradient(110deg, #4f8578, #3c6e62);
+  color: #fdfaf3;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.waitlist-submit:hover {
+  filter: brightness(1.05);
+}
+
+/* Confirmação */
+.waitlist-success {
+  text-align: center;
+}
+
+.waitlist-success-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 4px auto 16px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.waitlist-success p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.waitlist-success .waitlist-success-phone {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width: 650px) {
+  .waitlist-overlay {
+    padding: 16px;
+  }
+
+  .waitlist-card {
+    padding: 24px 18px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waitlist-overlay,
+  .waitlist-card {
+    animation: none;
+  }
+}
+
+@keyframes waitlist-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes waitlist-pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
