@@ -8,7 +8,7 @@
  * Infográfico vetorial inline da seção 01 (#vida-digital): os grupos internos
  * ficam acessíveis a CSS/React (IDs e transforms autorais preservados; grupos
  * com transform autoral recebem wrapper <g data-mmv-w="...">).
- * A animação (loop de 12.8 s em CSS puro) vive em
+ * A animação (loop de 6.4 s em CSS puro) vive em
  * app/mundo-em-movimento.css; este componente só controla os estados:
  *   - prefers-reduced-motion: reduce (ou sem JS) -> composição estática completa;
  *   - loop ativo somente com movimento permitido; IntersectionObserver pausa

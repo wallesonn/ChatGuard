@@ -4,13 +4,13 @@
  *
  * Saídas:
  *   - components/MundoEmMovimento.tsx  (SVG inline em JSX, grupos internos animáveis)
- *   - app/mundo-em-movimento.css       (loop de 12,8 s em CSS puro, sincronizado)
+ *   - app/mundo-em-movimento.css       (loop de 6,4 s em CSS puro, sincronizado)
  *
  * Princípios (parecer de motion aprovado):
  *   - fundo (#fundo) nunca anima; sem filtros/blur/flash; movimento suave;
  *   - grupos com transform autoral recebem wrapper <g data-mmv-w="id"> — o CSS
  *     anima o wrapper, preservando o transform authorado do grupo interno;
- *   - um só relógio: todos os keyframes têm duração de 12,8 s, então entrada,
+ *   - um só relógio: todos os keyframes têm duração de 6,4 s, então entrada,
  *     conexões, logo, pausa narrativa e reinício ficam sempre em fase;
  *   - sem atributo data-motion="play" no raiz, a composição fica completa e
  *     estática (sem JS, prefers-reduced-motion ou pré-hidratação).
@@ -52,41 +52,41 @@ const WRAP = new Set([
 /* balões com microflutuação discreta durante a pausa narrativa */
 const FLOAT = new Set(["balao-vamos", "balao-dia"]);
 
-/* ---------- timeline (segundos; ciclo 12,8 s) ---------- */
-const CYCLE = 12.8;
-const ENTRANCE = 0.45; // duração de cada entrada (rise + fade)
-const HOLD_END = 11.5; // fim da pausa narrativa
-const FADE_END = 12.4; // fim do cross-fade de saída
+/* ---------- timeline (segundos; ciclo de 6,4 s) ---------- */
+const CYCLE = 6.4;
+const ENTRANCE = 0.22; // duração de cada entrada (rise + fade)
+const HOLD_END = 5.75; // fim da pausa narrativa
+const FADE_END = 6.2; // fim do cross-fade de saída
 const RISE = 16; // deslocamento de entrada em unidades do viewBox
 const CONNECTOR_DRAWS = [
-  { id: "conector-conversas", start: 6.9, len: 141 },
-  { id: "conector-audio", start: 7.25, len: 119 },
-  { id: "conector-criatividade", start: 7.6, len: 81 },
-  { id: "conector-cotidiano", start: 7.95, len: 92 },
+  { id: "conector-conversas", start: 3.45, len: 141 },
+  { id: "conector-audio", start: 3.62, len: 119 },
+  { id: "conector-criatividade", start: 3.8, len: 81 },
+  { id: "conector-cotidiano", start: 3.98, len: 92 },
 ];
 const CLUSTERS = [
   {
-    base: 0.3, step: 0.18,
+    base: 0.15, step: 0.09,
     ids: ["conversas-cartao-fundo", "conversas-cartao-oi", "avatar-conversas-oi", "balao-oi",
       "conversas-cartao-vamos", "balao-vamos", "avatar-conversas-vamos", "conversas-tracos"],
   },
   {
-    base: 1.9, step: 0.18,
+    base: 0.95, step: 0.09,
     ids: ["audio-cartao-amigos", "avatar-audio-teal", "avatar-audio-gold", "avatar-audio-sage",
       "audio-painel", "audio-play", "audio-ondas", "balao-bora", "audio-tracos"],
   },
   {
-    base: 3.6, step: 0.2,
+    base: 1.8, step: 0.1,
     ids: ["criatividade-cartao-fundo", "paisagem-cartao", "musica-cartao", "pintura-cartao",
       "balao-musica", "criatividade-tracos"],
   },
   {
-    base: 4.9, step: 0.18,
+    base: 2.45, step: 0.09,
     ids: ["casa-cartao", "casa-cena", "avatar-cotidiano-teal", "avatar-cotidiano-gold",
       "avatar-cotidiano-sage", "balao-dia", "balao-tudo", "cotidiano-tracos"],
   },
 ];
-const LOGO = { mark: 9.2, word: 9.55 };
+const LOGO = { mark: 4.6, word: 4.78 };
 
 const pct = (s) => Number(((s / CYCLE) * 100).toFixed(2));
 const P = { holdEnd: pct(HOLD_END), fadeEnd: pct(FADE_END), fadeStart: pct(HOLD_END) };
