@@ -1,6 +1,6 @@
 # ChatGuard — Registro de avanço da landing page
 
-**Status:** v0.2 em Next.js 16.4.0; infográfico vetorial em loop implementado para revisão local; build aprovado em cópia temporária local; build via UNC com limitação de filesystem; sem commit  
+**Status:** v0.2 em Next.js 16.4.0 — **em produção** desde 2026-10-19 em `https://chatguard.life` (VPS, Docker, Traefik); imagem `wallesonnn/chatguard-app:v0.1.1`/`latest` no Docker Hub; commits passaram a ser feitos manualmente pelo usuário  
 **Especificação-alvo:** [`landing-page.md`](landing-page.md)
 
 Este documento registra os incrementos feitos para chegar à landing page descrita na especificação. Não substitui nem altera silenciosamente a especificação-alvo.
@@ -36,9 +36,9 @@ Este documento registra os incrementos feitos para chegar à landing page descri
 - [x] Testar em localhost e registrar resultado.
 - [x] Implementar a simulação de abertura de 10 s no espaço do vídeo.
 - [x] Testar a simulação em localhost e registrar resultado.
-- [ ] Fazer commit após o teste local.
-- [ ] Testar em stack de teste na VPS antes do merge.
-- [ ] Fazer merge direto em `main` e verificar o remoto, mediante pedido do usuário.
+- [x] Fazer commit após o teste local — commits passaram a ser feitos manualmente pelo usuário (ver "Mudança de governança de commits").
+- [x] Testar na VPS — a v0.2 foi direto para produção via Portainer (sem stack de teste intermediária); ver "Stack Docker e deploy em produção — 2026-10-19".
+- [x] Deploy público verificado: `https://chatguard.life` com certificado válido.
 
 ### Verificação local realizada
 
@@ -257,9 +257,79 @@ Observação de método (não é defeito do código):
 - Build do código numa cópia local temporária: `npm ci` concluiu; `npm run build` (Next.js 16.4.0/Turbopack) compilou em 8,4 s, TypeScript em 8,2 s e gerou 3/3 páginas estáticas. No caminho original UNC (`W:`), o Turbopack falhou ao enumerar `node_modules` com “Assinatura inválida”; PowerShell e Node leem os arquivos, mas o build padrão em UNC continua com essa limitação ambiental. Tentativa alternativa `--webpack` no UNC excedeu o limite de tempo.
 - A cópia local de QA e o servidor da porta 4173 foram removidos/encerrados após os testes. Sem commit, push, merge ou deploy.
 - Limitação visual aceita: o SVG é uma reconstrução vetorial próxima, mas não pixel-idêntica à V5; textura, sombras, microcontornos e fonte diferem (Segoe UI/Arial local no SVG).
+## Stack Docker e deploy em produção — 2026-10-19
+
+A landing v0.2 foi empacotada em imagem Docker e publicada na VPS, saindo de
+"preview local" para produção em `https://chatguard.life`.
+
+### Artefatos criados
+
+- **`chatguard-docker/`** (repo próprio aninhado, remote
+  `github.com/wallesonn/chatguard-docker`, mesmo padrão do
+  `inlaudo-web/inlaudo-docker`):
+  - `Dockerfile` multi-stage: `node:22-alpine` (`npm ci` + `next build`) →
+    `nginx:1.27-alpine` servindo o export estático `out/` (~28 MB).
+  - `nginx.conf` — gzip, cache de assets/imagens.
+  - `docker-compose.yml` — serviço `app` (imagem do Docker Hub, labels
+    Traefik) + serviço `db` (Postgres 17-alpine, volume `pgdata`, healthcheck)
+    provisionado para o backend futuro; a landing estática ainda não o usa.
+  - No GitHub, o repo versiona **apenas** `README.md` e `docker-compose.yml`
+    (pedido do usuário); Dockerfile/nginx.conf/.env.example ficam só no disco.
+- **`build.sh`** (raiz do app): `./build.sh vX.Y.Z` — `docker buildx`,
+  `linux/amd64`, tags versão + `latest`, `--push` para
+  `wallesonnn/chatguard-app`. O contexto é a raiz do repo, então
+  `public/videos/` entra na imagem quando o vídeo existir.
+- **`.dockerignore`** na raiz — contexto enxuto sem excluir `public/videos/`.
+
+### Configuração alinhada à infra real da VPS
+
+Espelhada do compose do inlaudo: rede externa `web`, entrypoint `websecure`,
+certresolver `lets-encrypt`, `Host(\`chatguard.life\`)`, porta interna 80,
+imagem parametrizada por `DOCKER_IMAGE`.
+
+### Deploy (Portainer, método Repository)
+
+Deploy manual pelo Portainer apontando para o repo público
+`wallesonn/chatguard-docker`. Problemas encontrados e resolvidos:
+
+1. **`build:` quebrava o deploy** — o Portainer clona só o repo de deploy
+   (sem código-fonte) e falhava em `lstat .../chatguard-docker`. Removido o
+   bloco `build:`; o compose só puxa a imagem pronta do Docker Hub.
+2. **Let's Encrypt falhou → rate limit** — o DNS de `chatguard.life` era novo
+   demais (`no valid A records found`); após 5 validações falhas, o LE
+   aplicou limite de 1h. O Traefik retentou sozinho quando o limite expirou
+   (~22:11 UTC) e o certificado foi emitido. Lição: DNS propagado antes do
+   deploy.
+3. **Conflito na porta 5432** — a VPS já tem outro Postgres no host. O bloco
+   `ports:` do `db` foi desabilitado (comentado) no compose; o banco fica só
+   na rede interna da stack (`db:5432`), suficiente para o backend futuro.
+4. **`traefik.enable=false` no `db`** — o Traefik usa `exposedByDefault` e
+   logava `unable to find the IP address` tentando rotear o Postgres.
+
+### Resultado verificado
+
+- `https://chatguard.life` → HTTP 200 (223 KB) com certificado Let's Encrypt
+  válido; redirect HTTP→HTTPS ativo; tráfego real já observado nos logs.
+- Imagem em produção: `wallesonnn/chatguard-app` (`v0.1.1` / `latest`).
+- Fluxo de atualização: `./build.sh vX.Y.Z` → **Pull and redeploy** na stack
+  (ou `DOCKER_IMAGE` travada + **Update the stack**).
+
+### Mudança de governança de commits
+
+A partir desta etapa, **o usuário faz commits e pushes manualmente** nos dois
+repos (app e `chatguard-docker`). Agentes preparam alterações, mas não
+commitam nem publicam — regra registrada em `AGENTS.md`.
+
 ## Pendências
 
 - Ajustes finos de ritmo ou legibilidade somente se forem solicitados pelo usuário.
-- Revisar com o usuário as fontes Fraunces/DM Sans e os tokens provisórios no preview.
-- Definir o procedimento/acesso à stack de teste da VPS antes de utilizá-la.
-- Fazer commit somente mediante pedido explícito do usuário, após a revisão local (ainda sem commit).
+- `www.chatguard.life` adicionado à regra do Traefik
+  (`Host(\`chatguard.life\`) || Host(\`www.chatguard.life\`)`) — entra em
+  vigor no próximo **Update the stack**; o certificado será reemitido com
+  SAN para os dois hosts.
+- Banco de dados: quando o backend entrar, avaliar reaproveitar o Postgres já
+  existente na VPS (criando database `chatguard`) vs. manter o dedicado da
+  stack; decidir também se o `db` da stack precisará de porta no host.
+- Backend da waitlist: tirar a página de `output: 'export'`, runtime Node,
+  `POST /api/waitlist`, tabela `waitlist` (modelo discutido), integração n8n.
+- Commits e pushes: feitos manualmente pelo usuário.

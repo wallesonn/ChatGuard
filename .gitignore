@@ -9,6 +9,9 @@ out/
 /assets/design-review/
 /public/videos/
 
+# Repo de deploy aninhado (tem remote próprio: wallesonn/chatguard-docker)
+/chatguard-docker/
+
 .env
 .env.*
 !.env.example

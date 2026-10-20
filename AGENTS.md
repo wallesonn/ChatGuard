@@ -21,6 +21,24 @@ Instruções para agentes que trabalham neste repositório.
 - Não usar `git add .` no repo do app: a pasta `chatguard-docker/` é um repo
   aninhado e seria adicionada como "embedded repo" (gitlink).
 
+## Produção / deploy
+
+- Site no ar desde 2026-10-19: `https://chatguard.life` (certificado Let's
+  Encrypt válido). Deploy manual via **Portainer**, método *Repository*
+  apontando para `wallesonn/chatguard-docker`.
+- Fluxo de atualização: `./build.sh vX.Y.Z` (build + push no Docker Hub,
+  imagem `wallesonnn/chatguard-app`) → **Pull and redeploy** ou
+  `DOCKER_IMAGE=<tag>` + **Update the stack** no Portainer.
+- Infra da VPS (mesma do inlaudo): Traefik externo, rede `web`, entrypoint
+  `websecure`, certresolver `lets-encrypt`. O compose de deploy **não** tem
+  bloco `build:` — o Portainer clona só o repo de deploy, sem código-fonte.
+- Postgres da stack: `db:5432` só na rede interna (o host da VPS já tem outro
+  Postgres na 5432; o bloco `ports` do `db` está desabilitado no compose).
+- Traefik com `exposedByDefault`: serviços não-públicos precisam da label
+  `traefik.enable=false` (o `db` já tem) ou geram spam de erros no log.
+- Let's Encrypt: rate limit de 5 validações falhas/hora por domínio —
+  garanta o DNS propagado (`dig +short dominio`) antes de subir a stack.
+
 ## Comandos úteis
 
 - Dev: `npm run dev` (fallback: `node node_modules/next/dist/bin/next dev`
