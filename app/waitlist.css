@@ -101,6 +101,14 @@ html.is-waitlist-open body {
   font-weight: 600;
 }
 
+.waitlist-field-hint {
+  display: block;
+  margin: -4px 0 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 .waitlist-field input {
   width: 100%;
   min-height: 48px;
@@ -121,6 +129,53 @@ html.is-waitlist-open body {
   border-color: var(--accent);
   outline: 3px solid var(--accent);
   outline-offset: 2px;
+}
+
+.waitlist-consent {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: start;
+  gap: 10px;
+  margin: 4px 0 8px;
+}
+
+.waitlist-consent input {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.waitlist-consent input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.waitlist-consent label {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.waitlist-consent-copy {
+  margin: 0 0 16px 30px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.waitlist-consent-copy a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.waitlist-consent-copy a:hover {
+  text-decoration-thickness: 2px;
 }
 
 .waitlist-error {

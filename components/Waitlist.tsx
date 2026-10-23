@@ -17,6 +17,7 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
+import { PRIVACY_NOTICE_VERSION } from "./privacy-notice-version";
 
 type OpenWaitlist = (trigger: HTMLElement | null) => void;
 
@@ -62,18 +63,23 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [consent, setConsent] = useState(false);
   const [error, setError] = useState("");
 
   const triggerRef = useRef<HTMLElement | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const nameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
   const phoneRef = useRef<HTMLInputElement | null>(null);
+  const consentRef = useRef<HTMLInputElement | null>(null);
   const closeRef = useRef<HTMLButtonElement | null>(null);
 
   const close = () => {
     setOpen(false);
     setSent(false);
+    setConsent(false);
     triggerRef.current?.focus({ preventScroll: true });
   };
 
@@ -81,6 +87,7 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
     triggerRef.current = trigger;
     setError("");
     setSent(false);
+    setConsent(false);
     setOpen(true);
   };
 
@@ -143,9 +150,19 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
       nameRef.current?.focus({ preventScroll: true });
       return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setError("Informe um e-mail válido.");
+      emailRef.current?.focus({ preventScroll: true });
+      return;
+    }
     if (phone.replace(/\D/g, "").length < PHONE_MIN_DIGITS) {
       setError("Informe um telefone válido com DDD, por exemplo: (11) 91234-5678.");
       phoneRef.current?.focus({ preventScroll: true });
+      return;
+    }
+    if (!consent) {
+      setError("É necessário aceitar o aviso de privacidade para continuar.");
+      consentRef.current?.focus({ preventScroll: true });
       return;
     }
     setError("");
@@ -191,12 +208,12 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
             {sent ? (
               <div className="waitlist-success">
                 <span className="waitlist-success-icon" aria-hidden="true">✓</span>
-                <h3 id="waitlist-title">Cadastro recebido!</h3>
+                <h3 id="waitlist-title">Simulação concluída</h3>
                 <p>
-                  Você receberá uma mensagem no WhatsApp informando os próximos
-                  passos para prosseguir com o uso do ChatGuard.
+                  Este formulário é apenas demonstrativo. Seus dados não foram
+                  enviados nem armazenados. Na versão real, os próximos passos
+                  serão enviados pelo WhatsApp.
                 </p>
-                <p className="waitlist-success-phone">Para: {phone}</p>
                 <button className="waitlist-submit" type="button" ref={closeRef} onClick={close}>
                   Fechar
                 </button>
@@ -205,8 +222,8 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
               <form onSubmit={onSubmit} noValidate>
                 <h3 id="waitlist-title">Vamos começar</h3>
                 <p className="waitlist-intro">
-                  Deixe seu nome e telefone. Você receberá no WhatsApp os
-                  próximos passos para conhecer o ChatGuard.
+                  Informe seus dados para registrar seu interesse. Os próximos
+                  passos serão enviados somente pelo WhatsApp.
                 </p>
 
                 <div className="waitlist-field">
@@ -217,9 +234,30 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
                     type="text"
                     autoComplete="name"
                     maxLength={80}
+                    required
                     placeholder="Ex.: Ana Silva"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
+                  />
+                </div>
+
+                <div className="waitlist-field">
+                  <label htmlFor="waitlist-email">E-mail</label>
+                  <span className="waitlist-field-hint">
+                    Usado como identificador do cadastro; não enviaremos
+                    mensagens por e-mail.
+                  </span>
+                  <input
+                    id="waitlist-email"
+                    ref={emailRef}
+                    type="email"
+                    inputMode="email"
+                    autoComplete="email"
+                    maxLength={254}
+                    required
+                    placeholder="voce@exemplo.com"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
                   />
                 </div>
 
@@ -231,11 +269,38 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
                     type="tel"
                     inputMode="tel"
                     autoComplete="tel"
+                    required
                     placeholder="(11) 91234-5678"
                     value={phone}
                     onChange={(event) => setPhone(maskPhone(event.target.value))}
                   />
                 </div>
+
+                <div className="waitlist-consent">
+                  <input
+                    id="waitlist-consent"
+                    ref={consentRef}
+                    type="checkbox"
+                    checked={consent}
+                    required
+                    onChange={(event) => setConsent(event.target.checked)}
+                    aria-describedby="waitlist-consent-copy"
+                  />
+                  <label htmlFor="waitlist-consent">
+                    Li o Aviso de Privacidade (versão{" "}
+                    {PRIVACY_NOTICE_VERSION}) e autorizo o uso dos meus dados
+                    para este cadastro e para receber os próximos passos pelo
+                    WhatsApp.
+                  </label>
+                </div>
+                <p className="waitlist-consent-copy" id="waitlist-consent-copy">
+                  <a href="/privacidade" target="_blank" rel="noreferrer">
+                    Leia o aviso completo (versão {PRIVACY_NOTICE_VERSION})
+                  </a>
+                  . Você pode retirar seu consentimento pelo contato indicado
+                  no aviso. Esta versão de teste não envia nem armazena os
+                  dados.
+                </p>
 
                 {error && (
                   <p className="waitlist-error" role="alert">

@@ -196,6 +196,7 @@ export default function Home() {
         <a className="brand footer-brand" href="#inicio" aria-label="ChatGuard — voltar ao início"><img className="brand-mark" src="/chatguard-sologo.png" alt="" aria-hidden="true" width={784} height={738} /><span className="brand-wordmark"><span className="brand-chat">Chat</span><span className="brand-guard">Guard</span></span></a>
         <p>Menos ruído. Mais contexto.</p>
         <span className="footer-note">Apresentação conceitual · v0.2 · sem funcionalidades operacionais</span>
+        <a className="privacy-footer-link" href="/privacidade">Aviso de Privacidade</a>
         <a className="back-top" href="#inicio">Voltar ao início <span aria-hidden="true">↑</span></a>
       </footer>
     </WaitlistProvider>
