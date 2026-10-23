@@ -381,16 +381,18 @@ Logos — atualizado em 2026-10-23:
   `#006bc1` e `--brand-guard` `#006d99`); a paleta de `docs/visual-identity`
   não foi aplicada.
 
-Pendências da migração:
+Estado da migração:
 
-- Renomear os repositórios no GitHub (`heroguard-app` e
-  `heroguard-docker`); os remotes locais seguem com os nomes antigos (o GitHub
-  redireciona após a renomeação).
-- Aplicar a identidade visual de `docs/visual-identity` (paleta azul/lilás,
-  Manrope/Inter) — não aplicada por decisão do usuário.
-
-> Publicar a imagem `wallesonnn/heroguard-app` e subir a stack foram
-> concluídos em 2026-10-23 — ver "Deploy da stack heroguard.my — 2026-10-23".
+- Concluído em 2026-10-23: imagem `wallesonnn/heroguard-app` publicada e stack
+  no ar (ver "Deploy da stack heroguard.my — 2026-10-23"); repositórios GitHub
+  renomeados pelo usuário — app em `wallesonn/heroguard` e deploy em
+  `wallesonn/heroguard-docker`. Os remotes locais também passaram para as URLs
+  novas, e a stack no Portainer (*Repository*) aponta para
+  `https://github.com/wallesonn/heroguard-docker`.
+- Deferido: a identidade visual de `docs/visual-identity` (paleta azul/lilás,
+  Manrope/Inter) fica documentada como referência para a aplicação de produto,
+  a ser implementada depois. A landing page continua com o tema atual
+  (`--brand-hero` `#006bc1`, `--brand-guard` `#006d99`) por decisão do usuário.
 
 ## Mudança de domínio para heroguard.my — 2026-10-23
 

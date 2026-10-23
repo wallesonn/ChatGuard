@@ -15,11 +15,17 @@ Instruções para agentes que trabalham neste repositório.
 - Domínio alterado de `heroguard.life` para `heroguard.my` em 2026-10-23
   (decisão do usuário). `heroguard.life` fica só como referência histórica na
   documentação; não voltar a usá-lo sem pedido explícito.
+- Repositórios GitHub: app em `wallesonn/heroguard` e deploy em
+  `wallesonn/heroguard-docker` (renomeados pelo usuário em 2026-10-23). Os
+  remotes locais e a stack do Portainer (*Repository*) já usam as URLs novas.
 - Artefatos antigos não usados pela configuração atual: domínio
-  `chatguard.life`, imagem `wallesonnn/chatguard-app`, repositórios GitHub com
-  o nome anterior e os PNGs `chatguard-sologo.png`/`chatguard-logo.png`.
+  `chatguard.life`, imagem `wallesonnn/chatguard-app` e os PNGs
+  `chatguard-sologo.png`/`chatguard-logo.png`.
 - Wordmark: `components`/CSS usam as classes `brand-hero` e `brand-guard` e os
   tokens `--brand-hero`/`--brand-guard`.
+- Identidade visual de `docs/visual-identity` (paleta azul/lilás,
+  Manrope/Inter) **não** é aplicada à landing page — fica documentada para
+  quando a aplicação de produto for implementada.
 - Renomear novamente exige novo deploy, DNS e certificado — só com pedido
   explícito.
 

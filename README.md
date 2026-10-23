@@ -11,8 +11,11 @@ proteção digital para pais e responsáveis ("Menos ruído. Mais contexto.").
 > routers e services do Traefik, labels, usuário/banco `heroguard` e domínio
 > `heroguard.my` (alterado de `heroguard.life` em 2026-10-23). Artefatos
 > antigos (domínio `chatguard.life`, imagem
-> `wallesonnn/chatguard-app`, repositórios GitHub com o nome anterior) não são
-> mais usados por esta configuração.
+> `wallesonnn/chatguard-app`) não são mais usados por esta configuração.
+> Repositórios: [`wallesonn/heroguard`](https://github.com/wallesonn/heroguard)
+> (app) e
+> [`wallesonn/heroguard-docker`](https://github.com/wallesonn/heroguard-docker)
+> (deploy).
 
 A versão atual é uma página de apresentação e conversão: sem backend, sem
 banco em uso, sem funcionalidades de produto. O CTA abre um modal de
