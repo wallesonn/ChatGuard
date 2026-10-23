@@ -3,13 +3,16 @@
 Landing page institucional do **HeroGuard** — plataforma de inteligência e
 proteção digital para pais e responsáveis ("Menos ruído. Mais contexto.").
 
-**Status:** v0.2 em produção — <https://chatguard.life>
+**Status:** v0.2 em produção — <https://heroguard.my>
 
-> **Marca e infraestrutura:** o produto passou a se chamar **HeroGuard**. Os
-> identificadores técnicos publicados continuam com o nome antigo até uma
-> migração dedicada: domínio `chatguard.life`, imagem
-> `wallesonnn/chatguard-app`, containers `chatguard-*`, rede/labels do Traefik
-> e repositórios `chatguard-app` / `chatguard-docker`.
+> **Migração de nome (2026-10-23):** o projeto passou de ChatGuard para
+> **HeroGuard** em todo o código e na infraestrutura versionada — imagem
+> Docker `wallesonnn/heroguard-app`, containers `heroguard-app`/`heroguard-db`,
+> routers e services do Traefik, labels, usuário/banco `heroguard` e domínio
+> `heroguard.my` (alterado de `heroguard.life` em 2026-10-23). Artefatos
+> antigos (domínio `chatguard.life`, imagem
+> `wallesonnn/chatguard-app`, repositórios GitHub com o nome anterior) não são
+> mais usados por esta configuração.
 
 A versão atual é uma página de apresentação e conversão: sem backend, sem
 banco em uso, sem funcionalidades de produto. O CTA abre um modal de
@@ -23,11 +26,11 @@ usam dados fictícios.
 - **Fontes:** Fraunces (títulos) e DM Sans (interface) via `next/font`
   (arquivos locais, sem chamada ao Google Fonts).
 - **Docker:** imagem multi-stage (`node:22-alpine` → `nginx:1.27-alpine`)
-  servindo o estático; publicada como `wallesonnn/chatguard-app`.
+  servindo o estático; publicada como `wallesonnn/heroguard-app`.
 - **Deploy:** VPS com Traefik externo (rede `web`, entrypoint `websecure`,
   certresolver `lets-encrypt`) via stack no **Portainer** — config no repo
-  aninhado [`chatguard-docker/`](chatguard-docker/) (remote próprio:
-  `github.com/wallesonn/chatguard-docker`).
+  aninhado [`heroguard-docker/`](heroguard-docker/) (remote próprio:
+  `github.com/wallesonn/heroguard-docker`).
 - **Postgres 17** provisionado na stack para o backend futuro (rede interna
   `db:5432`, volume `pgdata`); a landing ainda não o utiliza.
 
@@ -50,7 +53,7 @@ Após publicar a imagem, a atualização em produção é manual no Portainer:
 - [`docs/platform-concept.md`](docs/platform-concept.md) — conceito do produto
 - [`docs/implementation-progress.md`](docs/implementation-progress.md) —
   registro de implementação, verificações e do deploy de 2026-10-19
-- [`chatguard-docker/README.md`](chatguard-docker/README.md) — stack Docker,
+- [`heroguard-docker/README.md`](heroguard-docker/README.md) — stack Docker,
   deploy no Portainer e lições do primeiro deploy
 - [`AGENTS.md`](AGENTS.md) — regras de trabalho (commits são manuais, feitos
   pelo usuário)

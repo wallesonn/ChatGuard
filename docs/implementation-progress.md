@@ -1,6 +1,6 @@
 # HeroGuard — Registro de avanço da landing page
 
-**Status:** v0.2 em Next.js 16.4.0 — **em produção** desde 2026-10-19 em `https://chatguard.life` (VPS, Docker, Traefik); imagem `wallesonnn/chatguard-app:v0.1.1`/`latest` no Docker Hub; commits passaram a ser feitos manualmente pelo usuário  
+**Status:** v0.2 em Next.js 16.4.0 — **em produção** desde 2026-10-19 em `https://heroguard.my` (VPS, Docker, Traefik; domínio alterado de `heroguard.life` em 2026-10-23); imagem `wallesonnn/heroguard-app:v0.1.1`/`latest` no Docker Hub; commits passaram a ser feitos manualmente pelo usuário  
 **Especificação-alvo:** [`landing-page.md`](landing-page.md)
 
 Este documento registra os incrementos feitos para chegar à landing page descrita na especificação. Não substitui nem altera silenciosamente a especificação-alvo.
@@ -38,12 +38,12 @@ Este documento registra os incrementos feitos para chegar à landing page descri
 - [x] Testar a simulação em localhost e registrar resultado.
 - [x] Fazer commit após o teste local — commits passaram a ser feitos manualmente pelo usuário (ver "Mudança de governança de commits").
 - [x] Testar na VPS — a v0.2 foi direto para produção via Portainer (sem stack de teste intermediária); ver "Stack Docker e deploy em produção — 2026-10-19".
-- [x] Deploy público verificado: `https://chatguard.life` com certificado válido.
+- [x] Deploy público verificado: `https://heroguard.life` com certificado válido.
 
 ### Verificação local realizada
 
 - Arquivos da implementação: `index.html`, `styles.css` e `script.js`.
-- Servidor de verificação: `python -m http.server 8765 --bind 127.0.0.1 --directory C:/Users/Hermes/Documents/Walleson/Projetos/HeroGuard/chatguard-app`; `http://127.0.0.1:8765/` retornou HTTP 200.
+- Servidor de verificação: `python -m http.server 8765 --bind 127.0.0.1 --directory C:/Users/Hermes/Documents/Walleson/Projetos/HeroGuard/heroguard-app`; `http://127.0.0.1:8765/` retornou HTTP 200.
 - `node --check script.js` e parsing de `index.html` passaram.
 - No navegador, desktop (1366 px) e celular (390 px) sem overflow horizontal.
 - Verificados: espaço reservado sem elemento de vídeo; rolagem livre; CTAs desativados; destinos dos links internos existem; sem formulário nem referências a requisições externas nos arquivos da página.
@@ -260,12 +260,12 @@ Observação de método (não é defeito do código):
 ## Stack Docker e deploy em produção — 2026-10-19
 
 A landing v0.2 foi empacotada em imagem Docker e publicada na VPS, saindo de
-"preview local" para produção em `https://chatguard.life`.
+"preview local" para produção em `https://heroguard.life`.
 
 ### Artefatos criados
 
-- **`chatguard-docker/`** (repo próprio aninhado, remote
-  `github.com/wallesonn/chatguard-docker`, mesmo padrão do
+- **`heroguard-docker/`** (repo próprio aninhado, remote
+  `github.com/wallesonn/heroguard-docker`, mesmo padrão do
   `inlaudo-web/inlaudo-docker`):
   - `Dockerfile` multi-stage: `node:22-alpine` (`npm ci` + `next build`) →
     `nginx:1.27-alpine` servindo o export estático `out/` (~28 MB).
@@ -277,25 +277,25 @@ A landing v0.2 foi empacotada em imagem Docker e publicada na VPS, saindo de
     (pedido do usuário); Dockerfile/nginx.conf/.env.example ficam só no disco.
 - **`build.sh`** (raiz do app): `./build.sh vX.Y.Z` — `docker buildx`,
   `linux/amd64`, tags versão + `latest`, `--push` para
-  `wallesonnn/chatguard-app`. O contexto é a raiz do repo, então
+  `wallesonnn/heroguard-app`. O contexto é a raiz do repo, então
   `public/videos/` entra na imagem quando o vídeo existir.
 - **`.dockerignore`** na raiz — contexto enxuto sem excluir `public/videos/`.
 
 ### Configuração alinhada à infra real da VPS
 
 Espelhada do compose do inlaudo: rede externa `web`, entrypoint `websecure`,
-certresolver `lets-encrypt`, `Host(\`chatguard.life\`)`, porta interna 80,
+certresolver `lets-encrypt`, `Host(\`heroguard.life\`)`, porta interna 80,
 imagem parametrizada por `DOCKER_IMAGE`.
 
 ### Deploy (Portainer, método Repository)
 
 Deploy manual pelo Portainer apontando para o repo público
-`wallesonn/chatguard-docker`. Problemas encontrados e resolvidos:
+`wallesonn/heroguard-docker`. Problemas encontrados e resolvidos:
 
 1. **`build:` quebrava o deploy** — o Portainer clona só o repo de deploy
-   (sem código-fonte) e falhava em `lstat .../chatguard-docker`. Removido o
+   (sem código-fonte) e falhava em `lstat .../heroguard-docker`. Removido o
    bloco `build:`; o compose só puxa a imagem pronta do Docker Hub.
-2. **Let's Encrypt falhou → rate limit** — o DNS de `chatguard.life` era novo
+2. **Let's Encrypt falhou → rate limit** — o DNS de `heroguard.life` era novo
    demais (`no valid A records found`); após 5 validações falhas, o LE
    aplicou limite de 1h. O Traefik retentou sozinho quando o limite expirou
    (~22:11 UTC) e o certificado foi emitido. Lição: DNS propagado antes do
@@ -308,16 +308,16 @@ Deploy manual pelo Portainer apontando para o repo público
 
 ### Resultado verificado
 
-- `https://chatguard.life` → HTTP 200 (223 KB) com certificado Let's Encrypt
+- `https://heroguard.life` → HTTP 200 (223 KB) com certificado Let's Encrypt
   válido; redirect HTTP→HTTPS ativo; tráfego real já observado nos logs.
-- Imagem em produção: `wallesonnn/chatguard-app` (`v0.1.1` / `latest`).
+- Imagem em produção: `wallesonnn/heroguard-app` (`v0.1.1` / `latest`).
 - Fluxo de atualização: `./build.sh vX.Y.Z` → **Pull and redeploy** na stack
   (ou `DOCKER_IMAGE` travada + **Update the stack**).
 
 ### Mudança de governança de commits
 
 A partir desta etapa, **o usuário faz commits e pushes manualmente** nos dois
-repos (app e `chatguard-docker`). Agentes preparam alterações, mas não
+repos (app e `heroguard-docker`). Agentes preparam alterações, mas não
 commitam nem publicam — regra registrada em `AGENTS.md`.
 
 ## Renomeação da marca para HeroGuard — 2026-10-23
@@ -339,22 +339,32 @@ Alterado:
 - `public/mundo-em-movimento-vetor-master-01.svg` — títulos/descrição e
   wordmark do infográfico; `components/MundoEmMovimento.tsx` e
   `app/mundo-em-movimento.css` regenerados pelo script (nunca editados à mão).
-  "HeroGuard" tem o mesmo número de caracteres de "ChatGuard", então o
+  "HeroGuard" tem o mesmo número de caracteres de "HeroGuard", então o
   `textLength="90"` do `<tspan>` continua válido.
 - `package.json` / `package-lock.json` — nome do pacote
   `heroguard-landing`.
 - `index.html` (versão estática legada v0.1) — textos e wordmark.
 - Documentação: `README.md`, `AGENTS.md`, `docs/landing-page.md`,
-  `docs/platform-concept.md`, este arquivo e `chatguard-docker/README.md`.
+  `docs/platform-concept.md`, este arquivo e `heroguard-docker/README.md`.
 
-Mantido de propósito (infraestrutura, exige migração dedicada):
+Renomeação de infraestrutura — concluída no código em 2026-10-23:
 
-- Domínio `chatguard.life` e `www.chatguard.life`, certificado emitido.
-- Imagem `wallesonnn/chatguard-app`; containers `chatguard-app`/`chatguard-db`.
-- Routers/services do Traefik (`chatguard`, `chatguard-test`), labels
-  (`app=chatguard`, `service=chatguard-app`).
-- Usuário/banco `chatguard`, pastas `chatguard-app`/`chatguard-docker` e
-  repositórios no GitHub.
+- Domínio das regras do Traefik: `chatguard.life` → `heroguard.life`
+  (incluindo `www.heroguard.life`); em 2026-10-23 passou para
+  `heroguard.my` — ver "Mudança de domínio para heroguard.my".
+- Imagem Docker: `wallesonnn/chatguard-app` → `wallesonnn/heroguard-app`
+  (repositório novo criado pelo usuário no Docker Hub) em `build.sh`,
+  `docker-compose.yml` e `.env.example`.
+- Containers: `chatguard-app`/`chatguard-db` → `heroguard-app`/`heroguard-db`.
+- Traefik: routers/services `chatguard` → `heroguard`; labels
+  `app=heroguard`, `domain=heroguard.life`, `service=heroguard-app`.
+- Postgres: usuário/banco padrão `heroguard` (volume `pgdata` mantido).
+- Pastas e caminhos: `chatguard-docker/` → `heroguard-docker/` (repo aninhado
+  com o mesmo `.git`), referência no `.gitignore` do app e `-f
+  heroguard-docker/Dockerfile` no `build.sh`. O diretório raiz do app também
+  foi renomeado para `heroguard-app/`.
+- `docs/landing-page.md`, `README.md`, `AGENTS.md`,
+  `heroguard-docker/README.md` e este arquivo atualizados.
 
 Logos — atualizado em 2026-10-23:
 
@@ -370,22 +380,53 @@ Logos — atualizado em 2026-10-23:
   `#006bc1` e `--brand-guard` `#006d99`); a paleta de `docs/visual-identity`
   não foi aplicada.
 
-Pendente de decisão:
+Pendências da migração:
 
-- Migrar domínio, imagem e nomes de infraestrutura para `heroguard` (novo DNS,
-  novo certificado, nova stack) — não executado.
+- Publicar a imagem `wallesonnn/heroguard-app` no Docker Hub e subir a nova
+  stack — o site em `heroguard.my` só responde depois do DNS apontar para a
+  VPS e do certificado ser emitido.
+- Renomear os repositórios no GitHub (`heroguard-app` e
+  `heroguard-docker`); os remotes locais seguem com os nomes antigos (o GitHub
+  redireciona após a renomeação).
 - Aplicar a identidade visual de `docs/visual-identity` (paleta azul/lilás,
   Manrope/Inter) — não aplicada por decisão do usuário.
+
+## Mudança de domínio para heroguard.my — 2026-10-23
+
+Decisão do usuário: o domínio público passa de `heroguard.life` para
+**`heroguard.my`** (incluindo `www.heroguard.my`). A marca e os demais
+identificadores técnicos (imagem, containers, routers/services, labels
+`app`/`service`, usuário/banco) permanecem inalterados.
+
+Alterado:
+
+- `heroguard-docker/docker-compose.yml` — label `domain=heroguard.my` e regra
+  do Traefik `Host(\`heroguard.my\`) || Host(\`www.heroguard.my\`)`.
+- `AGENTS.md`, `README.md`, `docs/landing-page.md`,
+  `heroguard-docker/README.md` e este arquivo — identificadores atuais e
+  instruções de deploy com o novo domínio. As seções históricas do deploy de
+  2026-10-19 mantêm `heroguard.life`, que era o domínio em uso na data.
+
+Para entrar no ar:
+
+1. Apontar o DNS de `heroguard.my` e `www.heroguard.my` para o IP da VPS e
+   confirmar a propagação (`dig +short heroguard.my`).
+2. Publicar o repo `wallesonn/heroguard-docker` (o compose mudou) e fazer
+   **Update the stack** no Portainer — o Traefik passa a rotear o novo host e
+   emite o certificado Let's Encrypt. Sem o DNS propagado, o LE aplica rate
+   limit após 5 falhas.
+3. Opcional: manter `heroguard.life` na regra do Traefik durante a transição
+   (basta acrescentar `|| Host(\`heroguard.life\`) || Host(\`www.heroguard.life\`)`).
 
 ## Pendências
 
 - Ajustes finos de ritmo ou legibilidade somente se forem solicitados pelo usuário.
-- `www.chatguard.life` adicionado à regra do Traefik
-  (`Host(\`chatguard.life\`) || Host(\`www.chatguard.life\`)`) — entra em
+- `www.heroguard.my` adicionado à regra do Traefik
+  (`Host(\`heroguard.my\`) || Host(\`www.heroguard.my\`)`) — entra em
   vigor no próximo **Update the stack**; o certificado será reemitido com
   SAN para os dois hosts.
 - Banco de dados: quando o backend entrar, avaliar reaproveitar o Postgres já
-  existente na VPS (criando database `chatguard`) vs. manter o dedicado da
+  existente na VPS (criando database `heroguard`) vs. manter o dedicado da
   stack; decidir também se o `db` da stack precisará de porta no host.
 - Backend da waitlist: tirar a página de `output: 'export'`, runtime Node,
   `POST /api/waitlist`, tabela `waitlist` (modelo discutido), integração n8n.

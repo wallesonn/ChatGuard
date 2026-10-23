@@ -1,7 +1,7 @@
 # HeroGuard — Documentação Inicial da Landing Page
 
 **Versão:** 0.2  
-**Status:** Especificação implementada — v0.2 em produção em `chatguard.life` (deploy 2026-10-19; ver `implementation-progress.md`)  
+**Status:** Especificação implementada — v0.2 em produção em `heroguard.my` (deploy 2026-10-19; ver `implementation-progress.md`)  
 **Tipo:** Landing page institucional / lista de espera
 
 ## 1. Visão geral

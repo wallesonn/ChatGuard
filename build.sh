@@ -9,12 +9,12 @@ fi
 
 VERSION=$1
 
-DOCKER_IMAGE="${DOCKER_IMAGE:-wallesonnn/chatguard-app}"
+DOCKER_IMAGE="${DOCKER_IMAGE:-wallesonnn/heroguard-app}"
 DOCKER_PLATFORM="${DOCKER_PLATFORM:-linux/amd64}"
 
 echo "🔨 Building: ${DOCKER_IMAGE}:${VERSION} (${DOCKER_PLATFORM})"
 docker buildx build --platform "${DOCKER_PLATFORM}" --no-cache --progress=plain \
-  -f chatguard-docker/Dockerfile \
+  -f heroguard-docker/Dockerfile \
   -t "${DOCKER_IMAGE}:${VERSION}" \
   -t "${DOCKER_IMAGE}:latest" \
   --push \

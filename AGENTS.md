@@ -4,44 +4,55 @@ Instruções para agentes que trabalham neste repositório.
 
 ## Marca e identificadores técnicos
 
-- O produto se chama **HeroGuard** (antes ChatGuard). Textos de interface,
-  metadados, docs e o wordmark usam HeroGuard.
-- Os identificadores técnicos **continuam** com o nome antigo até uma
-  migração dedicada: domínio `chatguard.life`, imagem
-  `wallesonnn/chatguard-app`, containers `chatguard-*`, nomes de
-  routers/services do Traefik, labels (`app=chatguard` etc.), usuário/banco
-  `chatguard`, pastas `chatguard-app`/`chatguard-docker` e os repositórios no
-  GitHub. Não renomear sem pedido explícito — isso exige novo deploy, DNS e
-  certificado.
+- O produto e o projeto se chamam **HeroGuard** (antes ChatGuard). A migração
+  de nome foi aplicada em 2026-10-23 em todo o código e na infraestrutura
+  versionada.
+- Identificadores atuais: domínio `heroguard.my` (e `www.heroguard.my`),
+  imagem `wallesonnn/heroguard-app`, containers `heroguard-app`/`heroguard-db`,
+  routers/services do Traefik `heroguard`, labels (`app=heroguard`,
+  `domain=heroguard.my`, `service=heroguard-app`), usuário/banco
+  `heroguard`, pastas `heroguard-app`/`heroguard-docker`.
+- Domínio alterado de `heroguard.life` para `heroguard.my` em 2026-10-23
+  (decisão do usuário). `heroguard.life` fica só como referência histórica na
+  documentação; não voltar a usá-lo sem pedido explícito.
+- Artefatos antigos não usados pela configuração atual: domínio
+  `chatguard.life`, imagem `wallesonnn/chatguard-app`, repositórios GitHub com
+  o nome anterior e os PNGs `chatguard-sologo.png`/`chatguard-logo.png`.
 - Wordmark: `components`/CSS usam as classes `brand-hero` e `brand-guard` e os
   tokens `--brand-hero`/`--brand-guard`.
+- Renomear novamente exige novo deploy, DNS e certificado — só com pedido
+  explícito.
 
 ## Controle de versão (regra do usuário)
 
-- **Não fazer commits nem push** — nem no repo do app (`chatguard-app`) nem no
-  repo aninhado `chatguard-docker/` (que tem remote próprio no GitHub).
+- **Não fazer commits nem push** — nem no repo do app (`heroguard-app`) nem no
+  repo aninhado `heroguard-docker/` (que tem remote próprio no GitHub).
   O usuário faz os commits manualmente. Exceção: somente quando ele pedir
   explicitamente.
 - Preparar alterações (edições, `git rm --cached`, stage) é permitido;
   `git commit` e `git push` não.
 
-## Repo aninhado chatguard-docker/
+## Repo aninhado heroguard-docker/
 
-- Remote próprio: `github.com/wallesonn/chatguard-docker` — padrão igual ao
+- Remote próprio: `github.com/wallesonn/heroguard-docker` — padrão igual ao
   inlaudo (`inlaudo-web/inlaudo-docker`).
 - O GitHub rastreia **somente** `README.md` e `docker-compose.yml`. Os demais
   arquivos (Dockerfile, nginx.conf, .dockerignore, .env.example) são apenas
   locais, ignorados pelo `.gitignore` da pasta.
-- Não usar `git add .` no repo do app: a pasta `chatguard-docker/` é um repo
+- Não usar `git add .` no repo do app: a pasta `heroguard-docker/` é um repo
   aninhado e seria adicionada como "embedded repo" (gitlink).
 
 ## Produção / deploy
 
-- Site no ar desde 2026-10-19: `https://chatguard.life` (certificado Let's
-  Encrypt válido). Deploy manual via **Portainer**, método *Repository*
-  apontando para `wallesonn/chatguard-docker`.
+- Produção anterior no ar desde 2026-10-19 em `https://chatguard.life`
+  (stack `chatguard`, certificado Let's Encrypt). Em 2026-10-23 o projeto foi
+  renomeado para HeroGuard: a nova stack usa `https://heroguard.my` (domínio
+  trocado em 2026-10-23) e só responde depois que o DNS apontar para a VPS e
+  o certificado for emitido.
+- Deploy manual via **Portainer**, método *Repository* apontando para
+  `wallesonn/heroguard-docker`.
 - Fluxo de atualização: `./build.sh vX.Y.Z` (build + push no Docker Hub,
-  imagem `wallesonnn/chatguard-app`) → **Pull and redeploy** ou
+  imagem `wallesonnn/heroguard-app`) → **Pull and redeploy** ou
   `DOCKER_IMAGE=<tag>` + **Update the stack** no Portainer.
 - Infra da VPS (mesma do inlaudo): Traefik externo, rede `web`, entrypoint
   `websecure`, certresolver `lets-encrypt`. O compose de deploy **não** tem
