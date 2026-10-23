@@ -1,4 +1,4 @@
-# ChatGuard — Conceito e Objetivo da Plataforma
+# HeroGuard — Conceito e Objetivo da Plataforma
 
 **Versão:** 0.1  
 **Status:** Conceito inicial  
@@ -6,13 +6,13 @@
 
 ## 1. Visão geral
 
-O ChatGuard é uma plataforma de inteligência e proteção digital criada para ajudar pais e responsáveis a compreender melhor o ambiente digital em que seus filhos estão inseridos.
+O HeroGuard é uma plataforma de inteligência e proteção digital criada para ajudar pais e responsáveis a compreender melhor o ambiente digital em que seus filhos estão inseridos.
 
 A plataforma foi concebida para reduzir o excesso de informações e destacar conversas ou situações que possam merecer atenção, sem exigir que os responsáveis acompanhem manualmente todas as interações digitais dos filhos.
 
 ## 2. Propósito
 
-O objetivo principal do ChatGuard é oferecer aos responsáveis uma visão mais organizada e contextualizada da vida digital dos filhos.
+O objetivo principal do HeroGuard é oferecer aos responsáveis uma visão mais organizada e contextualizada da vida digital dos filhos.
 
 A plataforma deverá ajudar a identificar quais conversas e situações podem merecer atenção, permitindo que os responsáveis ajam quando necessário sem precisar analisar individualmente todo o volume de interações.
 
@@ -22,11 +22,11 @@ O objetivo final é aproximar pais e filhos no mundo digital, oferecendo melhore
 
 Crianças e adolescentes mantêm diariamente dezenas ou centenas de interações por aplicativos de mensagens e redes sociais. Para os pais e responsáveis, acompanhar todo esse volume de informação é praticamente impossível.
 
-Esse excesso de conversas pode dificultar a identificação do que realmente merece atenção. O ChatGuard pretende reduzir essa sobrecarga, transformando grandes volumes de interações em informações mais simples, organizadas e compreensíveis.
+Esse excesso de conversas pode dificultar a identificação do que realmente merece atenção. O HeroGuard pretende reduzir essa sobrecarga, transformando grandes volumes de interações em informações mais simples, organizadas e compreensíveis.
 
 ## 4. Acompanhamento parental transparente
 
-O ChatGuard parte da proposta de que pais e responsáveis podem acessar as conversas de filhos crianças e adolescentes para protegê-los. O responsável deve informar o filho sobre o uso do ChatGuard e sobre esse acompanhamento, cujo objetivo é a proteção e o diálogo familiar.
+O HeroGuard parte da proposta de que pais e responsáveis podem acessar as conversas de filhos crianças e adolescentes para protegê-los. O responsável deve informar o filho sobre o uso do HeroGuard e sobre esse acompanhamento, cujo objetivo é a proteção e o diálogo familiar.
 
 Esse acompanhamento não deve ser oculto. A comunicação deve reconhecer o papel dos responsáveis sem incentivar conclusões precipitadas: uma classificação ou conversa sinalizada não é, por si só, prova de perigo ou comportamento inadequado.
 
@@ -50,7 +50,7 @@ Devem ser evitadas abordagens baseadas em:
 
 ## 5. Inteligência artificial
 
-Na visão futura do produto, o ChatGuard utilizará inteligência artificial para analisar as interações disponíveis e identificar padrões ou elementos que possam merecer diferentes níveis de atenção.
+Na visão futura do produto, o HeroGuard utilizará inteligência artificial para analisar as interações disponíveis e identificar padrões ou elementos que possam merecer diferentes níveis de atenção.
 
 A inteligência artificial deverá funcionar como um mecanismo de triagem e organização de informações. Seu objetivo será reduzir o ruído e destacar situações que possam exigir uma análise mais cuidadosa por parte do responsável.
 
@@ -80,7 +80,7 @@ A classificação deve servir como indicação para que o responsável compreend
 
 ## 7. Contexto antes de conclusão
 
-O ChatGuard deve incentivar o responsável a compreender o contexto antes de tirar conclusões sobre uma conversa, pessoa ou situação.
+O HeroGuard deve incentivar o responsável a compreender o contexto antes de tirar conclusões sobre uma conversa, pessoa ou situação.
 
 Uma classificação visual não deve ser utilizada isoladamente para determinar que uma interação é perigosa ou inadequada. O responsável deve considerar, sempre que possível:
 
@@ -107,7 +107,7 @@ A experiência deverá:
 
 ## 9. Redução da sobrecarga
 
-O ChatGuard foi concebido para reduzir a quantidade de informação que os pais precisam processar.
+O HeroGuard foi concebido para reduzir a quantidade de informação que os pais precisam processar.
 
 Em vez de apresentar todas as conversas com o mesmo nível de importância, a plataforma deverá organizar as informações de modo que o responsável consiga concentrar sua atenção nas situações mais relevantes.
 
@@ -117,7 +117,7 @@ A proposta pode ser resumida por:
 
 ## 10. Experiência do produto
 
-A experiência do ChatGuard deve ser:
+A experiência do HeroGuard deve ser:
 
 - Simples;
 - Visual;
@@ -130,7 +130,7 @@ A interface deve transmitir inteligência e proteção sem assumir uma aparênci
 
 ## 11. Filosofia da plataforma
 
-A filosofia do ChatGuard é baseada nos seguintes princípios:
+A filosofia do HeroGuard é baseada nos seguintes princípios:
 
 - **Inteligência:** utilizar tecnologia para organizar informações complexas;
 - **Contexto:** evitar conclusões baseadas em sinais isolados;
@@ -143,7 +143,7 @@ A filosofia do ChatGuard é baseada nos seguintes princípios:
 
 ### Mensagem principal
 
-> **ChatGuard — Menos ruído. Mais contexto.**
+> **HeroGuard — Menos ruído. Mais contexto.**
 
 ### Mensagem complementar
 
@@ -173,7 +173,7 @@ Qualquer conversa, contato, alerta, classificação ou dashboard exibido na land
 
 ## 14. Visão de longo prazo
 
-O ChatGuard deverá evoluir para uma plataforma capaz de ajudar famílias a compreender diferentes aspectos da vida digital dos filhos.
+O HeroGuard deverá evoluir para uma plataforma capaz de ajudar famílias a compreender diferentes aspectos da vida digital dos filhos.
 
 A evolução do produto deverá preservar seus princípios fundamentais:
 

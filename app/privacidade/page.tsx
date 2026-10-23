@@ -4,9 +4,9 @@ import {
 } from "@/components/privacy-notice-version";
 
 export const metadata = {
-  title: "Aviso de Privacidade — ChatGuard",
+  title: "Aviso de Privacidade — HeroGuard",
   description:
-    "Aviso de privacidade da lista de espera do ChatGuard e informações sobre o tratamento de dados pessoais.",
+    "Aviso de privacidade da lista de espera do HeroGuard e informações sobre o tratamento de dados pessoais.",
 };
 
 export default function PrivacyPage() {
@@ -14,9 +14,9 @@ export default function PrivacyPage() {
     <main className="privacy-page">
       <article className="privacy-document">
         <a className="privacy-back" href="/">
-          ← Voltar ao ChatGuard
+          ← Voltar ao HeroGuard
         </a>
-        <p className="privacy-eyebrow">ChatGuard · Lista de espera</p>
+        <p className="privacy-eyebrow">HeroGuard · Lista de espera</p>
         <h1>Aviso de Privacidade</h1>
         <p className="privacy-updated">
           Versão {PRIVACY_NOTICE_VERSION} · Atualizado em{" "}
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
         <section>
           <h2>1. Quem é responsável pelos dados</h2>
           <p>
-            O responsável pelo ChatGuard e controlador dos dados pessoais da
+            O responsável pelo HeroGuard e controlador dos dados pessoais da
             lista de espera é Walleson Nonato de Sousa Ferreira. Para dúvidas
             ou solicitações relacionadas a privacidade, escreva para{" "}
             <a href="mailto:walesonnn@gmail.com">walesonnn@gmail.com</a>.
@@ -59,7 +59,7 @@ export default function PrivacyPage() {
           <p>
             Com o consentimento da pessoa cadastrada, os dados serão usados
             para registrar o interesse na lista de espera e enviar, somente
-            pelo WhatsApp, os próximos passos para conhecer o ChatGuard. Não
+            pelo WhatsApp, os próximos passos para conhecer o HeroGuard. Não
             serão usados para publicidade ou mensagens promocionais. O
             tratamento do cadastro terá como base legal o consentimento, nos
             termos da LGPD.
@@ -89,7 +89,7 @@ export default function PrivacyPage() {
           <h2>5. Análise de conversas — funcionalidade futura</h2>
           <p>
             A análise de mensagens de WhatsApp não está implementada. Hoje, o
-            ChatGuard não coleta conversas reais nem as envia à Uazapi, ao n8n
+            HeroGuard não coleta conversas reais nem as envia à Uazapi, ao n8n
             ou a um modelo de inteligência artificial. A arquitetura
             considerada para uma versão futura é Uazapi → n8n → API externa de
             inteligência artificial. O provedor do modelo ainda não foi

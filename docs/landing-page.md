@@ -1,4 +1,4 @@
-# ChatGuard — Documentação Inicial da Landing Page
+# HeroGuard — Documentação Inicial da Landing Page
 
 **Versão:** 0.2  
 **Status:** Especificação implementada — v0.2 em produção em `chatguard.life` (deploy 2026-10-19; ver `implementation-progress.md`)  
@@ -6,13 +6,13 @@
 
 ## 1. Visão geral
 
-A landing page do ChatGuard será uma experiência institucional, cinematográfica e emocional para apresentar a proposta do produto a pais, mães e responsáveis por crianças e adolescentes.
+A landing page do HeroGuard será uma experiência institucional, cinematográfica e emocional para apresentar a proposta do produto a pais, mães e responsáveis por crianças e adolescentes.
 
 Nesta primeira versão, a página terá exclusivamente objetivos de apresentação e conversão para uma futura lista de espera. A aplicação ainda não terá funcionalidades de produto implementadas.
 
 ### 1.1 Finalidade da plataforma
 
-O ChatGuard é uma plataforma de inteligência e proteção digital criada para ajudar pais e responsáveis a compreender melhor o ambiente digital em que seus filhos estão inseridos.
+O HeroGuard é uma plataforma de inteligência e proteção digital criada para ajudar pais e responsáveis a compreender melhor o ambiente digital em que seus filhos estão inseridos.
 
 A plataforma deverá ajudar os responsáveis a identificar quais conversas e situações podem merecer atenção, sem exigir o acompanhamento manual de todas as interações digitais dos filhos.
 
@@ -22,11 +22,11 @@ O objetivo final é aproximar pais e filhos no mundo digital, oferecendo melhore
 
 Crianças e adolescentes mantêm diariamente dezenas ou centenas de interações por aplicativos de mensagens e redes sociais. Para os responsáveis, acompanhar todo esse volume de informação é praticamente impossível.
 
-O ChatGuard pretende reduzir essa sobrecarga ao transformar grandes volumes de conversas em informações mais simples, organizadas e compreensíveis, destacando aquilo que pode exigir maior atenção.
+O HeroGuard pretende reduzir essa sobrecarga ao transformar grandes volumes de conversas em informações mais simples, organizadas e compreensíveis, destacando aquilo que pode exigir maior atenção.
 
 ### 1.3 Acompanhamento parental transparente
 
-O ChatGuard parte da proposta de que pais e responsáveis podem acessar as conversas de filhos crianças e adolescentes para protegê-los. O responsável deve informar o filho sobre o uso do ChatGuard e sobre esse acompanhamento, cujo objetivo é a proteção e o diálogo familiar.
+O HeroGuard parte da proposta de que pais e responsáveis podem acessar as conversas de filhos crianças e adolescentes para protegê-los. O responsável deve informar o filho sobre o uso do HeroGuard e sobre esse acompanhamento, cujo objetivo é a proteção e o diálogo familiar.
 
 Esse acompanhamento não deve ser oculto. A comunicação deve transmitir proteção, proximidade e responsabilidade, sem recorrer ao medo, à paranoia ou a afirmações de perigo sem contexto. Uma classificação ou conversa sinalizada não é, por si só, prova de perigo ou comportamento inadequado.
 
@@ -42,7 +42,7 @@ As conversas poderão ser organizadas em três níveis visuais:
 
 As classificações representam sinais identificados pela inteligência artificial. Elas não devem ser interpretadas como prova de que existe um problema, perigo ou comportamento inadequado.
 
-O ChatGuard deve incentivar o responsável a compreender o contexto antes de tirar conclusões sobre uma conversa, pessoa ou situação.
+O HeroGuard deve incentivar o responsável a compreender o contexto antes de tirar conclusões sobre uma conversa, pessoa ou situação.
 
 ### 1.5 Experiência e organização das informações
 
@@ -52,7 +52,7 @@ A experiência deve ajudar o responsável a reduzir o ruído e focar no que impo
 
 ### 1.6 Filosofia da plataforma
 
-O conceito central do ChatGuard pode ser resumido por:
+O conceito central do HeroGuard pode ser resumido por:
 
 > **Você não precisa olhar tudo. Precisa saber o que merece sua atenção.**
 
@@ -65,7 +65,7 @@ Os princípios de longo prazo da plataforma são:
 - Proteção;
 - Presença.
 
-> **ChatGuard — Menos ruído. Mais contexto.**  
+> **HeroGuard — Menos ruído. Mais contexto.**  
 > **Proteção também é presença.**
 
 ### 1.7 Relação com a primeira versão da landing page
@@ -82,7 +82,7 @@ Fazer com que o visitante:
 
 1. Entenda os desafios da vida digital dos filhos;
 2. Perceba a importância de acompanhar esse ambiente com responsabilidade;
-3. Conheça a proposta do ChatGuard;
+3. Conheça a proposta do HeroGuard;
 4. Tenha interesse em participar da lista de espera.
 
 ### Chamada principal para ação
@@ -98,7 +98,7 @@ O CTA deve aparecer em pontos estratégicos da página, especialmente no hero e 
 - Landing page institucional responsiva;
 - Apresentação do problema;
 - Storytelling sobre a presença digital de crianças e adolescentes;
-- Apresentação conceitual do ChatGuard;
+- Apresentação conceitual do HeroGuard;
 - Demonstrações visuais e simulações da futura experiência do produto;
 - Elementos visuais de classificação `GREEN`, `YELLOW` e `RED`;
 - CTAs e botões apresentados visualmente, sem ações funcionais nesta versão;
@@ -173,9 +173,9 @@ A landing page não deve se comportar como uma página corporativa tradicional. 
 
 ### Apresentação da solução
 
-> **ChatGuard. Uma nova forma de acompanhar a vida digital dos seus filhos.**
+> **HeroGuard. Uma nova forma de acompanhar a vida digital dos seus filhos.**
 
-A comunicação deve apresentar o ChatGuard como uma ferramenta de acompanhamento parental transparente: o responsável tem acesso às conversas e informa o filho sobre esse acompanhamento, com o objetivo de protegê-lo e apoiar o diálogo familiar.
+A comunicação deve apresentar o HeroGuard como uma ferramenta de acompanhamento parental transparente: o responsável tem acesso às conversas e informa o filho sobre esse acompanhamento, com o objetivo de protegê-lo e apoiar o diálogo familiar.
 
 ## 6. Público-alvo
 
@@ -197,7 +197,7 @@ O visitante provavelmente:
 - Demonstra preocupação com segurança digital;
 - Deseja perceber situações nas redes sociais que possam merecer atenção;
 - Tem uma rotina de trabalho e pouco tempo para acompanhar de perto as relações digitais dos filhos;
-- Pretende informar o filho sobre o uso do ChatGuard e exercer um acompanhamento parental transparente.
+- Pretende informar o filho sobre o uso do HeroGuard e exercer um acompanhamento parental transparente.
 
 ### Diretrizes de linguagem
 
@@ -242,7 +242,7 @@ A identidade visual deve transmitir:
 
 ### Wordmark e cor da marca
 
-**Decisão aprovada:** todas as ocorrências visuais do wordmark `ChatGuard` devem corresponder à cor da logo aprovada. O teal de marca identificado na V5 é `#276C63`; mantê-lo num token próprio (`--brand`), separado do acento genérico da interface (`--accent`), mesmo enquanto os valores forem iguais. Aplicar ao header, footer, títulos de marca, mockups conceituais e menções inline estilizadas como marca. Não recolorir o restante do tema nem os níveis GREEN/YELLOW/RED.
+**Decisão aprovada:** todas as ocorrências visuais do wordmark `HeroGuard` devem corresponder à cor da logo aprovada. O teal de marca identificado na V5 é `#276C63`; mantê-lo num token próprio (`--brand`), separado do acento genérico da interface (`--accent`), mesmo enquanto os valores forem iguais. Aplicar ao header, footer, títulos de marca, mockups conceituais e menções inline estilizadas como marca. Não recolorir o restante do tema nem os níveis GREEN/YELLOW/RED.
 
 ## 8. Estrutura da página
 
@@ -250,7 +250,7 @@ A página deverá seguir aproximadamente a sequência abaixo.
 
 ### 8.1 Header
 
-Responsável por apresentar a marca ChatGuard e oferecer navegação ou acesso ao CTA, conforme a definição visual da implementação.
+Responsável por apresentar a marca HeroGuard e oferecer navegação ou acesso ao CTA, conforme a definição visual da implementação.
 
 ### 8.2 Hero com vídeo cinematográfico
 
@@ -306,11 +306,11 @@ Mensagem sugerida:
 
 > **Uma notícia, com contexto.**
 >
-> Reportagens de outubro de 2026 relataram que uma adolescente brasileira viajou sozinha a Portugal para encontrar uma pessoa que conheceu online. Segundo O Globo, a família já sabia do contato, mas não da viagem. Ela foi localizada em segurança; a investigação prosseguia, e “rapto” era uma alegação atribuída à família. Este caso não representa todas as relações digitais nem demonstra o que o ChatGuard teria prevenido.
+> Reportagens de outubro de 2026 relataram que uma adolescente brasileira viajou sozinha a Portugal para encontrar uma pessoa que conheceu online. Segundo O Globo, a família já sabia do contato, mas não da viagem. Ela foi localizada em segurança; a investigação prosseguia, e “rapto” era uma alegação atribuída à família. Este caso não representa todas as relações digitais nem demonstra o que o HeroGuard teria prevenido.
 
 Fontes para atribuição editorial: [UOL](https://noticias.uol.com.br/cotidiano/ultimas-noticias/2026/10/14/filha-de-prefeito-do-rn-e-achada-em-portugal-apos-suspeita-de-rapto-virtual.ghtm), de 14 de outubro de 2026, e [O Globo — snapshot arquivado de 13 de outubro de 2026](https://archive.ph/20261013192705/https://oglobo.globo.com/brasil/noticia/2026/10/13/filha-de-prefeito-de-cidade-do-rn-de-14-anos-e-encontrada-em-portugal-caso-e-tratado-como-rapto.ghtml). Os links de origem podem revelar mais dados pessoais do que o resumo da landing page.
 
-Não usar nome, rosto, idade exata, cidade de origem, escola, identificação dos responsáveis, perfis, capturas de conversas, detalhes de abuso ou reconstituição do caso. Identificar o bloco como resumo editorial e manter veículo/data e link de fonte visíveis, usando rótulo neutro para os links. Não sugerir que o ChatGuard detectaria, impediria ou teria evitado o ocorrido. A fonte externa pode revelar dados de identificação; esse risco deve ser considerado na revisão final antes da publicação.
+Não usar nome, rosto, idade exata, cidade de origem, escola, identificação dos responsáveis, perfis, capturas de conversas, detalhes de abuso ou reconstituição do caso. Identificar o bloco como resumo editorial e manter veículo/data e link de fonte visíveis, usando rótulo neutro para os links. Não sugerir que o HeroGuard detectaria, impediria ou teria evitado o ocorrido. A fonte externa pode revelar dados de identificação; esse risco deve ser considerado na revisão final antes da publicação.
 
 ### 8.5 A virada
 
@@ -321,7 +321,7 @@ Mensagem sugerida:
 > **Não é sobre controlar.**  
 > **É sobre estar presente.**
 
-### 8.6 Apresentação do ChatGuard
+### 8.6 Apresentação do HeroGuard
 
 Introduzir o produto como uma nova forma de acompanhar a vida digital dos filhos.
 
@@ -329,7 +329,7 @@ A seção pode utilizar um dashboard animado ou uma representação visual do pr
 
 #### Privacidade e proteção de dados (proposta)
 
-**Posição:** após a apresentação conceitual do ChatGuard e antes da seção 8.7. O bloco responde à preocupação com privacidade no momento em que o visitante conhece a proposta, sem parecer uma funcionalidade operacional.
+**Posição:** após a apresentação conceitual do HeroGuard e antes da seção 8.7. O bloco responde à preocupação com privacidade no momento em que o visitante conhece a proposta, sem parecer uma funcionalidade operacional.
 
 **Copy proposta:**
 
@@ -365,7 +365,7 @@ Esses itens devem ser apresentados como visão do produto, sem afirmar que estã
 
 ### 8.9 Experiência interativa
 
-Incluir uma simulação da experiência do ChatGuard, como uma interface demonstrativa ou sequência interativa de telas. A demonstração pode simular a abertura de uma conversa sinalizada ou não sinalizada e a visualização das mensagens daquele contato.
+Incluir uma simulação da experiência do HeroGuard, como uma interface demonstrativa ou sequência interativa de telas. A demonstração pode simular a abertura de uma conversa sinalizada ou não sinalizada e a visualização das mensagens daquele contato.
 
 A simulação deve usar apenas mensagens e dados fictícios, reforçar o conceito do produto e não realizar monitoramento, integração ou processamento real.
 
@@ -399,7 +399,7 @@ A experiência deve priorizar:
 
 ### Motion graphics da seção “Um mundo em movimento”
 
-**Decisão aprovada:** substituir a imagem raster exibida na seção por uma composição vetorial SVG em camadas, após revisão do asset, e animar seus elementos em um loop suave. A sequência deve revelar os elementos um a um, conectar os grupos digitais e apresentar o logo/wordmark ChatGuard por último, nas cores originais da marca (`#276C63`). Depois de uma breve pausa, o ciclo reinicia sem corte brusco.
+**Decisão aprovada:** substituir a imagem raster exibida na seção por uma composição vetorial SVG em camadas, após revisão do asset, e animar seus elementos em um loop suave. A sequência deve revelar os elementos um a um, conectar os grupos digitais e apresentar o logo/wordmark HeroGuard por último, nas cores originais da marca (`#276C63`). Depois de uma breve pausa, o ciclo reinicia sem corte brusco.
 
 Requisitos: manter proporção 4:3 e composição da V5 aprovada; preservar textos legíveis; não usar PNG/JPG embutido na arte final nem vídeo; pausar a animação fora da viewport; com `prefers-reduced-motion: reduce`, mostrar a composição completa em estado estático. Evitar radar, flash, pulsos de alerta ou movimento frenético.
 
@@ -428,14 +428,14 @@ As animações devem apoiar o storytelling e não prejudicar legibilidade, desem
 
 A primeira versão será considerada alinhada à especificação quando:
 
-- Apresentar claramente o ChatGuard e sua proposta;
+- Apresentar claramente o HeroGuard e sua proposta;
 - Comunicar o problema sem culpa ou alarmismo;
 - Seguir a narrativa definida nas seções principais;
 - Utilizar a direção visual premium, tecnológica e cinematográfica;
 - Exibir o CTA **QUERO PROTEGER MEUS FILHOS**;
 - Permitir que o visitante entenda que a página é uma apresentação inicial/lista de espera;
 - Não sugerir que login, dashboard, integrações, monitoramento ou análise de mensagens já estão funcionais;
-- Atribuir qualquer caso noticiado com fonte e contexto; não identificar a adolescente nem insinuar que o ChatGuard teria evitado o caso;
+- Atribuir qualquer caso noticiado com fonte e contexto; não identificar a adolescente nem insinuar que o HeroGuard teria evitado o caso;
 - Distinguir princípios de privacidade de medidas técnicas implementadas; não prometer criptografia ou prevenção de vazamentos antes de validação;
 - Garantir alternativa sem movimento e leitura acessível para os Motion Graphics novos;
 - Utilizar apenas dados fictícios nas demonstrações;

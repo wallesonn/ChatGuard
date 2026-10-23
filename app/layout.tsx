@@ -24,9 +24,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ChatGuard — Menos ruído. Mais contexto.",
+  title: "HeroGuard — Menos ruído. Mais contexto.",
   description:
-    "ChatGuard — menos ruído, mais contexto. Uma visão de acompanhamento digital transparente, responsável e próxima.",
+    "HeroGuard — menos ruído, mais contexto. Uma visão de acompanhamento digital transparente, responsável e próxima.",
 };
 
 export const viewport: Viewport = {

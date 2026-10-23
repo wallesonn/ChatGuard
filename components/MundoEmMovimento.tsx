@@ -19,8 +19,8 @@ import { useEffect, useRef, useState } from "react";
 const art = (
   <>
         
-    <title id="arte-title">Um mundo em movimento — ChatGuard</title>    
-    <desc id="arte-desc">Infográfico sobre o mundo digital cotidiano, com cenas de conversas, áudio, música e atividades familiares conectadas pelo símbolo ChatGuard. Os balões apresentam mensagens ilustrativas.</desc>    
+    <title id="arte-title">Um mundo em movimento — HeroGuard</title>    
+    <desc id="arte-desc">Infográfico sobre o mundo digital cotidiano, com cenas de conversas, áudio, música e atividades familiares conectadas pelo símbolo HeroGuard. Os balões apresentam mensagens ilustrativas.</desc>    
     <defs>    
       <radialGradient id="background-wash" cx="50%" cy="46%" r="73%"><stop stopColor="#f6f2e8"/><stop offset="1" stopColor="#f2eee5"/></radialGradient>    
       <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#fcfaf1"/><stop offset="1" stopColor="#faf6ec"/></linearGradient>    
@@ -52,7 +52,7 @@ const art = (
     <rect x="0" y="0" width="1448" height="1086" rx="0" fill="url(#paper-grain)" />    
     </g>    
     <g data-mmv-w="logo-mark"><g id="logo-mark" transform="translate(613 387) scale(5.04)" data-animatable="true">    
-    <title>Símbolo ChatGuard — geometria inline original</title>    
+    <title>Símbolo HeroGuard — geometria inline original</title>    
     <g fill="none" stroke="#276C63" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">    
     <path d="M22 2 41 9v13c0 11-7.8 19.2-19 24C10.8 41.2 3 33 3 22V9L22 2Z" fill="none" />    
     <path d="M12.5 19.5a9.5 9.5 0 0 1 19 0c0 5.3-4.2 9.5-9.5 9.5-1.4 0-2.8-.3-4-.9l-5.5 2 .9-5.1a9.2 9.2 0 0 1-.9-5.5Z" fill="none" />    
@@ -62,7 +62,7 @@ const art = (
     </g>    
     </g></g>    
     <g id="logo-wordmark" data-animatable="true">    
-    <title>ChatGuard</title>    
+    <title>HeroGuard</title>    
     <text x="724" y="653" fill="#006bc1" fontFamily="Segoe UI, Arial, sans-serif" fontSize="17" fontWeight="600" letterSpacing="-.1" textAnchor="middle">    
     <tspan x="724" y="653" textLength="90" lengthAdjust="spacingAndGlyphs">Chat<tspan fill="#006d99">Guard</tspan></tspan>    
     </text>    

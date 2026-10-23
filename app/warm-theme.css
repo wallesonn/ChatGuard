@@ -17,7 +17,7 @@
   --card: #fffdf8;
   --sand: #efe6d3;
   --accent: #276c63; /* verde-sálvia/teal suave: único acento tecnológico */
-  --brand-chat: #006bc1;
+  --brand-hero: #006bc1;
   --brand-guard: #006d99;
   --accent-soft: #e7efeb;
   --border: #d9d0c2;
@@ -75,9 +75,9 @@ body:before {
 
 /* ---------- Wordmark da marca ---------- */
 .brand-wordmark,
-.brand-wordmark .brand-chat,
-.brand .brand-wordmark .brand-chat {
-  color: var(--brand-chat);
+.brand-wordmark .brand-hero,
+.brand .brand-wordmark .brand-hero {
+  color: var(--brand-hero);
 }
 
 .brand-wordmark .brand-guard,

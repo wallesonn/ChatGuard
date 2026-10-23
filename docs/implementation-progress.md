@@ -1,4 +1,4 @@
-# ChatGuard — Registro de avanço da landing page
+# HeroGuard — Registro de avanço da landing page
 
 **Status:** v0.2 em Next.js 16.4.0 — **em produção** desde 2026-10-19 em `https://chatguard.life` (VPS, Docker, Traefik); imagem `wallesonnn/chatguard-app:v0.1.1`/`latest` no Docker Hub; commits passaram a ser feitos manualmente pelo usuário  
 **Especificação-alvo:** [`landing-page.md`](landing-page.md)
@@ -43,7 +43,7 @@ Este documento registra os incrementos feitos para chegar à landing page descri
 ### Verificação local realizada
 
 - Arquivos da implementação: `index.html`, `styles.css` e `script.js`.
-- Servidor de verificação: `python -m http.server 8765 --bind 127.0.0.1 --directory C:/Users/Hermes/Documents/Walleson/Projetos/ChatGuard/chatguard-app`; `http://127.0.0.1:8765/` retornou HTTP 200.
+- Servidor de verificação: `python -m http.server 8765 --bind 127.0.0.1 --directory C:/Users/Hermes/Documents/Walleson/Projetos/HeroGuard/chatguard-app`; `http://127.0.0.1:8765/` retornou HTTP 200.
 - `node --check script.js` e parsing de `index.html` passaram.
 - No navegador, desktop (1366 px) e celular (390 px) sem overflow horizontal.
 - Verificados: espaço reservado sem elemento de vídeo; rolagem livre; CTAs desativados; destinos dos links internos existem; sem formulário nem referências a requisições externas nos arquivos da página.
@@ -215,7 +215,7 @@ Observação de método (não é defeito do código):
 - **V2, base preferida:** `assets/design-review/mundo-em-movimento-infografico-02.png`, PNG 1448 × 1086 px, 1.341.557 bytes. Quatro agrupamentos de atividades digitais com balões, waveform e objetos de mídia/hobby.
 - **V3, supersedida:** `assets/design-review/mundo-em-movimento-infografico-03.png`, PNG 1600 × 1200 px, 1.628.970 bytes. Foi gerada a partir de texto com o modelo `openai/gpt-image-2.5-sunburst`, não editada sobre V2; por isso alterou desenhos existentes.
 - **V4, edição image-to-image da V2:** `assets/design-review/mundo-em-movimento-infografico-04.png`, PNG 1448 × 1086 px, 1.379.864 bytes. Usou `openai/gpt-image-2.5-sunburst` via OpenRouter e preservou os clusters, adicionando conexões, textos e carinhas; o logo central ficou pequeno e permaneceu uma marca duplicada no canto.
-- **V5, aprovada pelo usuário:** `assets/design-review/mundo-em-movimento-infografico-05.png`, PNG 1448 × 1086 px, 1.384.998 bytes. Edição determinística da V4: o símbolo oficial SVG foi ampliado para 220 px no centro, com wordmark `ChatGuard` abaixo; a marca duplicada inferior direita foi removida. Inspecionada visualmente pelo Sócio.
+- **V5, aprovada pelo usuário:** `assets/design-review/mundo-em-movimento-infografico-05.png`, PNG 1448 × 1086 px, 1.384.998 bytes. Edição determinística da V4: o símbolo oficial SVG foi ampliado para 220 px no centro, com wordmark `HeroGuard` abaixo; a marca duplicada inferior direita foi removida. Inspecionada visualmente pelo Sócio.
 - Na V5, quatro clusters, balões, seis mensagens em português, oito avatares e curvas de ligação foram preservados. A arte mantém creme/areia, sage/teal e acentos terrosos; não contém pessoas como foco, vigilância ou marcas de apps.
 - V1–V5 permanecem em `assets/design-review/`; a V5 aprovada está integrada à seção `vida-digital`, com cópia byte-idêntica em `public/`. Proporção 4:3 preservada, sem crop. Nenhum commit feito.
 - Custos informados pelo Capivarte: V3 US$ 0,022435; V4 US$ 0,059601. V5 foi composição determinística, sem nova geração de imagem. Nenhum vídeo foi gerado.
@@ -247,7 +247,7 @@ Observação de método (não é defeito do código):
 
 ## Infográfico vetorial e loop motion — integração — 2026-10-15
 
-- O usuário aceitou a aproximação vetorial da V5 e autorizou a animação em loop, com elementos revelados em sequência e logo ChatGuard por último. A V5 PNG original continua preservada como referência/backup.
+- O usuário aceitou a aproximação vetorial da V5 e autorizou a animação em loop, com elementos revelados em sequência e logo HeroGuard por último. A V5 PNG original continua preservada como referência/backup.
 - Capivarte entregou um mestre SVG puro (`assets/design-review/mundo-em-movimento-vetor-master-01.svg`, 4:3, viewBox 1448×1086) com 138 grupos e 151 IDs únicos. `public/mundo-em-movimento-vetor-master-01.svg` é a fonte usada pelo app e pelo gerador; XML válido, sem raster embutido. A pasta `assets/design-review/` permanece ignorada pelo `.gitignore`.
 - `components/MundoEmMovimento.tsx` contém o SVG inline, com 138 grupos e IDs animáveis; descrição acessível curta, sem metadata de revisão no DOM. `scripts/generate-mundo-em-movimento.mjs` lê o mestre público e regenera componente/CSS sem alterar os hashes dos dois arquivos de saída.
 - `app/page.tsx` substituiu apenas o `<img>` da seção `vida-digital` pelo componente SVG; textos, footnote e animações de revelação da seção foram mantidos. Nenhuma PNG/JPG é carregada pela seção do infográfico; a foto PNG da seção de presença permanece inalterada.
@@ -319,6 +319,63 @@ Deploy manual pelo Portainer apontando para o repo público
 A partir desta etapa, **o usuário faz commits e pushes manualmente** nos dois
 repos (app e `chatguard-docker`). Agentes preparam alterações, mas não
 commitam nem publicam — regra registrada em `AGENTS.md`.
+
+## Renomeação da marca para HeroGuard — 2026-10-23
+
+O produto passou a se chamar **HeroGuard**. Foram atualizadas apenas as
+referências de texto da aplicação e da documentação; os identificadores
+técnicos publicados permanecem com o nome antigo.
+
+Alterado:
+
+- `app/page.tsx` — wordmark dividido (`brand-hero` + `brand-guard`), textos
+  "HeroGuard" (header, conceito, mockup, seção de sinais, rodapé) e letra do
+  mock (`H`).
+- `app/layout.tsx` — `title` e `description`.
+- `app/privacidade/page.tsx` — nome do produto, responsável e textos do aviso.
+- `components/Waitlist.tsx` — `alt` da logo no modal.
+- `app/warm-theme.css` — token `--brand-chat` → `--brand-hero` e classe
+  `.brand-chat` → `.brand-hero` (cores mantidas: `#006bc1` e `#006d99`).
+- `public/mundo-em-movimento-vetor-master-01.svg` — títulos/descrição e
+  wordmark do infográfico; `components/MundoEmMovimento.tsx` e
+  `app/mundo-em-movimento.css` regenerados pelo script (nunca editados à mão).
+  "HeroGuard" tem o mesmo número de caracteres de "ChatGuard", então o
+  `textLength="90"` do `<tspan>` continua válido.
+- `package.json` / `package-lock.json` — nome do pacote
+  `heroguard-landing`.
+- `index.html` (versão estática legada v0.1) — textos e wordmark.
+- Documentação: `README.md`, `AGENTS.md`, `docs/landing-page.md`,
+  `docs/platform-concept.md`, este arquivo e `chatguard-docker/README.md`.
+
+Mantido de propósito (infraestrutura, exige migração dedicada):
+
+- Domínio `chatguard.life` e `www.chatguard.life`, certificado emitido.
+- Imagem `wallesonnn/chatguard-app`; containers `chatguard-app`/`chatguard-db`.
+- Routers/services do Traefik (`chatguard`, `chatguard-test`), labels
+  (`app=chatguard`, `service=chatguard-app`).
+- Usuário/banco `chatguard`, pastas `chatguard-app`/`chatguard-docker` e
+  repositórios no GitHub.
+
+Logos — atualizado em 2026-10-23:
+
+- Todas as imagens de marca passaram a usar `public/heroguard-logo-alpha.png`
+  (924 × 939, fundo transparente, símbolo escudo + balão em azul/lilás):
+  header e rodapé de `app/page.tsx` e logo do modal em
+  `components/Waitlist.tsx`.
+- O arquivo original foi entregue como `heroguard-logo- alpha.png` (com espaço
+  no nome); uma cópia foi criada com o nome correto. O arquivo com espaço e os
+  antigos `chatguard-sologo.png`/`chatguard-logo.png` permanecem no disco, sem
+  uso.
+- As cores da landing page foram mantidas (tema quente, `--brand-hero`
+  `#006bc1` e `--brand-guard` `#006d99`); a paleta de `docs/visual-identity`
+  não foi aplicada.
+
+Pendente de decisão:
+
+- Migrar domínio, imagem e nomes de infraestrutura para `heroguard` (novo DNS,
+  novo certificado, nova stack) — não executado.
+- Aplicar a identidade visual de `docs/visual-identity` (paleta azul/lilás,
+  Manrope/Inter) — não aplicada por decisão do usuário.
 
 ## Pendências
 

@@ -1,0 +1,205 @@
+# HeroGuard — especificação de identidade visual
+
+**Versão:** 1.0 · **Status:** proposta visual inicial · **Produto:** segurança digital familiar (anteriormente ChatGuard)
+
+> Este documento define uma direção visual para o HeroGuard. O nome, os elementos gráficos e as aplicações aqui descritos não representam pesquisa de anterioridade, registro ou liberação jurídica da marca.
+
+## 1. Essência e posicionamento
+
+**O que é:** uma ferramenta de apoio a famílias que usa IA para analisar conversas de crianças e adolescentes, com foco inicial em WhatsApp e Instagram, e tornar sinais de risco mais compreensíveis para responsáveis.
+
+**Posicionamento:** proteção digital familiar que ajuda responsáveis a perceber sinais importantes nas conversas e agir com cuidado, sem transformar a experiência em vigilância alarmista.
+
+**Promessa:** mais clareza para cuidar melhor das conversas e relações digitais de quem está crescendo.
+
+**Público principal:** mães, pais e responsáveis que querem apoiar a segurança digital de crianças e adolescentes. **Público indireto:** jovens cujas conversas podem ser analisadas; a comunicação deve respeitar sua dignidade, privacidade e autonomia progressiva.
+
+**Personalidade:** protetora, confiável, acolhedora, clara, discreta e atual. É uma aliada atenta, não uma figura policial ou punitiva.
+
+**Princípios de comunicação:**
+
+- Falar em sinais e contexto, não em certezas absolutas produzidas pela IA.
+- Explicar o próximo passo com calma e linguagem simples.
+- Evitar medo, culpa, exposição ou rótulos sobre a criança/adolescente.
+- Reforçar que a ferramenta apoia conversas entre responsáveis e jovens; não substitui diálogo nem avaliação humana.
+
+**Assinatura sugerida:** “Cuidado e clareza nas conversas digitais.” Usar como linha de apoio, não como promessa de prevenção total.
+
+## 2. Conceito do logo
+
+### Ideia central
+
+Um **escudo** acolhedor, de cantos suaves, combinado com um **balão de conversa circular**. O escudo comunica proteção; o balão, diálogo; a forma circular reduz a sensação de bloqueio e sugere cuidado contínuo. A composição deve equilibrar segurança e conversa, sem parecer antivírus corporativo, brasão militar ou app de mensagens.
+
+### Construção recomendada
+
+- Silhueta externa de escudo simples, com topo arredondado e ponta inferior suavizada.
+- No centro, balão circular com pequeno bico integrado, sem detalhes minúsculos.
+- Opcional: um pequeno ponto ou brilho central para sugerir atenção/IA, sem usar cérebro, olho ou circuito como símbolo principal.
+- Contorno consistente; evitar excesso de linhas e elementos sobrepostos.
+- Wordmark “HeroGuard” em caixa mista. Dar peso visual equivalente aos dois termos; não separar como “Hero Guard” sem decisão de marca.
+
+### Versões
+
+1. **Principal horizontal:** símbolo à esquerda e “HeroGuard” à direita.
+2. **Empilhada:** símbolo acima do wordmark, para espaços quadrados.
+3. **Símbolo isolado:** escudo + balão para avatar e ícone de app.
+4. **Monocromática:** uma cor só, para impressão e contextos de contraste limitado.
+5. **Negativa:** versão clara para fundos escuros, sem alterar proporções ou cores internas de risco.
+
+Manter área de respiro mínima igual à largura do contorno do escudo em todos os lados. Não usar o logo principal abaixo de 120 px de largura; em espaços menores, usar o símbolo simplificado.
+
+## 3. Paleta de cores
+
+Paleta proposta para uma marca confiável e acolhedora. Os estados de risco usam tons semânticos consistentes e sempre aparecem acompanhados de texto, ícone ou padrão.
+
+| Token | Hex | Uso |
+|---|---|---|
+| Azul Profundo | `#17324D` | Texto forte, navegação, confiança e fundos institucionais |
+| Azul Hero | `#2563EB` | Ação primária, links e destaques interativos |
+| Azul Claro | `#DBEAFE` | Superfícies informativas e fundos de apoio |
+| Verde Seguro | `#16845B` | Estado verde: baixo risco/sinal tranquilizador |
+| Verde Suave | `#DCFCE7` | Fundo para estado verde |
+| Amarelo Atenção | `#A15C00` | Estado amarelo: atenção/contexto a revisar |
+| Amarelo Suave | `#FEF3C7` | Fundo para estado amarelo |
+| Vermelho Urgente | `#B42318` | Estado vermelho: risco elevado/ação prioritária |
+| Vermelho Suave | `#FEE4E2` | Fundo para estado vermelho |
+| Lilás IA | `#6D5BD0` | Indicação de recurso automatizado, com parcimônia |
+| Fundo | `#F7F9FC` | Fundo geral da aplicação |
+| Superfície | `#FFFFFF` | Cards, modais e painéis |
+| Texto Secundário | `#526174` | Metadados e conteúdo secundário |
+| Borda | `#D7DFE8` | Divisores, campos e contornos |
+
+**Regra de risco:** verde, amarelo e vermelho indicam níveis de sinal identificados, não um diagnóstico ou veredito sobre uma pessoa. Sempre exibir rótulo textual (por exemplo, “Baixo”, “Atenção”, “Prioritário”) e contexto. Não depender apenas da cor.
+
+## 4. Tipografia
+
+- **Interface e títulos:** `Manrope` (fallback: `Arial, sans-serif`). Geométrica, legível e amigável sem parecer infantil.
+- **Texto longo e tabelas:** `Inter` (fallback: `Arial, sans-serif`). Priorizar leitura confortável em telas e dados densos.
+- **Wordmark:** lettering customizado ou Manrope SemiBold como ponto de partida; ajustar kerning após definição do símbolo.
+
+Escala sugerida para web: título principal 32–40 px / 1,15; títulos de seção 24–28 px / 1,25; subtítulos 18–20 px / 1,35; corpo 16 px / 1,5; texto auxiliar 14 px / 1,4. Não usar pesos ultraleves em texto de interface. Permitir ampliação sem corte e respeitar preferências de tamanho do sistema.
+
+## 5. Ícones e linguagem gráfica
+
+- Usar ícones lineares, simples, com cantos levemente arredondados e espessura consistente (aprox. 2 px em grade de 24 px).
+- Preferir metáforas claras: conversa, escudo, pessoa, relógio, contexto, ajuda e configuração.
+- Evitar algemas, câmeras escondidas, alvos, cadeados agressivos ou símbolos que sugiram interceptação secreta.
+- Ícones funcionais devem ter rótulo acessível ou nome para leitor de tela. Ícone decorativo deve ser ignorado pela tecnologia assistiva.
+- Estados críticos combinam forma, rótulo e ícone (ex.: triângulo + “Atenção”), sem comunicar apenas por vermelho.
+
+## 6. Ilustrações e mascote
+
+**Direção:** formas arredondadas, composição limpa, cenas cotidianas e gestos colaborativos. Mostrar responsáveis e jovens com diversidade de tons de pele, configurações familiares, corpos e contextos, sem estereótipos.
+
+**Mascote opcional:** um pequeno guardião abstrato inspirado no escudo, com expressão calma e curiosa. Deve funcionar como apoio em onboarding e estados vazios, sem ocupar telas de alerta nem infantilizar adolescentes. O mascote não é “policial”, super-herói armado ou substituto de uma pessoa responsável.
+
+Usar ilustração com parcimônia em situações de acolhimento, explicação e primeira utilização. Para alertas de risco, priorizar texto objetivo e ações claras.
+
+## 7. Componentes de UI
+
+### Cartão de sinal
+
+Exibir: nível textual, cor/ícone, resumo curto, trecho ou evidência conforme as permissões e política do produto, contexto temporal, explicação do motivo e ação sugerida. Indicar que a análise foi feita por IA e pode precisar de revisão humana. Não apresentar a classificação sem contexto.
+
+### Estados de risco
+
+- **Verde — Baixo:** informação tranquilizadora e observação normal, sem sugerir risco zero.
+- **Amarelo — Atenção:** pedir leitura contextual, mostrar por que o sinal apareceu e sugerir conversa cuidadosa.
+- **Vermelho — Prioritário:** destacar o que merece atenção imediata e próximos passos concretos, com tom calmo e sem alarmismo.
+
+### Botões e controles
+
+- Primário: Azul Hero com texto branco; reservar para a ação mais importante da tela.
+- Secundário: superfície branca, borda visível e texto Azul Profundo.
+- Destrutivo/irreversível: cor de alerta apenas quando a ação realmente for destrutiva; pedir confirmação clara.
+- Área de toque recomendada: pelo menos 44 × 44 px.
+- Campos: rótulos persistentes, instruções antes do erro e mensagens de validação específicas.
+
+### Outros padrões
+
+- Navegação com nomes claros e localização atual perceptível.
+- Filtros por plataforma (WhatsApp/Instagram), período e nível, com estado ativo anunciado.
+- Estados vazios que expliquem o que aparecerá e como configurar a análise.
+- Carregamento que informe o que está acontecendo sem expor conteúdo sensível em notificações.
+- Painel de explicação “Por que este sinal apareceu?” com linguagem simples e indicação de incerteza.
+
+## 8. Acessibilidade e privacidade visual
+
+- Buscar WCAG 2.2 nível AA como referência de projeto. Garantir contraste de pelo menos 4,5:1 para texto normal e 3:1 para texto grande e componentes gráficos relevantes.
+- Verificar as combinações reais de texto e fundo, inclusive cores de risco; escurecer tons de texto quando necessário.
+- Suportar teclado, foco visível, ordem lógica, leitores de tela, zoom e redução de movimento.
+- Não comunicar estado apenas por cor, forma, animação ou posição.
+- Usar linguagem direta, frases curtas e explicar termos técnicos de IA.
+- Proteger trechos de conversas em notificações, compartilhamentos, capturas de tela e exemplos demonstrativos. Usar conteúdo fictício nos materiais de marketing.
+- Não usar identidade visual que prometa monitoramento invisível ou infalibilidade.
+
+## 9. Usos corretos e incorretos
+
+### Correto
+
+- Usar arquivos oficiais, proporções originais, área de respiro e versões adequadas ao fundo.
+- Usar Azul Hero para ações e Azul Profundo para leitura e estabilidade.
+- Exibir os níveis de risco com texto, contexto, motivo e uma ação proporcional.
+- Manter tom respeitoso ao falar sobre jovens e relações digitais.
+- Identificar claramente recursos gerados ou classificados por IA.
+
+### Incorreto
+
+- Esticar, inclinar, contornar, adicionar sombra pesada ou reconstruir o logo com fonte diferente.
+- Colocar o símbolo sobre fundo de baixo contraste ou misturar cores de risco no logo.
+- Usar vermelho para decorar ou para aumentar artificialmente a urgência.
+- Usar “seguro”, “perigoso” ou “predador” como rótulo definitivo de uma pessoa com base somente em classificação automatizada.
+- Usar imagens de crianças assustadas, conversas reais identificáveis ou estética de espionagem.
+- Prometer proteção total, detecção infalível ou substituição do diálogo familiar.
+
+## 10. Favicon e ícone de aplicativo
+
+Usar o **símbolo isolado**; simplificar o balão e o escudo para que continuem reconhecíveis em tamanhos pequenos. Preferir fundo Azul Profundo ou Azul Hero e símbolo branco. Não incluir wordmark, gradientes complexos, detalhes finos ou indicadores verde/amarelo/vermelho dentro do ícone.
+
+Preparar versões quadradas adaptáveis e testar legibilidade em 16, 32, 48, Maskable/Android e tamanhos de loja. Manter margens internas consistentes, respeitando áreas seguras de cada plataforma. O ícone não deve ser confundido com os ícones oficiais de WhatsApp ou Instagram.
+
+## 11. Exemplos de aplicação
+
+### Painel inicial
+
+Saudação simples, resumo por período, filtros de plataforma e cartões de sinais. Ordem sugerida: itens prioritários, itens para revisar e observações de baixo risco. Mostrar data da última análise e opção para entender como a IA chegou ao resultado.
+
+### Alerta amarelo
+
+**Atenção · vale revisar o contexto**  
+“A conversa contém um pedido para manter algo em segredo. Isso pode ter explicações diferentes; veja o trecho e o contexto antes de tirar conclusões.”  
+**Ação:** “Ver contexto” · **Apoio:** “Como conversar sobre isso”
+
+### Alerta vermelho
+
+**Prioritário · precisa de atenção**  
+“Encontramos sinais que podem indicar uma situação de risco. Revise o contexto e considere conversar com o jovem agora.”  
+**Ação:** “Revisar sinais” · **Apoio:** “Orientações para responsáveis”
+
+Esses exemplos são textos de interface ilustrativos, não critérios de detecção nem recomendações de emergência. A orientação real deve ser definida com especialistas e políticas do produto.
+
+### Página de apresentação
+
+Hero com promessa moderada (“Mais clareza para cuidar das conversas digitais”), explicação explícita de WhatsApp/Instagram e IA, demonstração fictícia de níveis de sinal e seção de privacidade/transparência. Evitar estatísticas sem fonte e garantias absolutas.
+
+## 12. Checklist de entrega
+
+- [ ] Direção do símbolo escudo + balão aprovada e testada em tamanhos pequenos.
+- [ ] Wordmark HeroGuard e versões horizontal, empilhada, isolada, monocromática e negativa.
+- [ ] Arquivos vetoriais editáveis (SVG/PDF) e exportações PNG em tamanhos relevantes.
+- [ ] Paleta documentada como tokens de design, com combinações de contraste verificadas.
+- [ ] Tipos definidos, arquivos/licenças documentados e fallbacks configurados.
+- [ ] Biblioteca de ícones com grade, espessura e nomes acessíveis consistentes.
+- [ ] Componentes de UI para níveis verde/amarelo/vermelho com rótulos e texto além da cor.
+- [ ] Estados vazio, carregando, erro e sucesso definidos.
+- [ ] Favicon e ícones adaptáveis de app exportados e testados em tamanhos pequenos.
+- [ ] Exemplos de comunicação e ilustrações usam conteúdo fictício e linguagem respeitosa.
+- [ ] Revisão de acessibilidade por contraste, teclado, leitor de tela, zoom e movimento reduzido.
+- [ ] Revisão de privacidade visual em alertas, notificações, exemplos e compartilhamentos.
+- [ ] Usos corretos/incorretos e arquivos mestres entregues em pacote organizado.
+- [ ] Pesquisa de marca e avaliação jurídica realizadas separadamente, antes de uso comercial, sem presumir disponibilidade do nome.
+
+## 13. Próxima etapa recomendada
+
+Validar esta direção com responsáveis e jovens em testes de compreensão e confiança; depois, criar propostas visuais do símbolo e testar a paleta em interfaces reais, incluindo contraste e leitura dos alertas.

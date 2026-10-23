@@ -199,10 +199,10 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
 
             <img
               className="waitlist-logo"
-              src="/chatguard-logo.png"
-              alt="ChatGuard"
-              width={1254}
-              height={1254}
+              src="/heroguard-logo-alpha.png"
+              alt="HeroGuard"
+              width={924}
+              height={939}
             />
 
             {sent ? (

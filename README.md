@@ -1,9 +1,15 @@
-# ChatGuard — App
+# HeroGuard — App
 
-Landing page institucional do **ChatGuard** — plataforma de inteligência e
+Landing page institucional do **HeroGuard** — plataforma de inteligência e
 proteção digital para pais e responsáveis ("Menos ruído. Mais contexto.").
 
 **Status:** v0.2 em produção — <https://chatguard.life>
+
+> **Marca e infraestrutura:** o produto passou a se chamar **HeroGuard**. Os
+> identificadores técnicos publicados continuam com o nome antigo até uma
+> migração dedicada: domínio `chatguard.life`, imagem
+> `wallesonnn/chatguard-app`, containers `chatguard-*`, rede/labels do Traefik
+> e repositórios `chatguard-app` / `chatguard-docker`.
 
 A versão atual é uma página de apresentação e conversão: sem backend, sem
 banco em uso, sem funcionalidades de produto. O CTA abre um modal de

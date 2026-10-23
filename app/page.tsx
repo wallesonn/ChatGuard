@@ -13,9 +13,9 @@ export default function Home() {
       <PageEffects />
 
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="ChatGuard — início">
-          <img className="brand-mark" src="/chatguard-sologo.png" alt="" aria-hidden="true" width={784} height={738} />
-          <span className="brand-wordmark"><span className="brand-chat">Chat</span><span className="brand-guard">Guard</span></span>
+        <a className="brand" href="#inicio" aria-label="HeroGuard — início">
+          <img className="brand-mark" src="/heroguard-logo-alpha.png" alt="" aria-hidden="true" width={924} height={939} />
+          <span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span>
         </a>
         <nav className="primary-nav" aria-label="Navegação principal">
           <a href="#visao">A visão</a>
@@ -76,7 +76,7 @@ export default function Home() {
                 a Portugal para encontrar uma pessoa que conheceu online. Segundo O Globo, a família
                 já sabia do contato, mas não da viagem. Ela foi localizada em segurança; a investigação
                 prosseguia, e “rapto” era uma alegação atribuída à família. Um caso individual não
-                representa todas as relações digitais nem demonstra o que o ChatGuard teria prevenido.
+                representa todas as relações digitais nem demonstra o que o HeroGuard teria prevenido.
               </p>
             </div>
             <InterludioEditorial />
@@ -106,13 +106,13 @@ export default function Home() {
           <div className="section-shell">
             <div className="concept-heading" data-reveal>
               <p className="eyebrow">04 — Conheça a proposta</p>
-              <h2 id="concept-title"><span className="brand-wordmark"><span className="brand-chat">Chat</span><span className="brand-guard">Guard</span></span>.<br/><em>Uma nova forma de acompanhar.</em></h2>
+              <h2 id="concept-title"><span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span>.<br/><em>Uma nova forma de acompanhar.</em></h2>
               <p>Uma visão para reduzir o ruído e colocar o contexto em primeiro lugar. O produto ainda está em desenvolvimento — esta página apresenta apenas o conceito.</p>
             </div>
             <div className="concept-art" data-reveal>
               <div className="concept-halo" aria-hidden="true"></div>
               <div className="concept-card">
-                <div className="mock-top"><div className="mock-brand"><span className="mock-shield">C</span> <span className="brand-wordmark"><span className="brand-chat">Chat</span><span className="brand-guard">Guard</span></span></div><span className="mock-status"><i></i> VISÃO CONCEITUAL</span></div>
+                <div className="mock-top"><div className="mock-brand"><span className="mock-shield">H</span> <span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span></div><span className="mock-status"><i></i> VISÃO CONCEITUAL</span></div>
                 <div className="mock-welcome"><div><span className="mock-kicker">UM OLHAR MAIS CLARO</span><h3>O que merece<br/>sua atenção hoje?</h3></div><span className="mock-date">EXEMPLO ILUSTRATIVO</span></div>
                 <div className="mock-summary"><div className="summary-block"><span>CONVERSAS</span><strong>12</strong><small>Dados fictícios</small></div><div className="summary-block"><span>CONTATOS</span><strong>08</strong><small>Dados fictícios</small></div><div className="summary-block summary-focus"><span>PARA CONVERSAR</span><strong>02</strong><small>Não é uma conclusão</small></div></div>
                 <div className="mock-message"><div className="mock-avatar">L</div><div className="mock-message-copy"><strong>Lucas M. <span>• exemplo fictício</span></strong><p>“A gente conversa amanhã na escola?”</p><small>Mensagem ilustrativa · contexto importa</small></div></div>
@@ -145,7 +145,7 @@ export default function Home() {
             <div className="signals-heading" data-reveal>
               <p className="eyebrow">05 — Sinais, não sentenças</p>
               <h2 id="signals-title">Uma indicação não conta<br/><em>a história inteira.</em></h2>
-              <p>Na visão futura do <span className="brand-wordmark"><span className="brand-chat">Chat</span><span className="brand-guard">Guard</span></span>, diferentes níveis de atenção ajudariam a organizar conversas. Uma classificação jamais substitui contexto, diálogo ou avaliação humana.</p>
+              <p>Na visão futura do <span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span>, diferentes níveis de atenção ajudariam a organizar conversas. Uma classificação jamais substitui contexto, diálogo ou avaliação humana.</p>
             </div>
             <div className="signals-grid" data-reveal>
               <article className="signal-card"><span className="signal-label"><i className="signal-dot green"></i> GREEN</span><h3>Sem atenção especial</h3><p>Nenhum sinal para destacar neste exemplo fictício.</p><span className="signal-foot">Demonstração conceitual</span></article>
@@ -193,7 +193,7 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <a className="brand footer-brand" href="#inicio" aria-label="ChatGuard — voltar ao início"><img className="brand-mark" src="/chatguard-sologo.png" alt="" aria-hidden="true" width={784} height={738} /><span className="brand-wordmark"><span className="brand-chat">Chat</span><span className="brand-guard">Guard</span></span></a>
+        <a className="brand footer-brand" href="#inicio" aria-label="HeroGuard — voltar ao início"><img className="brand-mark" src="/heroguard-logo-alpha.png" alt="" aria-hidden="true" width={924} height={939} /><span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span></a>
         <p>Menos ruído. Mais contexto.</p>
         <span className="footer-note">Apresentação conceitual · v0.2 · sem funcionalidades operacionais</span>
         <a className="privacy-footer-link" href="/privacidade">Aviso de Privacidade</a>

@@ -2,6 +2,20 @@
 
 Instruções para agentes que trabalham neste repositório.
 
+## Marca e identificadores técnicos
+
+- O produto se chama **HeroGuard** (antes ChatGuard). Textos de interface,
+  metadados, docs e o wordmark usam HeroGuard.
+- Os identificadores técnicos **continuam** com o nome antigo até uma
+  migração dedicada: domínio `chatguard.life`, imagem
+  `wallesonnn/chatguard-app`, containers `chatguard-*`, nomes de
+  routers/services do Traefik, labels (`app=chatguard` etc.), usuário/banco
+  `chatguard`, pastas `chatguard-app`/`chatguard-docker` e os repositórios no
+  GitHub. Não renomear sem pedido explícito — isso exige novo deploy, DNS e
+  certificado.
+- Wordmark: `components`/CSS usam as classes `brand-hero` e `brand-guard` e os
+  tokens `--brand-hero`/`--brand-guard`.
+
 ## Controle de versão (regra do usuário)
 
 - **Não fazer commits nem push** — nem no repo do app (`chatguard-app`) nem no
