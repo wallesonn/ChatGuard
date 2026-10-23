@@ -435,6 +435,74 @@ Deploy concluído e verificado:
 - A stack anterior (`chatguard.life`) deixa de ser a versão publicada; o
   domínio antigo não está mais na regra do Traefik.
 
+## Navegação e enxugamento de conteúdo — 2026-10-23
+
+Análise da landing page e ajustes aplicados:
+
+- **Header fixo:** `.site-header` passou de `absolute` para `fixed`, com
+  `scroll-padding-top` de 100px no desktop e 84px no mobile (altura do header
+  + folga), então as âncoras deixam de parar sob o menu.
+- **Menu navegável:** novo `components/SiteNav.tsx` (client) com cinco
+  destinos — `#visao`, `#conceito`, `#sinais`, `#demonstracao`,
+  `#privacidade`. Abaixo de 1000px vira botão *Menu* com painel suspenso
+  (fecha ao escolher link, com Escape — devolvendo o foco ao botão — ou ao
+  voltar à largura de desktop). Abaixo de 520px o botão fica só com o ícone;
+  abaixo de 380px o CTA do header é ocultado.
+- **Âncoras novas:** `id="sinais"` na seção 05 e `id="privacidade"` na seção
+  de privacidade (antes só existiam `inicio`, `vida-digital`, `visao`,
+  `conceito`, `demonstracao` e `mensagem-final`).
+- **Seções 05 e 06 fundidas:** “Sinais, não sentenças” absorveu “O que
+  importa”; os quatro pilares viraram uma lista compacta em duas colunas
+  abaixo dos cartões GREEN/YELLOW/RED, com um único aviso. A demonstração
+  passou de 07 para 06.
+- **Resumo editorial encurtado:** saiu a menção a “rapto” e à investigação em
+  curso, e os dois links externos foram removidos (as páginas de origem
+  expõem dados da menor). A atribuição ficou em texto simples: “Fontes: UOL
+  (14 de outubro de 2026) e O Globo (13 de outubro de 2026)”.
+- **Arte do interlúdio editorial removida:** os três cartões abstratos do SVG
+  (`InterludioEditorial`, com as linhas tracejadas) não carregavam informação
+  e liam como retângulos vazios. O componente foi excluído; a seção ficou só
+  com texto e as fontes. `editorial-motion.css` manteve apenas estilos
+  tipográficos do bloco, `.editorial-section` e `.editorial-sources`; o bloco
+  de privacidade não mudou.
+- **Ressalvas reduzidas:** removidos “Dados fictícios” (duas vezes),
+  “• exemplo fictício” e “Mensagem ilustrativa · contexto importa” (duas
+  vezes) do mock da 04; removidos “Contato ilustrativo · sem conexão” e
+  “EXEMPLO DE CONVERSA FICTÍCIA” da demonstração. Cada bloco mantém ao menos
+  dois rótulos de simulação (badge + rodapé).
+- **Repetição:** o eyebrow da seção 02 passou de “Menos ruído. Mais
+  contexto.” para “02 — O problema” (a assinatura fica no fecho e no rodapé),
+  e o CTA do header passou de “Conheça a proposta” para “Entrar na lista”,
+  que é o que ele faz (abre o modal).
+- **Manchete da notícia:** o rótulo virou “Uma notícia, com contexto”; o
+  resumo e os três passos foram substituídos por uma única frase curta em
+  tipografia grande. Abaixo, a atribuição detalha veículo, tema e data para
+  UOL e O Globo, sem links ou títulos originais que possam expor a menor.
+- **Referência da notícia mais explícita:** a linha abaixo da manchete agora
+  se identifica como “Fontes dos fatos” e associa cada veículo/data ao dado
+  relatado por ele; o texto ganhou maior legibilidade sem adicionar links.
+
+Verificação: `tsc --noEmit` e `npm run build` passaram; export em `out/`
+confirma `id="sinais"`, `id="privacidade"`, `primary-nav` e ausência de
+`pillars-section`/`chat-date`. Nenhum commit feito.
+
+## Atualização de segurança do Next.js — 2026-10-23
+
+`next` passou de `16.4.0` para **`16.4.3`** (versão travada, sem `^`). A faixa
+`>=16.0.0 <=16.4.0` era afetada por três advisories:
+
+- `GHSA-2464-fhr4-w9xw` (crítica) — RCE não autenticado na Image Optimization
+  API com SVG;
+- `GHSA-673q-mjm6-r5xr` (crítica) — RCE não autenticado em `use cache` com
+  typed arrays;
+- `GHSA-p3m5-59mp-jv5r` (alta) — DoS no App Router com Server Actions.
+
+Exposição real no projeto era baixa (export estático não usa Server Actions,
+Image Optimization nem `use cache`), mas o `next dev` roda Node e o build
+passou a interromper com aviso de segurança. Depois da atualização:
+`npm audit` = 0 vulnerabilidades, `tsc --noEmit` e `npm run build` limpos, e
+o build não emite mais o aviso.
+
 ## Pendências
 
 - Ajustes finos de ritmo ou legibilidade somente se forem solicitados pelo usuário.

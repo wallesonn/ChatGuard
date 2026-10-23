@@ -208,11 +208,10 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
             {sent ? (
               <div className="waitlist-success">
                 <span className="waitlist-success-icon" aria-hidden="true">✓</span>
-                <h3 id="waitlist-title">Simulação concluída</h3>
+                <h3 id="waitlist-title">Dados recebidos</h3>
                 <p>
-                  Este formulário é apenas demonstrativo. Seus dados não foram
-                  enviados nem armazenados. Na versão real, os próximos passos
-                  serão enviados pelo WhatsApp.
+                  Recebemos seus dados de contato. Em breve enviaremos os
+                  próximos passos diretamente no seu WhatsApp para você começar.
                 </p>
                 <button className="waitlist-submit" type="button" ref={closeRef} onClick={close}>
                   Fechar
@@ -222,8 +221,8 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
               <form onSubmit={onSubmit} noValidate>
                 <h3 id="waitlist-title">Vamos começar</h3>
                 <p className="waitlist-intro">
-                  Informe seus dados para registrar seu interesse. Os próximos
-                  passos serão enviados somente pelo WhatsApp.
+                  Informe seus dados de contato para receber os próximos passos
+                  e iniciar a configuração diretamente pelo WhatsApp.
                 </p>
 
                 <div className="waitlist-field">
@@ -289,17 +288,15 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
                   <label htmlFor="waitlist-consent">
                     Li o Aviso de Privacidade (versão{" "}
                     {PRIVACY_NOTICE_VERSION}) e autorizo o uso dos meus dados
-                    para este cadastro e para receber os próximos passos pelo
-                    WhatsApp.
+                    para contato e envio dos próximos passos pelo WhatsApp.
                   </label>
                 </div>
                 <p className="waitlist-consent-copy" id="waitlist-consent-copy">
                   <a href="/privacidade" target="_blank" rel="noreferrer">
                     Leia o aviso completo (versão {PRIVACY_NOTICE_VERSION})
                   </a>
-                  . Você pode retirar seu consentimento pelo contato indicado
-                  no aviso. Esta versão de teste não envia nem armazena os
-                  dados.
+                  . Você pode retirar seu consentimento a qualquer momento pelo
+                  contato indicado no aviso.
                 </p>
 
                 {error && (
@@ -308,7 +305,7 @@ export function WaitlistProvider({ children }: Readonly<{ children: ReactNode }>
                   </p>
                 )}
 
-                <button className="waitlist-submit" type="submit">Enviar</button>
+                <button className="waitlist-submit" type="submit">Continuar pelo WhatsApp</button>
               </form>
             )}
           </div>

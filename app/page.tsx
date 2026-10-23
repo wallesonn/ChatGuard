@@ -1,7 +1,7 @@
 import OpeningVideo from "@/components/OpeningVideo";
+import SiteNav from "@/components/SiteNav";
 import MundoEmMovimento from "@/components/MundoEmMovimento";
 import PageEffects from "@/components/PageEffects";
-import InterludioEditorial from "@/components/InterludioEditorial";
 import NotaPrivacidade from "@/components/NotaPrivacidade";
 import { WaitlistButton, WaitlistProvider } from "@/components/Waitlist";
 
@@ -17,12 +17,8 @@ export default function Home() {
           <img className="brand-mark" src="/heroguard-logo-alpha.png" alt="" aria-hidden="true" width={924} height={939} />
           <span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span>
         </a>
-        <nav className="primary-nav" aria-label="Navegação principal">
-          <a href="#visao">A visão</a>
-          <a href="#conceito">Como pensamos</a>
-          <a href="#demonstracao">Demonstração</a>
-        </nav>
-        <WaitlistButton className="header-cta">Conheça a proposta</WaitlistButton>
+        <SiteNav />
+        <WaitlistButton className="header-cta">Começar agora</WaitlistButton>
       </header>
 
       <main id="main">
@@ -33,17 +29,47 @@ export default function Home() {
           <div className="hero-copy" data-reveal>
             <p className="eyebrow"><span className="eyebrow-dot"></span> Presença também é proteção</p>
             <h1 id="hero-title">Você sabe com quem seu filho <em>conversa todos os dias?</em></h1>
-            <p className="hero-intro">A vida digital cresce depressa. Acompanhar com cuidado começa com contexto, confiança e diálogo.</p>
+            <p className="hero-intro">O HeroGuard identifica sinais que pedem atenção nas conversas do seu filho — para você agir a tempo, com contexto e diálogo, sem precisar ler tudo.</p>
             <WaitlistButton className="button button-primary" describedBy="waitlist-note-hero">Quero proteger meus filhos</WaitlistButton>
-            <p className="button-note" id="waitlist-note-hero">Cadastro de teste — nenhum dado é enviado ou armazenado.</p>
+            <p className="button-note" id="waitlist-note-hero">Próximos passos pelo WhatsApp · Leva menos de 30 segundos.</p>
           </div>
-          <a className="scroll-cue" href="#vida-digital"><span className="scroll-line" aria-hidden="true"></span><span>Continue a história</span><span aria-hidden="true">↓</span></a>
+          <a className="scroll-cue" href="#visao"><span className="scroll-line" aria-hidden="true"></span><span>Continue a história</span><span aria-hidden="true">↓</span></a>
+        </section>
+
+        <section className="editorial-section" aria-labelledby="editorial-title">
+          <div className="section-shell">
+            <div className="concept-heading" data-reveal>
+              <p className="eyebrow">Uma notícia, com contexto</p>
+              <h2 className="editorial-headline" id="editorial-title">
+                Adolescente viajou sozinha para encontrar alguém que conheceu online.
+              </h2>
+            </div>
+            <p className="editorial-sources" data-reveal>
+              <strong>Fontes dos fatos:</strong>
+              <br />
+              UOL — reportagem publicada em 14 de outubro de 2026, que informa
+              que a adolescente foi localizada em Portugal.
+              <br />
+              O Globo — reportagem publicada em 13 de outubro de 2026, sobre a
+              viagem para encontrar uma pessoa conhecida online.
+            </p>
+          </div>
+        </section>
+
+        <section className="statement-section" id="visao" aria-labelledby="statement-title">
+          <div className="statement-wash" aria-hidden="true"></div>
+          <div className="statement-inner" data-reveal>
+            <p className="eyebrow">01 — O problema</p>
+            <h2 id="statement-title">Você não precisa <span>olhar tudo.</span><br/>Precisa saber <em>onde olhar.</em></h2>
+            <p>Uma plataforma para ajudar responsáveis a encontrar clareza no meio de tantas interações — sem transformar cuidado em vigilância constante.</p>
+          </div>
+          <span className="section-number" aria-hidden="true">01</span>
         </section>
 
         <section className="story-section digital" id="vida-digital" aria-labelledby="digital-title">
           <div className="section-shell digital-layout">
             <div className="section-copy" data-reveal>
-              <p className="eyebrow">01 — Um mundo em movimento</p>
+              <p className="eyebrow">02 — Um mundo em movimento</p>
               <h2 id="digital-title">Uma vida inteira acontece <em>do outro lado da tela.</em></h2>
               <p>Amizades, conversas, descobertas. O cotidiano digital dos filhos se desdobra em muitas janelas — enquanto a vida real também pede atenção.</p>
             </div>
@@ -56,39 +82,6 @@ export default function Home() {
           <div className="section-footnote"><span>O mundo digital não para.</span><span>Entender o contexto pode aproximar.</span></div>
         </section>
 
-        <section className="statement-section" id="visao" aria-labelledby="statement-title">
-          <div className="statement-wash" aria-hidden="true"></div>
-          <div className="statement-inner" data-reveal>
-            <p className="eyebrow">02 — Menos ruído. Mais contexto.</p>
-            <h2 id="statement-title">Você não precisa <span>olhar tudo.</span><br/>Precisa saber <em>onde olhar.</em></h2>
-            <p>Uma proposta para ajudar responsáveis a encontrar clareza no meio de tantas interações — sem transformar cuidado em vigilância constante.</p>
-          </div>
-          <span className="section-number" aria-hidden="true">02</span>
-        </section>
-
-        <section className="editorial-section" aria-labelledby="editorial-title">
-          <div className="section-shell">
-            <div className="concept-heading" data-reveal>
-              <p className="eyebrow">Resumo editorial</p>
-              <h2 id="editorial-title">Uma notícia, <em>com contexto.</em></h2>
-              <p>
-                Reportagens de outubro de 2026 relataram que uma adolescente brasileira viajou sozinha
-                a Portugal para encontrar uma pessoa que conheceu online. Segundo O Globo, a família
-                já sabia do contato, mas não da viagem. Ela foi localizada em segurança; a investigação
-                prosseguia, e “rapto” era uma alegação atribuída à família. Um caso individual não
-                representa todas as relações digitais nem demonstra o que o HeroGuard teria prevenido.
-              </p>
-            </div>
-            <InterludioEditorial />
-            <p className="editorial-sources" data-reveal>
-              Fontes:{" "}
-              <a href="https://noticias.uol.com.br/cotidiano/ultimas-noticias/2026/10/14/filha-de-prefeito-do-rn-e-achada-em-portugal-apos-suspeita-de-rapto-virtual.ghtm" target="_blank" rel="noopener noreferrer">UOL</a> (14 de outubro de 2026) e{" "}
-              <a href="https://archive.ph/20261013192705/https://oglobo.globo.com/brasil/noticia/2026/10/13/filha-de-prefeito-de-cidade-do-rn-de-14-anos-e-encontrada-em-portugal-caso-e-tratado-como-rapto.ghtml" target="_blank" rel="noopener noreferrer">O Globo</a> (snapshot arquivado de 13 de outubro de 2026).
-              Os links de origem podem revelar mais dados pessoais do que este resumo.
-            </p>
-          </div>
-        </section>
-
         <section className="presence-section" aria-labelledby="presence-title">
           <div className="presence-image">
             {/* Imagem aprovada como referência (ficção editorial; personagens fictícios). */}
@@ -97,7 +90,7 @@ export default function Home() {
           <div className="presence-copy" data-reveal>
             <p className="eyebrow">03 — A virada</p>
             <h2 id="presence-title">Não é sobre controlar.<br/><em>É sobre estar presente.</em></h2>
-            <p>Acompanhamento transparente pode abrir espaço para conversas melhores. O cuidado começa quando adultos e jovens sabem que estão do mesmo lado.</p>
+            <p>Acompanhamento transparente abre espaço para conversas melhores. O cuidado começa quando adultos e jovens sabem que estão do mesmo lado.</p>
             <div className="principle"><span className="principle-mark" aria-hidden="true">✳</span><span>Proteção com diálogo.<br/><strong>Confiança com responsabilidade.</strong></span></div>
           </div>
         </section>
@@ -105,19 +98,36 @@ export default function Home() {
         <section className="concept-section" id="conceito" aria-labelledby="concept-title">
           <div className="section-shell">
             <div className="concept-heading" data-reveal>
-              <p className="eyebrow">04 — Conheça a proposta</p>
-              <h2 id="concept-title"><span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span>.<br/><em>Uma nova forma de acompanhar.</em></h2>
-              <p>Uma visão para reduzir o ruído e colocar o contexto em primeiro lugar. O produto ainda está em desenvolvimento — esta página apresenta apenas o conceito.</p>
+              <p className="eyebrow">04 — Como funciona</p>
+              <h2 id="concept-title"><span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span>.<br/><em>Apenas 3 passos para acompanhar.</em></h2>
+              <p>Em vez de vasculhar centenas de mensagens, você recebe um painel claro: o que está tranquilo e onde vale uma conversa hoje.</p>
+            </div>
+            <div className="how-steps" data-reveal role="list" aria-label="Como funciona em 3 passos">
+              <article className="how-step" role="listitem">
+                <span className="how-step-num">PASSO 01</span>
+                <h3>Conecte</h3>
+                <p>Informe seus dados de contato e receba no WhatsApp o passo a passo guiado para vincular o acompanhamento com transparência.</p>
+              </article>
+              <article className="how-step" role="listitem">
+                <span className="how-step-num">PASSO 02</span>
+                <h3>Receba sinais</h3>
+                <p>O HeroGuard organiza o contexto das interações em níveis claros de atenção, sem expor você a um mar de notificações.</p>
+              </article>
+              <article className="how-step" role="listitem">
+                <span className="how-step-num">PASSO 03</span>
+                <h3>Converse</h3>
+                <p>Use o contexto para abrir o diálogo certo na hora certa — com escuta, acolhimento e presença real.</p>
+              </article>
             </div>
             <div className="concept-art" data-reveal>
               <div className="concept-halo" aria-hidden="true"></div>
               <div className="concept-card">
-                <div className="mock-top"><div className="mock-brand"><span className="mock-shield">H</span> <span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span></div><span className="mock-status"><i></i> VISÃO CONCEITUAL</span></div>
-                <div className="mock-welcome"><div><span className="mock-kicker">UM OLHAR MAIS CLARO</span><h3>O que merece<br/>sua atenção hoje?</h3></div><span className="mock-date">EXEMPLO ILUSTRATIVO</span></div>
-                <div className="mock-summary"><div className="summary-block"><span>CONVERSAS</span><strong>12</strong><small>Dados fictícios</small></div><div className="summary-block"><span>CONTATOS</span><strong>08</strong><small>Dados fictícios</small></div><div className="summary-block summary-focus"><span>PARA CONVERSAR</span><strong>02</strong><small>Não é uma conclusão</small></div></div>
-                <div className="mock-message"><div className="mock-avatar">L</div><div className="mock-message-copy"><strong>Lucas M. <span>• exemplo fictício</span></strong><p>“A gente conversa amanhã na escola?”</p><small>Mensagem ilustrativa · contexto importa</small></div></div>
-                <div className="mock-message"><div className="mock-avatar avatar-alt">M</div><div className="mock-message-copy"><strong>Marina R. <span>• exemplo fictício</span></strong><p>“Obrigada por me ajudar com o trabalho!”</p><small>Mensagem ilustrativa · contexto importa</small></div></div>
-                <div className="mock-disclaimer">Representação visual conceitual. Nenhuma conversa está sendo analisada.</div>
+                <div className="mock-top"><div className="mock-brand"><span className="mock-shield">H</span> <span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span></div><span className="mock-status"><i></i> PAINEL DOS PAIS</span></div>
+                <div className="mock-welcome"><div><span className="mock-kicker">UM OLHAR MAIS CLARO</span><h3>O que merece<br/>sua atenção hoje?</h3></div><span className="mock-date">RESUMO DIÁRIO</span></div>
+                <div className="mock-summary"><div className="summary-block"><span>CONVERSAS</span><strong>12</strong></div><div className="summary-block"><span>CONTATOS</span><strong>08</strong></div><div className="summary-block summary-focus"><span>PARA CONVERSAR</span><strong>02</strong><small>Não é uma conclusão</small></div></div>
+                <div className="mock-message"><div className="mock-avatar">L</div><div className="mock-message-copy"><strong>Lucas M.</strong><p>“A gente conversa amanhã na escola?”</p></div></div>
+                <div className="mock-message"><div className="mock-avatar avatar-alt">M</div><div className="mock-message-copy"><strong>Marina R.</strong><p>“Obrigada por me ajudar com o trabalho!”</p></div></div>
+                <div className="mock-disclaimer">Exemplo ilustrativo do painel com dados fictícios para preservar a privacidade.</div>
               </div>
               <div className="floating-note note-context"><span className="note-icon">✳</span><span><b>Contexto antes</b><small>de qualquer conclusão</small></span></div>
               <div className="floating-note note-quiet"><span className="quiet-wave" aria-hidden="true">≈</span><span><b>Menos ruído</b><small>mais clareza</small></span></div>
@@ -125,69 +135,72 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="privacy-section" aria-labelledby="privacy-title">
+        <section className="signals-section" id="sinais" aria-labelledby="signals-title">
+          <div className="section-shell">
+            <div className="signals-heading" data-reveal>
+              <p className="eyebrow">05 — Sinais, não sentenças</p>
+              <h2 id="signals-title">Uma indicação não conta<br/><em>a história inteira.</em></h2>
+              <p>No <span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span>, diferentes níveis de atenção organizam as conversas para apoiar os pais. Uma classificação jamais substitui contexto, diálogo ou avaliação humana.</p>
+            </div>
+            <div className="signals-grid" data-reveal>
+              <article className="signal-card"><span className="signal-label"><i className="signal-dot green"></i> VERDE · TRANQUILO</span><h3>Sem atenção especial</h3><p>Interações cotidianas dentro do esperado, sem sinais que peçam intervenção.</p><span className="signal-foot">Rotina acompanhada</span></article>
+              <article className="signal-card"><span className="signal-label"><i className="signal-dot yellow"></i> AMARELO · ATENÇÃO</span><h3>Vale compreender</h3><p>Um sinal que serve como convite para se aproximar, conversar e entender melhor o contexto.</p><span className="signal-foot">Convite ao diálogo</span></article>
+              <article className="signal-card"><span className="signal-label"><i className="signal-dot red"></i> VERMELHO · PRIORIDADE</span><h3>Prioridade de atenção</h3><p>Situação que pede olhar imediato dos pais. Um alerta não é prova — o contexto continua essencial.</p><span className="signal-foot">Atenção prioritária</span></article>
+            </div>
+            <div className="signals-pillars" data-reveal>
+              <h3 className="signals-pillars-title">Tecnologia a serviço da proximidade.</h3>
+              <p className="signals-pillars-intro">Uma plataforma orientada por princípios claros, não por mais notificações.</p>
+              <div className="pillars-list">
+                <article className="pillar"><span>01</span><div><h3>Conversas</h3><p>Visão organizada das interações que importam.</p></div></article>
+                <article className="pillar"><span>02</span><div><h3>Contatos</h3><p>Compreensão das relações digitais com cuidado.</p></div></article>
+                <article className="pillar"><span>03</span><div><h3>Alertas</h3><p>Sinais claros para apoiar a atenção consciente dos pais.</p></div></article>
+                <article className="pillar"><span>04</span><div><h3>Inteligência e contexto</h3><p>Análise contextual sempre apoiada pela avaliação humana.</p></div></article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="demo-section" id="demonstracao" aria-labelledby="demo-title">
+          <div className="section-shell demo-layout">
+            <div className="demo-copy" data-reveal>
+              <p className="eyebrow">06 — Veja na prática</p>
+              <h2 id="demo-title">Veja o sinal.<br/><em>Inicie a conversa.</em></h2>
+              <p>Veja como o HeroGuard apresenta um ponto de atenção com contexto para ajudar você a conversar com seu filho no momento certo.</p>
+              <span className="demo-badge"><i></i> EXEMPLO DE ALERTA CONTEXTUAL</span>
+              <div className="demo-cta-wrap">
+                <WaitlistButton className="button button-primary">Quero proteger meus filhos</WaitlistButton>
+              </div>
+            </div>
+            <div className="chat-demo" data-reveal role="group" aria-label="Exemplo ilustrativo de conversa com sinal de atenção">
+              <div className="chat-head"><div className="demo-avatar">A</div><div><strong>Alex S. <span>contato recente</span></strong></div></div>
+              <div className="context-banner"><span className="context-symbol">i</span><span><strong>Sinal de atenção</strong><small>Um ponto de partida para compreender o contexto.</small></span><span className="context-tag">AMARELO</span></div>
+              <div className="chat-bubble bubble-in">Oi! Você vai participar do grupo do projeto?<time>16:42</time></div>
+              <div className="chat-bubble bubble-out">Vou sim, ainda estou vendo os detalhes. 🙂<time>16:45</time></div>
+              <div className="chat-bubble bubble-in">Tudo bem. A gente conversa amanhã na escola.<time>16:47</time></div>
+              <div className="chat-context-note"><span aria-hidden="true">✳</span> Uma classificação não é conclusão. Conhecer o contexto vem primeiro.</div>
+              <div className="chat-footer">Exemplo com nomes e mensagens fictícios para demonstração</div>
+            </div>
+          </div>
+        </section>
+
+        <section className="privacy-section" id="privacidade" aria-labelledby="privacy-title">
           <div className="section-shell">
             <div className="concept-heading" data-reveal>
-              <p className="eyebrow">Privacidade</p>
-              <h2 id="privacy-title">Privacidade é um <em>princípio do projeto.</em></h2>
+              <p className="eyebrow">07 — Privacidade e segurança</p>
+              <h2 id="privacy-title">Mensagens protegidas por <em>criptografia.</em></h2>
               <p>
-                A forma de proteção dos dados — incluindo se e como as mensagens serão criptografadas —
-                será definida junto com a arquitetura da plataforma. Esta demonstração não processa
-                conversas e não implementa criptografia.
+                Cuidado não é exposição. As mensagens de texto das conversas são criptografadas para
+                evitar vazamentos não autorizados, garantindo que informações sensíveis da sua família
+                permaneçam protegidas.
               </p>
             </div>
             <NotaPrivacidade />
           </div>
         </section>
 
-        <section className="signals-section" aria-labelledby="signals-title">
-          <div className="section-shell">
-            <div className="signals-heading" data-reveal>
-              <p className="eyebrow">05 — Sinais, não sentenças</p>
-              <h2 id="signals-title">Uma indicação não conta<br/><em>a história inteira.</em></h2>
-              <p>Na visão futura do <span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span>, diferentes níveis de atenção ajudariam a organizar conversas. Uma classificação jamais substitui contexto, diálogo ou avaliação humana.</p>
-            </div>
-            <div className="signals-grid" data-reveal>
-              <article className="signal-card"><span className="signal-label"><i className="signal-dot green"></i> GREEN</span><h3>Sem atenção especial</h3><p>Nenhum sinal para destacar neste exemplo fictício.</p><span className="signal-foot">Demonstração conceitual</span></article>
-              <article className="signal-card"><span className="signal-label"><i className="signal-dot yellow"></i> YELLOW</span><h3>Vale compreender</h3><p>Um sinal pode ser um convite para conversar e entender melhor.</p><span className="signal-foot">Demonstração conceitual</span></article>
-              <article className="signal-card"><span className="signal-label"><i className="signal-dot red"></i> RED</span><h3>Prioridade de atenção</h3><p>Um alerta não é prova. O contexto continua sendo essencial.</p><span className="signal-foot">Demonstração conceitual</span></article>
-            </div>
-            <p className="signals-note"><span aria-hidden="true">ⓘ</span> As cores e exemplos acima são ilustrativos. Nesta versão não existe análise real, inteligência artificial ou classificação funcional.</p>
-          </div>
-        </section>
-
-        <section className="pillars-section" aria-labelledby="pillars-title">
-          <div className="section-shell pillars-layout">
-            <div className="pillars-intro" data-reveal><p className="eyebrow">06 — O que importa</p><h2 id="pillars-title">Tecnologia a serviço<br/><em>da proximidade.</em></h2><p>Uma visão de produto orientada por princípios, não por mais notificações.</p></div>
-            <div className="pillars-list" data-reveal>
-              <article className="pillar"><span>01</span><div><h3>Conversas</h3><p>Uma visão organizada das interações.</p></div></article>
-              <article className="pillar"><span>02</span><div><h3>Contatos</h3><p>Compreender relações com cuidado.</p></div></article>
-              <article className="pillar"><span>03</span><div><h3>Alertas</h3><p>Sinais para apoiar atenção consciente.</p></div></article>
-              <article className="pillar"><span>04</span><div><h3>Inteligência e contexto</h3><p>Uma visão futura, sempre com avaliação humana.</p></div></article>
-            </div>
-            <p className="pillars-disclaimer">Conceitos de uma plataforma futura. Nenhum destes recursos está funcional nesta página.</p>
-          </div>
-        </section>
-
-        <section className="demo-section" id="demonstracao" aria-labelledby="demo-title">
-          <div className="section-shell demo-layout">
-            <div className="demo-copy" data-reveal><p className="eyebrow">07 — Uma ideia em imagens</p><h2 id="demo-title">Veja o conceito.<br/><em>Imagine a conversa.</em></h2><p>Este cenário usa nomes e mensagens inventados para ilustrar como uma interface futura poderia apresentar um sinal com contexto.</p><span className="demo-badge"><i></i> SIMULAÇÃO VISUAL · DADOS FICTÍCIOS</span></div>
-            <div className="chat-demo" data-reveal role="group" aria-label="Simulação visual fictícia de uma conversa, sem processamento real">
-              <div className="chat-head"><div className="demo-avatar">A</div><div><strong>Alex S. <span>exemplo fictício</span></strong><small>Contato ilustrativo · sem conexão</small></div></div>
-              <div className="context-banner"><span className="context-symbol">i</span><span><strong>Sinal ilustrativo</strong><small>Um ponto de partida para compreender o contexto.</small></span><span className="context-tag">AMARELO</span></div>
-              <div className="chat-date">EXEMPLO DE CONVERSA FICTÍCIA</div>
-              <div className="chat-bubble bubble-in">Oi! Você vai participar do grupo do projeto?<time>16:42</time></div>
-              <div className="chat-bubble bubble-out">Vou sim, ainda estou vendo os detalhes. 🙂<time>16:45</time></div>
-              <div className="chat-bubble bubble-in">Tudo bem. A gente conversa amanhã na escola.<time>16:47</time></div>
-              <div className="chat-context-note"><span aria-hidden="true">✳</span> Uma classificação não é conclusão. Conhecer o contexto vem primeiro.</div>
-              <div className="chat-footer">Demonstração estática · mensagens inventadas · sem integração</div>
-            </div>
-          </div>
-        </section>
-
         <section className="closing-section" id="mensagem-final" aria-labelledby="closing-title">
           <div className="closing-glow" aria-hidden="true"></div>
-          <div className="closing-content" data-reveal><p className="eyebrow">Menos ruído. Mais contexto.</p><h2 id="closing-title">Proteção também<br/><em>é presença.</em></h2><p>Uma proposta para acompanhar com responsabilidade, ouvir com atenção e permanecer por perto.</p><WaitlistButton className="button button-primary" describedBy="waitlist-note-final">Quero proteger meus filhos</WaitlistButton><p className="button-note" id="waitlist-note-final">Cadastro de teste — nenhum dado é enviado ou armazenado.</p></div>
+          <div className="closing-content" data-reveal><p className="eyebrow">Menos ruído. Mais contexto.</p><h2 id="closing-title">Proteção também<br/><em>é presença.</em></h2><p>Informe seus dados de contato e receba no WhatsApp os próximos passos para começar a acompanhar com responsabilidade, escuta e proximidade.</p><WaitlistButton className="button button-primary" describedBy="waitlist-note-final">Quero proteger meus filhos</WaitlistButton><p className="button-note" id="waitlist-note-final">Próximos passos enviados diretamente no seu WhatsApp.</p></div>
           <div className="closing-orbit" aria-hidden="true"></div>
         </section>
       </main>
@@ -195,7 +208,7 @@ export default function Home() {
       <footer className="site-footer">
         <a className="brand footer-brand" href="#inicio" aria-label="HeroGuard — voltar ao início"><img className="brand-mark" src="/heroguard-logo-alpha.png" alt="" aria-hidden="true" width={924} height={939} /><span className="brand-wordmark"><span className="brand-hero">Hero</span><span className="brand-guard">Guard</span></span></a>
         <p>Menos ruído. Mais contexto.</p>
-        <span className="footer-note">Apresentação conceitual · v0.2 · sem funcionalidades operacionais</span>
+        <span className="footer-note">HeroGuard · Proteção digital com presença e diálogo</span>
         <a className="privacy-footer-link" href="/privacidade">Aviso de Privacidade</a>
         <a className="back-top" href="#inicio">Voltar ao início <span aria-hidden="true">↑</span></a>
       </footer>

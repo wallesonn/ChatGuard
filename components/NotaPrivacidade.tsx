@@ -83,7 +83,7 @@ export default function NotaPrivacidade() {
         <line className="privacy-link" x1={190} y1={85} x2={240} y2={85} />
         <line className="privacy-link" x1={400} y1={85} x2={450} y2={85} />
       </svg>
-      <span className="privacy-motion-badge">conceito — recurso não implementado</span>
+      <span className="privacy-motion-badge">mensagens criptografadas · proteção contra vazamentos</span>
     </div>
   );
 }

@@ -252,6 +252,8 @@ A página deverá seguir aproximadamente a sequência abaixo.
 
 Responsável por apresentar a marca HeroGuard e oferecer navegação ou acesso ao CTA, conforme a definição visual da implementação.
 
+Implementado em 2026-10-23: header **fixo** (acompanha a rolagem) com navegação para `#visao`, `#conceito`, `#sinais`, `#demonstracao` e `#privacidade`. Abaixo de 1000px os links viram um botão *Menu* com painel suspenso; abaixo de 520px o botão fica só com o ícone e abaixo de 380px o CTA do header é ocultado (o hero e a mensagem final mantêm o CTA principal).
+
 ### 8.2 Hero com vídeo cinematográfico
 
 A primeira dobra deve introduzir o tema com uma pergunta forte:
@@ -302,15 +304,19 @@ Mensagem sugerida:
 
 **Caso-base aprovado pelo usuário:** reportagens de 13–14 de outubro de 2026 sobre uma adolescente brasileira que viajou sozinha a Portugal para encontrar uma pessoa que conheceu online. O Globo relata que os responsáveis já sabiam do contato online desde agosto, mas não da viagem; o UOL informa que ela foi localizada em segurança e que a investigação seguia em Portugal. “Rapto” deve aparecer apenas como alegação atribuída à família, não como conclusão criminal. A jovem não viajou acompanhada pela pessoa que conheceu online.
 
-**Copy proposta:**
+**Copy atualizada em 2026-10-23:** o bloco foi reduzido a uma manchete de
+uma frase, em tipografia grande, seguida da citação das fontes. O rótulo
+"Uma notícia, com contexto" substitui "Resumo editorial".
 
-> **Uma notícia, com contexto.**
->
-> Reportagens de outubro de 2026 relataram que uma adolescente brasileira viajou sozinha a Portugal para encontrar uma pessoa que conheceu online. Segundo O Globo, a família já sabia do contato, mas não da viagem. Ela foi localizada em segurança; a investigação prosseguia, e “rapto” era uma alegação atribuída à família. Este caso não representa todas as relações digitais nem demonstra o que o HeroGuard teria prevenido.
+> **Adolescente viajou sozinha para encontrar alguém que conheceu online.**
 
-Fontes para atribuição editorial: [UOL](https://noticias.uol.com.br/cotidiano/ultimas-noticias/2026/10/14/filha-de-prefeito-do-rn-e-achada-em-portugal-apos-suspeita-de-rapto-virtual.ghtm), de 14 de outubro de 2026, e [O Globo — snapshot arquivado de 13 de outubro de 2026](https://archive.ph/20261013192705/https://oglobo.globo.com/brasil/noticia/2026/10/13/filha-de-prefeito-de-cidade-do-rn-de-14-anos-e-encontrada-em-portugal-caso-e-tratado-como-rapto.ghtml). Os links de origem podem revelar mais dados pessoais do que o resumo da landing page.
+**Referência dos fatos, sem links clicáveis:** UOL — reportagem publicada em
+14 de outubro de 2026, que informa que a adolescente foi localizada em
+Portugal; O Globo — reportagem publicada em 13 de outubro de 2026, sobre a
+viagem para encontrar uma pessoa conhecida online. Os links e os títulos
+originais não são exibidos para evitar expor dados identificáveis da menor.
 
-Não usar nome, rosto, idade exata, cidade de origem, escola, identificação dos responsáveis, perfis, capturas de conversas, detalhes de abuso ou reconstituição do caso. Identificar o bloco como resumo editorial e manter veículo/data e link de fonte visíveis, usando rótulo neutro para os links. Não sugerir que o HeroGuard detectaria, impediria ou teria evitado o ocorrido. A fonte externa pode revelar dados de identificação; esse risco deve ser considerado na revisão final antes da publicação.
+Não usar nome, rosto, idade exata, cidade de origem, escola, identificação dos responsáveis, perfis, capturas de conversas, detalhes de abuso ou reconstituição do caso. Identificar o bloco com o rótulo "Uma notícia, com contexto" e manter a manchete curta e a atribuição dos veículos/datas visíveis, sem links clicáveis. Não sugerir que o HeroGuard detectaria, impediria ou teria evitado o ocorrido. A fonte externa pode revelar dados de identificação; esse risco deve ser considerado na revisão final antes da publicação.
 
 ### 8.5 A virada
 
@@ -350,6 +356,8 @@ Apresentar visualmente a ideia de análise contextual por meio das classificaç�
 A seção pode incluir minicards de contatos e exemplos de conversas, desde que todos os dados sejam fictícios e utilizados apenas para demonstração visual.
 
 Nesta versão, não existe análise real de mensagens ou inteligência artificial funcional.
+
+> **Implementação (2026-10-23):** 8.7 e 8.8 são apresentadas em **uma única seção** (“05 — Sinais, não sentenças”): os três níveis GREEN/YELLOW/RED em cartões e, abaixo, os conceitos de 8.8 como lista compacta de quatro itens (Conversas, Contatos, Alertas, Inteligência e contexto). O aviso único cobre cores, exemplos e recursos.
 
 ### 8.8 Funcionalidades conceituais
 
@@ -409,9 +417,9 @@ As animações devem apoiar o storytelling e não prejudicar legibilidade, desem
 
 ### Motion Graphics — interlúdio editorial e privacidade
 
-- **Caso noticiado:** composição editorial curta, com entrada única e estado final estável; sem loop contínuo, rota em mapa, flashes, trilha de suspense, personagens ou mensagens reconstituídas. Fonte, data e ressalva devem permanecer legíveis fora da área animada.
+- **Caso noticiado:** ~~composição editorial curta, com entrada única e estado final estável~~. **Revisado em 2026-10-23:** a arte com cartões abstratos foi **removida** — os três retângulos não carregavam informação e pareciam vazios. O bloco ficou sem animação, com o rótulo "Uma notícia, com contexto", uma manchete curta em letras grandes e a citação das fontes abaixo, sem links clicáveis.
 - **Privacidade:** peça conceitual pequena com cartões abstratos e movimento discreto. Não usar cadeado, selo “protegido”, texto virando código ou fluxo que simule criptografia em operação. Manter junto à arte o aviso “conceito — recurso não implementado”.
-- Em ambas as peças, não bloquear rolagem; manter o conteúdo essencial disponível sem animação; respeitar `prefers-reduced-motion`; organizar o conteúdo verticalmente em telas móveis e evitar redução do tamanho do texto.
+- Na peça de privacidade, não bloquear rolagem; manter o conteúdo essencial disponível sem animação; respeitar `prefers-reduced-motion`; organizar o conteúdo verticalmente em telas móveis e evitar redução do tamanho do texto.
 
 ## 10. Requisitos de conteúdo e confiança
 
