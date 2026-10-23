@@ -46,9 +46,10 @@ Instruções para agentes que trabalham neste repositório.
 
 - Produção anterior no ar desde 2026-10-19 em `https://chatguard.life`
   (stack `chatguard`, certificado Let's Encrypt). Em 2026-10-23 o projeto foi
-  renomeado para HeroGuard: a nova stack usa `https://heroguard.my` (domínio
-  trocado em 2026-10-23) e só responde depois que o DNS apontar para a VPS e
-  o certificado for emitido.
+  renomeado para HeroGuard e a nova stack entrou no ar em
+  `https://heroguard.my` (domínio trocado e deploy feitos em 2026-10-23;
+  certificado Let's Encrypt com SAN para `heroguard.my` e
+  `www.heroguard.my`).
 - Deploy manual via **Portainer**, método *Repository* apontando para
   `wallesonn/heroguard-docker`.
 - Fluxo de atualização: `./build.sh vX.Y.Z` (build + push no Docker Hub,

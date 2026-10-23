@@ -1,6 +1,6 @@
 # HeroGuard — Registro de avanço da landing page
 
-**Status:** v0.2 em Next.js 16.4.0 — **em produção** desde 2026-10-19 em `https://heroguard.my` (VPS, Docker, Traefik; domínio alterado de `heroguard.life` em 2026-10-23); imagem `wallesonnn/heroguard-app:v0.1.1`/`latest` no Docker Hub; commits passaram a ser feitos manualmente pelo usuário  
+**Status:** v0.2 em Next.js 16.4.0 — **em produção** desde 2026-10-19 e, com a stack renomeada, em `https://heroguard.my` desde 2026-10-23 (VPS, Docker, Traefik; domínio alterado de `heroguard.life`); imagem `wallesonnn/heroguard-app:v0.1.1`/`latest` no Docker Hub; commits passaram a ser feitos manualmente pelo usuário  
 **Especificação-alvo:** [`landing-page.md`](landing-page.md)
 
 Este documento registra os incrementos feitos para chegar à landing page descrita na especificação. Não substitui nem altera silenciosamente a especificação-alvo.
@@ -39,6 +39,7 @@ Este documento registra os incrementos feitos para chegar à landing page descri
 - [x] Fazer commit após o teste local — commits passaram a ser feitos manualmente pelo usuário (ver "Mudança de governança de commits").
 - [x] Testar na VPS — a v0.2 foi direto para produção via Portainer (sem stack de teste intermediária); ver "Stack Docker e deploy em produção — 2026-10-19".
 - [x] Deploy público verificado: `https://heroguard.life` com certificado válido.
+- [x] Deploy da stack renomeada verificado: `https://heroguard.my` e `https://www.heroguard.my` com certificado válido (2026-10-23).
 
 ### Verificação local realizada
 
@@ -382,14 +383,14 @@ Logos — atualizado em 2026-10-23:
 
 Pendências da migração:
 
-- Publicar a imagem `wallesonnn/heroguard-app` no Docker Hub e subir a nova
-  stack — o site em `heroguard.my` só responde depois do DNS apontar para a
-  VPS e do certificado ser emitido.
 - Renomear os repositórios no GitHub (`heroguard-app` e
   `heroguard-docker`); os remotes locais seguem com os nomes antigos (o GitHub
   redireciona após a renomeação).
 - Aplicar a identidade visual de `docs/visual-identity` (paleta azul/lilás,
   Manrope/Inter) — não aplicada por decisão do usuário.
+
+> Publicar a imagem `wallesonnn/heroguard-app` e subir a stack foram
+> concluídos em 2026-10-23 — ver "Deploy da stack heroguard.my — 2026-10-23".
 
 ## Mudança de domínio para heroguard.my — 2026-10-23
 
@@ -418,13 +419,27 @@ Para entrar no ar:
 3. Opcional: manter `heroguard.life` na regra do Traefik durante a transição
    (basta acrescentar `|| Host(\`heroguard.life\`) || Host(\`www.heroguard.life\`)`).
 
+> Os três passos foram executados em 2026-10-23 — ver a seção seguinte.
+
+## Deploy da stack heroguard.my — 2026-10-23
+
+Deploy concluído e verificado:
+
+- DNS: `heroguard.my` e `www.heroguard.my` resolvem para `31.97.163.110`.
+- HTTPS: `https://heroguard.my` e `https://www.heroguard.my` respondem
+  HTTP 200 servindo o export do Next.js.
+- Certificado Let's Encrypt emitido em 2026-10-23 18:01 UTC, válido até
+  2027-01-21, com SAN para `heroguard.my` e `www.heroguard.my`.
+- A stack anterior (`chatguard.life`) deixa de ser a versão publicada; o
+  domínio antigo não está mais na regra do Traefik.
+
 ## Pendências
 
 - Ajustes finos de ritmo ou legibilidade somente se forem solicitados pelo usuário.
 - `www.heroguard.my` adicionado à regra do Traefik
-  (`Host(\`heroguard.my\`) || Host(\`www.heroguard.my\`)`) — entra em
-  vigor no próximo **Update the stack**; o certificado será reemitido com
-  SAN para os dois hosts.
+  (`Host(\`heroguard.my\`) || Host(\`www.heroguard.my\`)`) — em vigor desde o
+  **Update the stack** de 2026-10-23, com certificado reemitido com SAN para
+  os dois hosts.
 - Banco de dados: quando o backend entrar, avaliar reaproveitar o Postgres já
   existente na VPS (criando database `heroguard`) vs. manter o dedicado da
   stack; decidir também se o `db` da stack precisará de porta no host.
